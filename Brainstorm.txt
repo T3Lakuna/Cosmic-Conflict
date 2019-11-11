@@ -23,3 +23,4 @@ Cursed words
 	level 1 true damage
 	"counterplay"
 	skill ceiling
+	test
