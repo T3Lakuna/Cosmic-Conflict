@@ -1,0 +1,25 @@
+Name
+	Solar Strife
+
+Concepts
+	Space-age futuristic map.
+	Characters come from different planets.
+	Standard three-lane map. Circular.
+
+Dates
+	Sprint 1	Nov. 13 - Dec. 04
+	Sprint 2	Dec. 06 - Jan. 13
+	Sprint 3	Jan. 15 - Jan. 28
+
+References
+	https://lanepushinggames.com/browse
+	https://www.reddit.com/r/moba/
+	https://en.wikipedia.org/wiki/Multiplayer_online_battle_arena
+
+Cursed words
+	z-axis
+	mobile
+	rng
+	level 1 true damage
+	"counterplay"
+	skill ceiling
