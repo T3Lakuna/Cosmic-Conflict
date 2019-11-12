@@ -1,0 +1,18 @@
+Name
+	?
+Concept and Role
+	Anti-burst tank.
+Origin and Theme
+	?
+Passive Ability
+	Cannot take more than a certain amount of damage per second, scaling with level.
+Normal Abilities
+	- Deal area damage around the player.
+	- Blocks the next damage the player would recieve, then stun the source for an amount of time scaling with the damage blocked.
+	- Dash towards an enemy only, stopping any dashes the target is in and dealing damage if a dash was stopped.
+Ultimate Ability
+	?
+Strengths
+	Almost unkillable by burst champions.
+Weaknesses, Counters, and Counterplay
+	Falls easily to sustain damage champions, no long-ranged damage.

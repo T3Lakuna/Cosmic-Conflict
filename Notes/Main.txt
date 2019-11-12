@@ -1,0 +1,39 @@
+Name
+	Solar Strife
+
+Concepts
+	Space-age futuristic map.
+	Characters come from different planets.
+	Standard three-lane map. Circular.
+
+Dates
+	Sprint 1	Nov. 13 - Dec. 04
+	Sprint 2	Dec. 06 - Jan. 13
+	Sprint 3	Jan. 15 - Jan. 28
+
+References
+	List of MOBAs			https://lanepushinggames.com/browse
+	r/MOBA				https://www.reddit.com/r/moba/
+	MOBA Wikipedia			https://en.wikipedia.org/wiki/Multiplayer_online_battle_arena
+	DOTA 2 Character Reference	https://dota2.gamepedia.com/Heroes
+	LoL Character Reference		https://leagueoflegends.fandom.com/wiki/List_of_champions
+	Smite Character Reference	https://smite.fandom.com/wiki/Category:Gods
+	HotS Character Reference	https://heroesofthestorm.fandom.com/wiki/List_of_heroes
+	Barebones MOBA Tutorial		https://sertaogames.com/2013/09/17/how-to-create-a-moba-in-24h/
+
+Cursed words
+	Z-axis.
+	RNG.
+	Level 1 true damage.
+	"No counterplay."
+	Permanent crowd control on auto attacks.
+
+Champion pitch must-haves
+	Name
+	Concept
+	Origin and Theme
+	Passive
+	3+ normal abilities
+	Ultimate ability
+	Strengths
+	Weaknesses/Counterpicks/Counterplay

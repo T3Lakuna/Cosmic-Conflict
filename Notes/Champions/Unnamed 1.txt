@@ -1,0 +1,18 @@
+Name
+	?
+Concept and Role
+	Anti-mage assassin.
+Origin and Theme
+	Post-apocalyptic.
+Passive Ability
+	Takes reduced magic damage, but increased physical damage.
+Normal Abilities
+	- Point-click like Bard's chime autos. Gains stacks from spells cast nearby and releases them on-hit, dealing extra damage to the primary target.
+	- Drain mana from the opponent and gain equivalent magic shielding, up to a cap. Excess shielding is converted into reduced healing. Damage is dealt to the target scaling with their maximum mana.
+	- Place a zone at long range in which no spells can be cast for a few seconds.
+Ultimate Ability
+	Gain a large amount of magic resistance and tenacity for a few seconds, then deal damage in an area around the player scaling with the amount of magic damage dealt within a radius around the player during that time.
+Strengths
+	Strong against squishy magic damage-dealers, high burst damage, high lane sustain.
+Weaknesses, Counters, and Counterplay
+	Squishy, mostly useless against physical damage threats, immobile, low sustain damage, long cooldowns.
