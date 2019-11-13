@@ -1,0 +1,27 @@
+Name
+	Pau-3 AKA (Protective Aruthain Unit MK 3) - the robotic protector 
+Concept and Role
+	Tank
+Origin and Theme
+	Comes from the planet Arutha was invented by Professor Grakens with the goal of being the next generation of personal bodyguard
+	bot.
+	Inspired from tanks that can support,
+	weapon shield.
+Passive Ability
+	Adaptive Core - In the shop Pau can change his passive.
+		Ballistic Core - Gives armor and reduced damage from auto attacks.
+		Electic Core - Give electron protection and gains a eletron shield when low on health.
+Normal Abilities
+	Protcall Agression - Empower his next attack to stun for a bit gains special effect.
+				(Bal. Core) Reduces enemies attack speed
+				(Ele. Core) Gain CC resistance
+	Protcall Protect - Dash to a minion or ally give a temp. resistances based on core.
+	Protcall Disruptor - blast a bunch a of election energy around yourself. The blast slows enemies and speeds up allies
+Ultimate Ability
+	Protcall Destroy - Pau slams his sheild down in a cone and stuns all enemies based on distance
+Strengths
+	Good CC, Good Tanking, Great Counter picking for all one type teams, good ulitity
+Weaknesses, Counters, and Counterplay
+	Lacks damage, Ult is only engage, Needs a team that follow up,
+	Counter play hes weak by himself so if you catch him out in jungle, Fight him one v one hes only good in multi people fights,
+		     Build a team with a good mix of both damage, If hes not building against your type of damage he's easy pickings.
