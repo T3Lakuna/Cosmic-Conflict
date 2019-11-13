@@ -19,7 +19,7 @@ References
 	LoL Character Reference		https://leagueoflegends.fandom.com/wiki/List_of_champions
 	Smite Character Reference	https://smite.fandom.com/wiki/Category:Gods
 	HotS Character Reference	https://heroesofthestorm.fandom.com/wiki/List_of_heroes
-	Barebones MOBA Tutorial		https://sertaogames.com/2013/09/17/how-to-create-a-moba-in-24h/
+	MOBA Tutorial			https://www.youtube.com/watch?v=F3LfU9P3nSI&list=PLHW9PxPVcecHLa7JP-Ts09LZYHLIwdky_&index=3
 
 Cursed words
 	Z-axis.
