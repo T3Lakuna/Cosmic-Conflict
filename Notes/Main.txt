@@ -28,6 +28,7 @@ Cursed words
 	"No counterplay."
 	Permanent crowd control on auto attacks.
 	Female.
+	Mobility Creep
 
 Champion pitch must-haves
 	Name
