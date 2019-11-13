@@ -10,15 +10,15 @@ Origin and Theme
 Passive Ability
 	Adaptive Core - In the shop Pau can change his passive.
 		Ballistic Core - Gives armor and reduced damage from auto attacks.
-		Electic Core - Give electron protection and gains a eletron shield when low on health.
+		Nullication Core - Give nullication and gains a eletron shield when low on health.
 Normal Abilities
 	Protcall Agression - Empower his next attack to stun for a bit gains special effect.
 				(Bal. Core) Reduces enemies attack speed
-				(Ele. Core) Gain CC resistance
+				(Null. Core) Gain CC resistance
 	Protcall Protect - Dash to a minion or ally give a temp. resistances based on core.
 	Protcall Disruptor - blast a bunch a of election energy around yourself. The blast slows enemies and speeds up allies
 Ultimate Ability
-	Protcall Destroy - Pau slams his sheild down in a cone and stuns all enemies based on distance
+	Protcall Destroy - Pau slams his shield down in a cone and stuns all enemies based on distance
 Strengths
 	Good CC, Good Tanking, Great Counter picking for all one type teams, good ulitity
 Weaknesses, Counters, and Counterplay
