@@ -1,0 +1,28 @@
+Name
+	Sira - The Voice of Lonus
+Concept and Role
+	A utility support like janna and sona
+Origin and Theme
+	She comes from the planet Lonus a very tribal and wild planet and
+	is fighting to stop forth colonization of her planet using her
+	voice inhanment technique.
+Passive Ability
+	Charging Decibels - Sira charges up while walking or AA. Once at 100%
+	she empowers her next ability.
+Normal Abilities
+	Soprano Screech - Sira yells in a cone pushing back ememies
+			  (Empowered Increases range)
+	Voice of Protector - Sira yells at a teammate giveing them a ferver boost
+			     and movement speed boost (Empowered gives a AOE speed boost)
+	Lonus's Guildance - Gives an cleanes and ally or herself. If the cleanse is removes
+			    some CC its gives a shield.(Empowered Resets cooldown on successful cleanse)
+Ultimate Ability
+	Contralto Scream - Sira charges a bit and then lets out the voice of her people all round her.
+			   (similar to janna) Enemies are pushed back while she shields allies.
+Strengths
+	Great peeler, Amazing ulitilty, Good counter ultimate
+Weaknesses, Counters, and Counterplay
+	No damage, useless by herself lacks mobility, squishy
+	If you can catch her out is a easy pick. Come with multiable froms of cc so her cleases cant
+	help it all. Bait out soprano Screech so you can engage. Know when is time to retreat when
+	she counter ults.
