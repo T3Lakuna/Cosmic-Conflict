@@ -64,4 +64,4 @@ E- Varyian throws his sword, dashes to it while knocking up everyone in the path
 
 R - Varyian roars, fearing enemies for .5 seconds gaining lifesteal and lowering nearby enemy armor based on surrounding enemies.
 Lifesteal - 5-25% scaling on enemy amount.
-Armor- 0%-20% scaling on enemy amount.
+Armor- 0%-20% scaling on enemy amount. 
