@@ -19,3 +19,16 @@ Preferred:
 - Concept art or lookalike references- Chuck Norris in a chefs outfit
 - Similar character references from other video games/movies/etc- Kinda like butcher olaf but more chuck norris like
 - Backstory- He's on a mission to travel around the world to win every possible cooking competition there is while also beating up communists for fun
+
+Chef Norris, Chef De Cuisine
+
+Q - Spicy Chicken Teriyaki
+    Target Ally gain 10% attack speed and gain 5% movement speed
+    10-50% AS and 5-25% MS based on ability level, scales linearly.
+
+W - Steak and Eggs - 
+    Target Ally gain 100 + 10% Norris's max HP shield but loses 5% movement speed.
+    Base shield scales from 100 - 300 and loss of movement speed is 5 - 10% based on ability level, scales linearly.
+
+E - Double Decker Cheeseburger
+    Target Ally gains 10 - 40 
