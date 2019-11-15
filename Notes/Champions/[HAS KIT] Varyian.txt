@@ -55,7 +55,7 @@ Passive: Based on surrounding gladiators, Varian does more percent damage.
 Caps at 4
 
 Q - Varyian thrusts his greatsword, dealing 10% more damage to later enemies in succession (Max 20% more dmg)
-50/75/100/125/150- .3 bonus AD scaling
+50/75/100/125/150- + .3 bonus AD scaling
 
 W - Varyian's next 3 autos deal more damage with each auto doing increasing damage from the previous one.
 25/40/55/60/75 (Each auto starting from the second does 15% more dmg)
