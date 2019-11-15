@@ -31,4 +31,9 @@ W - Steak and Eggs -
     Base shield scales from 100 - 300 and loss of movement speed is 5 - 10% based on ability level, scales linearly.
 
 E - Double Decker Cheeseburger
-    Target Ally gains 10 - 40 
+    Target Ally gains 10 - 40 adaptive damage. AS 5-25%.
+
+R - All You Can Eat Buffet -
+    Target Ally gains 8-10% of damage, AS, MS, and HP regen.
+
+Note: As the buffs overlap from different abilities, it will prioritize the highest out of the 3 main abilities. Ulti can stack.
