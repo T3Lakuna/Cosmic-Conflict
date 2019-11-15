@@ -42,3 +42,26 @@ Q Illustrated
 https://cdn.discordapp.com/attachments/614574984240562179/644310057860988929/unknown.png
 E Illustrated
 https://cdn.discordapp.com/attachments/614574984240562179/644310288665149471/unknown.png
+
+
+
+Varyian The Warmonger
+
+Passive: Based on surrounding gladiators, Varian does more percent damage.
+1 - 0%
+2 - 5%
+3 - 10%
+4 - 15%
+Caps at 4
+
+Q - Varyian thrusts his greatsword, dealing 10% more damage to later enemies in succession (Max 20% more dmg)
+50/75/100/125/150- .3 bonus AD scaling
+
+W - Varyian's next 3 autos deal more damage with each auto doing increasing damage from the previous one.
+25/40/55/60/75 (Each auto starting from the second does 15% more dmg)
+
+E- Varyian throws his sword, dashes to it while knocking up everyone in the path and pulls everyone in a cone radius in the direction it was launched from towards him
+
+R - Varyian roars, fearing enemies for .5 seconds gaining lifesteal and lowering nearby enemy armor based on surrounding enemies.
+Lifesteal - 5-25% scaling on enemy amount.
+Armor- 0%-20% scaling on enemy amount.
