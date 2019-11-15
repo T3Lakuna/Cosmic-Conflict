@@ -1,0 +1,33 @@
+Vespa
+
+Theme: Humanoid Wasp Hive
+Playstyle: Mage
+
+-Abilities-
+Passive: Mutation
+Throughout the course of the game, the wasps in Vespa's colony will mutate, undergoing changes at certain level points (whenever you can level ult) At each point, a mutation can be chosen, altering an ability and/or stat:
+Large Hive (Passive) - Vespa grows in size, gaining health, armor, and mr at the cost of movement speed
+Bloated Wasp (Q)- Replaces Vespa's Q with a large wasp that explodes on contact with an enemy and will try to fly to targets after it reaches the end of its range.
+Full Assault (W)- The wall shot out by Vespa's W will come to a stop at the end of it's range, and can affect multiple enemies/allies. The wasps will also fly to the nearest target if the kill their current one.
+Hivemind (E)- Instead of becoming a mass of wasps, Vespa becomes a single large wasp. While in this form their abilities are replaced by stinger launch, a skillshot that grants truesight of the target and allows Vespa to move faster 
+towards them.
+Radiative Swarm (R)- The target of Vespa's ultimate deals damage to damage to nearby teammate and the after their movement speed decays the target is stunned
+
+Q: Targeted Attack (Skillshot)
+Vespa launches out a fleet at the enemy. If the fleet hits an enemy it deals damage to the target as well as damage over time.
+W: Hive Wall (Skillshot)
+The wasps inside of Vespa come together to make a wall that slowly moves forward from Vespa's location. The first champion that hits the wall will be emcompassed by it, dealing damage over time and shredding armor/mr to enemies and 
+granting allies a shield and movement speed.
+E: Wasp Form (Self)
+Vaspa sheds their hive body to move faster. in this form, deal poison damage for a short while.
+They can also move through units in this form. However, Vespa can't use abilities while in wasp form.
+R: Ravenous Swarm (Point and Click)
+Vespa empties their hive and aggresses their colony onto a target champion. The target champion's movement speed slowly decays and they take damage over time with a percentage of that damage returning to Vespa as health. While ulting 
+Vespa becomes immoble and untargetable, at any point Vespa can either call the wasps back or reform their nest at the swarms location (if the ultimate runs its course the wasps come back to the hive and the player regains control.
+
+Strengths: High damage output, can play a supportive role as well as a battlemage, scales well into late game
+Weaknesses: Very little mobility, long cooldowns, weak early game
+
+Background: A normal colony of wasps, going around hurting people for fun like wasps do. Once their home became a dumping grounds for toxic waste and their hive came to life they realized that they could use this to their advantage to be
+even bigger assholes.
+Concept Art: https://vignette.wikia.nocookie.net/paranormal-world/images/5/5c/Wasp_Paper_Humanoid.jpg/revision/latest?cb=20190225121815
