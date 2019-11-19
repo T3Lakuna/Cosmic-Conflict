@@ -1,8 +1,0 @@
-Ritokong, is monkey, assassin, Z
-Passive: cassio passive + all armor and mr converted to a small shield on a 1:30 cd, 
-Q: dash to enemy, does percent missing hp, 
-W: mega punch that has great ad scaling has 3 hit passive for armor pen , 
-E: passive, movement increase around terrain, dash towards any bushes or terrain (like Quiyana) , 
-ultimate: increase speed by 15%, increase to ad based on level, increase  armor pen
-strengths, high damage from auto attacks, lots of burst with gap closer of movement speed and a dash
-weaknesses: very susceptible to cc and he is extremely frail

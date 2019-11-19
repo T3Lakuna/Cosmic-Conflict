@@ -1,0 +1,31 @@
+Ritokong, is monkey, assassin, Z
+Passive: cassio passive + all armor and mr converted to a small shield on a 1:30 cd, 
+Q: dash to enemy, does percent missing hp, 
+W: mega punch that has great ad scaling has 3 hit passive for armor pen , 
+E: passive, movement increase around terrain, dash towards any bushes or terrain (like Quiyana) , 
+ultimate: increase speed by 15%, increase to ad based on level, increase  armor pen
+strengths, high damage from auto attacks, lots of burst with gap closer of movement speed and a dash
+weaknesses: very susceptible to cc and he is extremely frail
+
+
+
+Passive - Raised In The Jungle
+          4-72 MS scales linearly with level
+          Armor, MR, and bonus HP converted into a shield with 1:00 CD
+          100% of armor, 100% of MR, and 20% of bonus HP.
+
+Q - Monkey See, Monkey Jump
+    Dashes to enemy and does missing percent HP
+    50 - 250 AD + 20% missing percent HP
+
+W - Barbaric Strength
+    Passive: 3 consecutive autos reduced armor by 25%
+    Ritokong slams the enemy with a punch
+    100 -300 + .75 AD
+
+E - Nature's advantage
+    Gains 20% movement speed around terrain and can dash towards terrain
+
+
+R - Survival Instincts
+    Gain 15% MS, 10-30% increase of AD based on level, and gains 20% armor penetration.

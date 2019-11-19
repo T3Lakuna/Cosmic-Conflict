@@ -41,3 +41,22 @@ https://cdn.discordapp.com/attachments/472993150294818816/645024726187507756/unk
 
 - Backstory.
 ?
+Penumbra, The Manifestation Of Shadows
+
+Passive - Things You Can't Quite See 
+          100% of Penumbra's damage is dealt as a bleed over a 2 second period.
+
+Q - Gorge - Penumbra's Shadow masticates the target, empowering Penumbra's hp regen and dealing damage
+            100 - 250 AD + .75 AD scaling
+            
+W - Desecrate - Penumbra's shadow shears around Penumbra, dealing damage and granting Penumbra a speed boost.
+    50-150 + .4 AD
+
+E - Stalk/Strike
+    Penumbra extends a claw and latches onto a target, causing more bleed damage and granting true vision.
+    Penumbra dahses to the target and slashes the target with his claw.
+    Stalk - Doesn't do any damage, causes 150% more bleed dmg. base * 1.5
+    Slash- 75 - 200 + .3 AD scaling.
+
+R- Sciaphobia - Penumbra peforms a large swipe that deals zero damage but all bleed damage deal their amount immediately without stopping their bleed effects
+   Ex. 200 bleed  -> Ulti -> 200 DMG + the 200 bleed.
