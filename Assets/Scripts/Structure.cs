@@ -1,1 +1,1 @@
-﻿public class Structure : Entity { }
+﻿public abstract class Structure : Entity { }

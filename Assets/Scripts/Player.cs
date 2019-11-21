@@ -1,3 +1,3 @@
 ﻿public class Player {
-	Champion champion;
+	ComplexEntity champion;
 }

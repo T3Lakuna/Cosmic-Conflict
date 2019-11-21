@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1448398776048111915}
   - component: {fileID: 1813393414894816194}
   - component: {fileID: 2733354006938329955}
+  - component: {fileID: 5741058876262145971}
   m_Layer: 0
   m_Name: Character Sizing Cube
   m_TagString: Untagged
@@ -92,3 +93,114 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5741058876262145971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213374156136808308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98c2e8905113ee4c93d9c0436bfe5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  mana: 0
+  experience: 0
+  level: 0
+  currentHealth: 0
+  currentRegeneration: 0
+  currentMana: 0
+  currentEndurance: 0
+  currentArmor: 0
+  currentNullification: 0
+  currentForce: 0
+  currentPierce: 0
+  currentVamp: 0
+  currentFervor: 0
+  currentSpeed: 0
+  currentTenacity: 0
+  currentCrit: 0
+  currentEfficiency: 0
+  currentRange: 0
+  healthBase: 0
+  healthScaling: 0
+  healthBonus: 0
+  healthPercentageBonus: 0
+  regenerationBase: 0
+  regenerationScaling: 0
+  regenerationBonus: 0
+  regenerationPercentageBonus: 0
+  manaBase: 0
+  manaScaling: 0
+  manaBonus: 0
+  manaPercentageBonus: 0
+  enduranceBase: 0
+  enduranceScaling: 0
+  enduranceBonus: 0
+  endurancePercentageBonus: 0
+  armorBase: 0
+  armorScaling: 0
+  armorBonus: 0
+  armorPercentageBonus: 0
+  nullificationBase: 0
+  nullificationScaling: 0
+  nullificationBonus: 0
+  nullificationPercentageBonus: 0
+  forceBase: 0
+  forceScaling: 0
+  forceBonus: 0
+  forcePercentageBonus: 0
+  pierceBase: 0
+  pierceScaling: 0
+  pierceBonus: 0
+  piercePercentageBonus: 0
+  vampBase: 0
+  vampScaling: 0
+  vampBonus: 0
+  vampPercentageBonus: 0
+  fervorBase: 0
+  fervorScaling: 0
+  fervorBonus: 0
+  fervorPercentageBonus: 0
+  speedBase: 0
+  speedScaling: 0
+  speedBonus: 0
+  speedPercentageBonus: 0
+  tenacityBase: 0
+  tenacityScaling: 0
+  tenacityBonus: 0
+  tenacityPercentageBonus: 0
+  critBase: 0
+  critScaling: 0
+  critBonus: 0
+  critPercentageBonus: 0
+  efficiencyBase: 0
+  efficiencyScaling: 0
+  efficiencyBonus: 0
+  efficiencyPercentageBonus: 0
+  rangeBase: 0
+  rangeScaling: 0
+  rangeBonus: 0
+  rangePercentageBonus: 0
+  blueTeam: 0
+  passiveCooldown: 0
+  primaryCooldown: 0
+  secondaryCooldown: 0
+  tertiaryCooldown: 0
+  ultimateCooldown: 0
+  currentPassiveCooldown: 0
+  currentPrimaryCooldown: 0
+  currentSecondaryCooldown: 0
+  currentTertiaryCooldown: 0
+  currentUltimateCooldown: 0
+  basePassiveCooldown: 0
+  basePrimaryCooldown: 0
+  baseSecondaryCooldown: 0
+  baseTertiaryCooldown: 0
+  baseUltimateCooldown: 0
+  primaryLevel: 0
+  secondaryLevel: 0
+  tertiaryLevel: 0
+  ultimateLevel: 0

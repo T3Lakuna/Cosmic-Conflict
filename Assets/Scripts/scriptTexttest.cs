@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-public class scriptTexttest : MonoBehaviour 
+public class ScriptTextTest : MonoBehaviour 
 {
 	public Text bubbleText;
     public Text bubbleTitleTxt;
