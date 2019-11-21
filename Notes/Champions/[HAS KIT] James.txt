@@ -18,3 +18,28 @@ Backstory-
 Found a gun but doesn't know how it works. Parents lost forever after they got shot. Looking for them.
 Concept Art-
 9mm bullet with small legs and arms. Has a bandana and a bunch of guns on his back and hips. Looks confused.
+
+
+James, The Reverse Gunman
+
+
+Passive - James throws out a pistol for his auto attacks. He cannot auto until the pistol returns to him
+          130% AD scaling for his autos	
+	  Level 6 - 2 pistols
+	  Level 11 - 3 pistols
+          Level 16 - 4 pistols
+
+Q - James throws out a rifle that at it's crest, will shoot at the closest enemy. 
+    40- 110 + .3 AD scaling. + 5% missing hp
+
+W - James empowers his thrown pistols. When at it's arc, will shoot 3 autos.
+    80 - 100 % AD scaling
+
+E - James throws a flashbang that detonates after a delay and does AoE dmg plus slows.
+    Detonates after .75 seconds
+    Slows for 20% for 1.5 seconds
+    100 - 300 dmg + .4 AD scaling
+
+R - James synthesizes a cannon and fires it, knocking enemies back and does AoE dmg.
+    300/500/600 + .4 AD scaling
+    

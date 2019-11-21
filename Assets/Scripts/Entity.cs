@@ -1,11 +1,12 @@
-﻿using Photon.Pun;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using static Ability;
 
-public class Entity : MonoBehaviourPun, IPunObservable {
+public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public List<Ability> recentAbilitiesTaken; // TODO
+	[HideInInspector] public Team team;
 
 	[HideInInspector] public double health; // Current health
 	[HideInInspector] public double mana; // Current mana
@@ -103,21 +104,117 @@ public class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public double rangeBonus; // Attack range (flat) from effects
 	[HideInInspector] public double rangePercentageBonus; // Attack range (percentage) from effects
 
+	public void SetupEntity(double healthBase, double healthScaling, double regenerationBase,
+		double regenerationScaling,
+		double manaBase, double manaScaling, double enduranceBase, double enduranceScaling, double armorBase,
+		double armorScaling, double nullificationBase, double nullificationScaling, double forceBase,
+		double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling,
+		double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase,
+		double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling,
+		double rangeBase, double rangeScaling, Team team) {
+		this.healthBase = healthBase;
+		this.healthScaling = healthScaling;
+		healthBonus = 0;
+		healthPercentageBonus = 0;
+
+		this.regenerationBase = regenerationBase;
+		this.regenerationScaling = regenerationScaling;
+		regenerationBonus = 0;
+		regenerationPercentageBonus = 0;
+
+		this.manaBase = manaBase;
+		this.manaScaling = manaScaling;
+		manaBonus = 0;
+		manaPercentageBonus = 0;
+
+		this.enduranceBase = enduranceBase;
+		this.enduranceScaling = enduranceScaling;
+		enduranceBonus = 0;
+		endurancePercentageBonus = 0;
+
+		this.armorBase = armorBase;
+		this.armorScaling = armorScaling;
+		armorBonus = 0;
+		armorPercentageBonus = 0;
+
+		this.nullificationBase = nullificationBase;
+		this.nullificationScaling = nullificationScaling;
+		nullificationBonus = 0;
+		nullificationPercentageBonus = 0;
+
+		this.forceBase = forceBase;
+		this.forceScaling = forceScaling;
+		forceBonus = 0;
+		forcePercentageBonus = 0;
+
+		this.pierceBase = pierceBase;
+		this.pierceScaling = pierceScaling;
+		pierceBonus = 0;
+		piercePercentageBonus = 0;
+
+		this.vampBase = vampBase;
+		this.vampScaling = vampScaling;
+		vampBonus = 0;
+		vampPercentageBonus = 0;
+
+		this.fervorBase = fervorBase;
+		this.fervorScaling = fervorScaling;
+		fervorBonus = 0;
+		fervorPercentageBonus = 0;
+
+		this.speedBase = speedBase;
+		this.speedScaling = speedScaling;
+		speedBonus = 0;
+		speedPercentageBonus = 0;
+
+		this.tenacityBase = tenacityBase;
+		this.tenacityScaling = tenacityScaling;
+		tenacityBonus = 0;
+		tenacityPercentageBonus = 0;
+
+		this.critBase = critBase;
+		this.critScaling = critScaling;
+		critBonus = 0;
+		critPercentageBonus = 0;
+
+		this.efficiencyBase = efficiencyBase;
+		this.efficiencyScaling = efficiencyScaling;
+		efficiencyBonus = 0;
+		efficiencyPercentageBonus = 0;
+
+		this.rangeBase = rangeBase;
+		this.rangeScaling = rangeScaling;
+		rangeBonus = 0;
+		rangePercentageBonus = 0;
+
+		UpdateStats();
+
+		health = currentHealth;
+		mana = currentMana;
+		level = 0;
+		experience = 0;
+		this.team = team;
+		recentAbilitiesTaken = new List<Ability>();
+
+		LevelUp();
+	}
+
 	public void TakeDamage(Entity damageSource, DamageType type, int flatDamage, double percentageDamage) {
-		double effectiveHealth = this.health;
+		double effectiveHealth = health;
 		switch (type) {
 			case DamageType.Magical:
-				effectiveHealth = this.health + this.health * (this.currentNullification / 100.0);
+				effectiveHealth = health + health * (currentNullification / 100.0);
 				break;
 			case DamageType.Physical:
-				effectiveHealth = this.health + this.health * (this.currentArmor / 100.0);
+				effectiveHealth = health + health * (currentArmor / 100.0);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
+
 		double damageTaken = (effectiveHealth * percentageDamage) + flatDamage;
-		double effectiveDamageTaken = damageTaken * (this.currentHealth / effectiveHealth);
-		this.health -= effectiveDamageTaken;
+		double effectiveDamageTaken = damageTaken * (currentHealth / effectiveHealth);
+		health -= effectiveDamageTaken;
 	}
 
 	public void Heal(Entity healSource, HealthType type, int flatHealing, double percentageHealing) {
@@ -128,60 +225,63 @@ public class Entity : MonoBehaviourPun, IPunObservable {
 		// TODO
 	}
 
-	private void Update() {
-		this.UpdateStats();
-		this.RegenerateResources();
+	public void EntityUpdate() {
+		UpdateStats();
+		RegenerateResources();
 	}
 
 	private void UpdateStats() {
-		this.currentHealth = (this.healthBase + this.healthBonus) * this.healthPercentageBonus;
-		this.currentRegeneration = (this.regenerationBase + this.regenerationBonus) * this.regenerationPercentageBonus;
-		this.currentMana = (this.manaBase + this.manaBonus) * this.manaPercentageBonus;
-		this.currentEndurance = (this.enduranceBase + this.enduranceBonus) * this.endurancePercentageBonus;
-		this.currentArmor = (this.armorBase + this.armorBonus) * this.armorPercentageBonus;
-		this.currentNullification = (this.nullificationBase + this.nullificationBonus) * this.nullificationPercentageBonus;
-		this.currentForce = ((forceBase + this.forceBonus) * this.forcePercentageBonus);
-		this.currentPierce = (this.pierceBase + this.pierceBonus) * this.piercePercentageBonus;
-		this.currentVamp = (this.vampBase + this.vampBonus) * this.vampPercentageBonus;
-		this.currentFervor = (this.fervorBase + this.fervorBonus) * this.fervorPercentageBonus;
-		this.currentSpeed = (this.speedBase + this.speedBonus) * this.speedPercentageBonus;
-		this.currentTenacity = (this.tenacityBase + this.tenacityBonus) * this.tenacityPercentageBonus;
-		this.currentCrit = (this.critBase + this.critBonus) * this.critPercentageBonus;
-		this.currentEfficiency = (this.efficiencyBase + this.efficiencyBonus) * this.efficiencyPercentageBonus;
-		this.currentRange = (this.rangeBase + this.rangeBonus) * this.rangePercentageBonus;
+		currentHealth = healthBase + healthBonus + (healthBase + healthBonus) * healthPercentageBonus;
+		currentRegeneration = regenerationBase + regenerationBonus +
+		                      (regenerationBase + regenerationBonus) * regenerationPercentageBonus;
+		currentMana = manaBase + manaBonus + (manaBase + manaBonus) * manaPercentageBonus;
+		currentEndurance = enduranceBase + enduranceBonus + (enduranceBase + enduranceBonus) * endurancePercentageBonus;
+		currentArmor = armorBase + armorBonus + (armorBase + armorBonus) * armorPercentageBonus;
+		currentNullification = nullificationBase + nullificationBonus +
+		                       (nullificationBase + nullificationBonus) * nullificationPercentageBonus;
+		currentForce = forceBase + forceBonus + (forceBase + forceBonus) * forcePercentageBonus;
+		currentPierce = pierceBase + pierceBonus + (pierceBase + pierceBonus) * piercePercentageBonus;
+		currentVamp = vampBase + vampBonus + (vampBase + vampBonus) * vampPercentageBonus;
+		currentFervor = fervorBase + fervorBonus + (fervorBase + fervorBonus) * fervorPercentageBonus;
+		currentSpeed = speedBase + speedBonus + (speedBase + speedBonus) * speedPercentageBonus;
+		currentTenacity = tenacityBase + tenacityBonus + (tenacityBase + tenacityBonus) * tenacityPercentageBonus;
+		currentCrit = critBase + critBonus + (critBase + critBonus) * critPercentageBonus;
+		currentEfficiency = efficiencyBase + efficiencyBonus +
+		                    (efficiencyBase + efficiencyBonus) * efficiencyPercentageBonus;
+		currentRange = rangeBase + rangeBonus + (rangeBase + rangeBonus) * rangePercentageBonus;
 	}
 
 	private void RegenerateResources() {
-		if (this.health < this.currentHealth) {
-			this.health += this.currentRegeneration;
+		if (health < currentHealth) {
+			health += currentRegeneration;
 		}
 
-		if (this.health > this.currentHealth) {
-			this.health = this.currentHealth;
+		if (health > currentHealth) {
+			health = currentHealth;
 		}
 
-		if (this.mana < this.currentMana) {
-			this.mana += this.currentEndurance;
+		if (mana < currentMana) {
+			mana += currentEndurance;
 		}
 
-		if (this.mana > this.currentMana) {
-			this.mana = this.currentMana;
+		if (mana > currentMana) {
+			mana = currentMana;
 		}
 	}
 
 	private void LevelUp() {
-		this.level++;
-		this.healthBase += this.healthScaling;
-		this.regenerationBase += this.regenerationScaling;
-		this.manaBase += this.manaScaling;
-		this.enduranceBase += this.enduranceScaling;
-		this.armorBase += this.armorScaling;
-		this.nullificationBase += this.nullificationScaling;
-		this.forceBase += this.forceScaling;
-		this.pierceBase += this.pierceScaling;
-		this.vampBase += this.vampScaling;
-		this.fervorBase += this.fervorScaling;
-		this.speedBase += this.speedScaling;
+		level++;
+		healthBase += healthScaling;
+		regenerationBase += regenerationScaling;
+		manaBase += manaScaling;
+		enduranceBase += enduranceScaling;
+		armorBase += armorScaling;
+		nullificationBase += nullificationScaling;
+		forceBase += forceScaling;
+		pierceBase += pierceScaling;
+		vampBase += vampScaling;
+		fervorBase += fervorScaling;
+		speedBase += speedScaling;
 	}
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {

@@ -31,5 +31,5 @@ E - What A Foolish Strife!
 
 R - A Worthy Opponent After All!
     Ataraxia pulls out his most prized weapon and fires a tear in space time and deals more damage depending on missing HP
-    300/500/700 + .3 AD
+    300/500/700 + .5 AD
     Deals up to 150% more damage when enemy HP when hit is at 33%.
