@@ -45,3 +45,22 @@ https://cdn.discordapp.com/attachments/472993150294818816/553736634538131456/Sna
 
 - Backstory.
 - There is always a bear.
+
+Passive - Cody's attack does AoE dmg.
+          AoE = 75% of his single attack dmg
+
+Q - BEAR FACT
+    Cody summons a bear to help him
+    200 - 500HP
+    Does 50% of Cody's AD as auto dmg
+
+W - Bear Eats Beats
+    Cody eats a beet healing for 15% of his missing HP
+    His next auto attack does 75% more dmg
+
+E - Groovin'
+    Point and clickt taunt for 1.5 seconds.
+
+R - Roundhouse
+    Cody charges up a roundhouse kick and kicks the enemy, stunning them
+    200/600/900 + 1.5 sec stun
