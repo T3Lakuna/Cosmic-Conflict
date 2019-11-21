@@ -27,8 +27,7 @@ Cursed words
 	Level 1 true damage.
 	"No counterplay."
 	Permanent crowd control on auto attacks.
-	Female.
-	Mobility Creep
+	Mobility creep.
 
 Champion pitch must-haves
 	Name

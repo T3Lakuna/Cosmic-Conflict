@@ -1,13 +1,15 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Ability;
 
-public class Entity : MonoBehaviour {
-	[HideInInspector] public List<Attack> attacksTaken;
-	[HideInInspector] public List<Attack> attacksDealt;
+public class Entity : MonoBehaviourPun, IPunObservable {
+	[HideInInspector] public List<Ability> recentAbilitiesTaken; // TODO
 
 	[HideInInspector] public double health; // Current health
 	[HideInInspector] public double mana; // Current mana
+	[HideInInspector] public double experience; // Current progress towards next level
 	[HideInInspector] public int level; // Current level
 
 	[HideInInspector] public double currentHealth; // Current maximum health
@@ -21,6 +23,10 @@ public class Entity : MonoBehaviour {
 	[HideInInspector] public double currentVamp; // Current life steal
 	[HideInInspector] public double currentFervor; // Current attack speed
 	[HideInInspector] public double currentSpeed; // Current movement speed
+	[HideInInspector] public double currentTenacity; // Current disable resistance
+	[HideInInspector] public double currentCrit; // Current critical strike chance
+	[HideInInspector] public double currentEfficiency; // Current cooldown reduction
+	[HideInInspector] public double currentRange; // Current attack range
 
 	[HideInInspector] public double healthBase; // Base maximum health
 	[HideInInspector] public double healthScaling; // Maximum health per level
@@ -77,9 +83,25 @@ public class Entity : MonoBehaviour {
 	[HideInInspector] public double speedBonus; // Movement speed (flat) from effects
 	[HideInInspector] public double speedPercentageBonus; // Movement speed (percentage) from effects
 
-	public enum DamageType {
-		Magical, Physical
-	}
+	[HideInInspector] public double tenacityBase; // Base disable resistance
+	[HideInInspector] public double tenacityScaling; // Disable resistance per level
+	[HideInInspector] public double tenacityBonus; // Disable resistance (flat) from effects
+	[HideInInspector] public double tenacityPercentageBonus; // Disable resistance (percentage) from effects
+
+	[HideInInspector] public double critBase; // Base critical strike chance
+	[HideInInspector] public double critScaling; // Critical strike chance per level
+	[HideInInspector] public double critBonus; // Critical strike chance (flat) from effects
+	[HideInInspector] public double critPercentageBonus; // Critical strike chance (percentage) from effects
+
+	[HideInInspector] public double efficiencyBase; // Base cooldown reduction
+	[HideInInspector] public double efficiencyScaling; // Cooldown reduction per level
+	[HideInInspector] public double efficiencyBonus; // Cooldown reduction (flat) from effects
+	[HideInInspector] public double efficiencyPercentageBonus; // Cooldown reduction (percentage) from effects
+
+	[HideInInspector] public double rangeBase; // Base attack range
+	[HideInInspector] public double rangeScaling; // Attack range per level
+	[HideInInspector] public double rangeBonus; // Attack range (flat) from effects
+	[HideInInspector] public double rangePercentageBonus; // Attack range (percentage) from effects
 
 	public void TakeDamage(Entity damageSource, DamageType type, int flatDamage, double percentageDamage) {
 		double effectiveHealth = this.health;
@@ -96,10 +118,14 @@ public class Entity : MonoBehaviour {
 		double damageTaken = (effectiveHealth * percentageDamage) + flatDamage;
 		double effectiveDamageTaken = damageTaken * (this.currentHealth / effectiveHealth);
 		this.health -= effectiveDamageTaken;
+	}
 
-		Attack attack = new Attack(damageSource, this, type, damageTaken, effectiveDamageTaken);
-		this.attacksTaken.Add(attack);
-		damageSource.attacksDealt.Add(attack);
+	public void Heal(Entity healSource, HealthType type, int flatHealing, double percentageHealing) {
+		// TODO
+	}
+
+	public void ApplyCrowdControl(Entity crowdControlSource, CrowdControlType type, int duration) {
+		// TODO
 	}
 
 	private void Update() {
@@ -119,6 +145,10 @@ public class Entity : MonoBehaviour {
 		this.currentVamp = (this.vampBase + this.vampBonus) * this.vampPercentageBonus;
 		this.currentFervor = (this.fervorBase + this.fervorBonus) * this.fervorPercentageBonus;
 		this.currentSpeed = (this.speedBase + this.speedBonus) * this.speedPercentageBonus;
+		this.currentTenacity = (this.tenacityBase + this.tenacityBonus) * this.tenacityPercentageBonus;
+		this.currentCrit = (this.critBase + this.critBonus) * this.critPercentageBonus;
+		this.currentEfficiency = (this.efficiencyBase + this.efficiencyBonus) * this.efficiencyPercentageBonus;
+		this.currentRange = (this.rangeBase + this.rangeBonus) * this.rangePercentageBonus;
 	}
 
 	private void RegenerateResources() {
@@ -152,5 +182,9 @@ public class Entity : MonoBehaviour {
 		this.vampBase += this.vampScaling;
 		this.fervorBase += this.fervorScaling;
 		this.speedBase += this.speedScaling;
+	}
+
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+		// TODO
 	}
 }
