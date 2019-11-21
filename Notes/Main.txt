@@ -20,6 +20,7 @@ References
 	Smite Character Reference	https://smite.fandom.com/wiki/Category:Gods
 	HotS Character Reference	https://heroesofthestorm.fandom.com/wiki/List_of_heroes
 	MOBA Tutorial			https://www.youtube.com/watch?v=F3LfU9P3nSI&list=PLHW9PxPVcecHLa7JP-Ts09LZYHLIwdky_&index=3
+	Minion AI Documentation		https://boards.na.leagueoflegends.com/en/c/developer-corner/qRHotV9k-minion-ai-rules-documentation
 
 Cursed words
 	Z-axis.
