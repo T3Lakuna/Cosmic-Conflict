@@ -1,0 +1,34 @@
+Name -  Captain Strongarm, The Old Captain
+
+Playstyle - A standard and simple marksman to get players in to the game.
+
+
+
+Passive - Focus Fire 
+	  Armstrong will begin marking a enemy for attack after hitting an enemy 3 times they will be marked
+	  for fire and will take bonus damage for a short time. Armstrong can keep firing to activate it again
+	  refreshing the debuff (Example Press the Attack)
+
+Q - Explosive Rounds
+	  Armstrong buffs himself for a small window of time his attacks more damage and his auto attacks
+	  have a AOE explosion.
+W - Plasma Gernade Roll
+	  Armstrong rolls a gernade on the floor exploding on the first emeny or after a enough time as gone by
+	  (Armstrong can choose the landing spot and it will stay their til the time endes)
+E - Head Shot
+	  Passive Armstrong gains a Bonus Crit damage and his crits slow
+R - Line of Sight 
+	  Armstrong buffs himself with attack speed and bonus range for a few second
+
+Strengths 
+	Good damge, Using all his kit plus ult makes him great in teamfight, Great late game,
+Weakness
+	No Mobility, weak early game, Needs a team for peel, squishy
+Counter play
+	Focus him in a fight he should be easy picking for the assassins, Build armor items, pick him off before fights
+	tanks can zone him from important targets
+
+Backstory - Once the captain of the Steel Star the greatest ship in the solar system before he executed by
+mutiny by the robot. He was sentence to be launched out the air lock but before he was sent off he snuck
+himself a nano suit allowing the live in. As his air got near its end a mercenary ship found him and picked
+him now with anger in his heart he wants to rally a team and reclaim the Steel Star.
