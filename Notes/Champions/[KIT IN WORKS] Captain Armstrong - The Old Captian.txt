@@ -32,3 +32,12 @@ Backstory - Once the captain of the Steel Star the greatest ship in the solar sy
 mutiny by the robot. He was sentence to be launched out the air lock but before he was sent off he snuck
 himself a nano suit allowing the live in. As his air got near its end a mercenary ship found him and picked
 him now with anger in his heart he wants to rally a team and reclaim the Steel Star.
+
+Captain Strongarm, The Exiled Captain
+
+
+Passive - Convergence and Enfeeble
+          Armstrong applies marks to an enemy on basic attack.
+          When an enemy has 3 marks, enemy will be enfeebled, taking 20% more damage.
+          
+       
