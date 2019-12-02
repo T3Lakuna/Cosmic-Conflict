@@ -462,50 +462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
-    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
+    - target: {fileID: -927199367670048503, guid: 8d040e5b31dcca6418b4e1699c198297,
         type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_NavMeshLayer
+      propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: Walls
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: River
-      objectReference: {fileID: 0}
-    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: Structures
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8d040e5b31dcca6418b4e1699c198297,
         type: 3}
@@ -577,16 +537,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 8304545770963488453, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d7c83a9bbdf00324b803ae1daa2ef005, type: 2}
     - target: {fileID: -2784311128158294143, guid: 8d040e5b31dcca6418b4e1699c198297,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c6d38711520119c4e89ddf1ea6adc007, type: 2}
+    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: Structures
+      objectReference: {fileID: 0}
     - target: {fileID: 1958529666632713821, guid: 8d040e5b31dcca6418b4e1699c198297,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -597,6 +562,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5d8af8f434f69794eabd684fb44b4fbf, type: 2}
+    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304545770963488453, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7c83a9bbdf00324b803ae1daa2ef005, type: 2}
+    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: River
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d040e5b31dcca6418b4e1699c198297, type: 3}
 --- !u!1 &240287096 stripped

@@ -6,6 +6,8 @@ public class Title : MonoBehaviour
 {
     public GameObject titleScreen;
     public GameObject heroScreen;
+    public GameObject optionScreen;
+    public GameObject theHero1;
     void Start()
     {
         titleScreen.gameObject.SetActive(true);
@@ -28,5 +30,23 @@ public class Title : MonoBehaviour
     {
         titleScreen.gameObject.SetActive(true);
         heroScreen.gameObject.SetActive(false);
+    }
+
+    public void toOptions()
+    {
+        titleScreen.gameObject.SetActive(false);
+        optionScreen.gameObject.SetActive(true);
+    }
+
+    public void backToHero()
+    {
+        heroScreen.gameObject.SetActive(true);
+        theHero1.gameObject.SetActive(false);
+    }
+
+    public void toHero1()
+    {
+        heroScreen.gameObject.SetActive(false);
+        theHero1.gameObject.SetActive(true);
     }
 }
