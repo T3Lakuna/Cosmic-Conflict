@@ -1,0 +1,48 @@
+- Character theme
+Cosmic Horror
+- Character playstyle
+AP Fighter
+- Passive ability/abilities.
+Unwilling sacrifice 
+Restores health and mana upon damage of an enemy (has a cooldown.) after 5 successful "sacrifices" the champ enters Dominant Takeover where the elder god takes full control over their host and boosts the damage of the vessel. (can't gain any stacks of sacrifice during Dominant Takeover) 
+- Three normal abilities, unless the kit requires something different.
+Q- Eldritch Blast: Dark Energy is blasted forward inside of a beam that ends in an area of effect death area that's a square. Inside of that square enemies are slowed and take damage
+W-  Contempt: auto attack reset does more damage to lower health enemies
+E- Unrelenting Grasp. It's a pull idk what else to say it's just a pull
+
+- Ultimate ability.
+Inconceivable power:
+Dominant power immediately activates upon initial cast. recast ult to smash down a large tentacle which does execute damage if kills able to recast ult again.
+- Proposed champion strengths (i.e. high crowd control, high burst damage output, tanky, etc.).
+Strong laning good teamfights falls off late okay tank good damage output
+- Proposed champion weaknesses (i.e. immobile, squishy, low damage, etc.).
+Immobile easily kited low damage if Dominant Takeover isn't active
+
+Preferred:
+- Jayden
+- Concept art or lookalike references. Kurt Russell from The Thing
+- Kinda like Darius And Swain mixed together
+- an Elder God inhabits his body and controls him and lends him a small amount of the Elder Gods immaculate power without the knowledge or consent of Jayden.
+
+Jayden, The Dormant God
+
+
+Passive - Willing Sacrifice
+          Restores 10*level of Jayden's HP and mana with a 5 second cooldown and adds a "sacrifice" stack.
+          After 5 "sacrifice" stacks, Jayden enters Imperial Takeover boosting Jayden's damage by 20%.
+Q - Eldritch Blast:
+    Jayden blasts dark energy in a beam that ends in a square area. The square area slows enemies and takes dmg.
+    Beam: 50 - 250 + .4 AP
+    Square: 20% slow and 2% max hp dmg per second.
+
+W - Contempt:
+    Auto attack reset that does 200% damage if enemy is under 20% HP.
+
+E - Unrelenting Grasp
+    Jayden draws dark energy towards him, pulling anyone in the process.
+
+R - Inconceivable Power
+    Jayden automatically enters Imperial Takeover when activated
+    Recast the ability to call upon a meteor that reactivates if it kills an enemy.
+    125/400/600 + .7AD, executes enemies if enemy under 10% HP, otherwise does 50% more damage if enemy is under 50% HP.
+          
