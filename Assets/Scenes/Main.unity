@@ -462,51 +462,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
-    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: Walls
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: River
-      objectReference: {fileID: 0}
-    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Name
-      value: Structures
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8d040e5b31dcca6418b4e1699c198297,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -577,16 +532,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 8304545770963488453, guid: 8d040e5b31dcca6418b4e1699c198297,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d7c83a9bbdf00324b803ae1daa2ef005, type: 2}
     - target: {fileID: -2784311128158294143, guid: 8d040e5b31dcca6418b4e1699c198297,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c6d38711520119c4e89ddf1ea6adc007, type: 2}
+    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: Structures
+      objectReference: {fileID: 0}
     - target: {fileID: 1958529666632713821, guid: 8d040e5b31dcca6418b4e1699c198297,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -597,6 +557,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5d8af8f434f69794eabd684fb44b4fbf, type: 2}
+    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304545770963488453, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7c83a9bbdf00324b803ae1daa2ef005, type: 2}
+    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
+        type: 3}
+      propertyPath: m_Name
+      value: River
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d040e5b31dcca6418b4e1699c198297, type: 3}
 --- !u!1 &240287096 stripped
@@ -2106,7 +2106,7 @@ GameObject:
   - component: {fileID: 822109213}
   - component: {fileID: 822109212}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Reminder that Travis doesn't sleep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4615,6 +4615,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550909586}
   m_CullTransparentMesh: 0
+--- !u!1 &1558499736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9091094862930139297, guid: 8d040e5b31dcca6418b4e1699c198297,
+    type: 3}
+  m_PrefabInstance: {fileID: 240287095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1558499738
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558499736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4579454407841743219, guid: 8d040e5b31dcca6418b4e1699c198297, type: 3}
 --- !u!1 &1558931232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4688,6 +4708,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1589212452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1435745037420900390, guid: 8d040e5b31dcca6418b4e1699c198297,
+    type: 3}
+  m_PrefabInstance: {fileID: 240287095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1589212454
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589212452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -7196802604745430461, guid: 8d040e5b31dcca6418b4e1699c198297, type: 3}
 --- !u!1 &1665356038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,6 +4953,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720141224}
   m_CullTransparentMesh: 0
+--- !u!1 &1762102020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7230587208582541622, guid: 8d040e5b31dcca6418b4e1699c198297,
+    type: 3}
+  m_PrefabInstance: {fileID: 240287095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1762102022
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762102020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 6416302070336371891, guid: 8d040e5b31dcca6418b4e1699c198297, type: 3}
 --- !u!1 &1765232463
 GameObject:
   m_ObjectHideFlags: 0
