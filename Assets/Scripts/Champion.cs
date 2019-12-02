@@ -15,7 +15,7 @@ public abstract class Champion : ComplexEntity {
 		this.RegenerateResources();
 		this.UpdateCooldowns();
 		this.CheckPlayerActions();
-		this.passiveAbility.action();
+		this.passiveAbility.Action();
 	}
 
 	public void CheckPlayerActions() {
@@ -25,16 +25,16 @@ public abstract class Champion : ComplexEntity {
 
 		if (Input.GetKeyUp(KeyCode.Q) && this.primaryCooldown <= 0) {
 			this.primaryCooldown = this.currentPrimaryCooldown;
-			this.primaryAbility.action();
+			this.primaryAbility.Action();
 		} else if (Input.GetKeyUp(KeyCode.W) && this.secondaryCooldown <= 0) {
 			this.secondaryCooldown = this.currentSecondaryCooldown;
-			this.secondaryAbility.action();
+			this.secondaryAbility.Action();
 		} else if (Input.GetKeyUp(KeyCode.E) && this.tertiaryCooldown <= 0) {
 			this.tertiaryCooldown = this.currentTertiaryCooldown;
-			this.tertiaryAbility.action();
+			this.tertiaryAbility.Action();
 		} else if (Input.GetKeyUp(KeyCode.R) && this.ultimateCooldown <= 0) {
 			this.ultimateCooldown = this.currentUltimateCooldown;
-			this.ultimateAbility.action();
+			this.ultimateAbility.Action();
 		}
 	}
 }

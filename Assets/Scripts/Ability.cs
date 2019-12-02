@@ -2,32 +2,50 @@
 
 public class Ability {
 	public enum DamageType {
-		Magical, Physical, True
+		Magical,
+		Physical,
+		True
 	}
 
 	public enum HealthType {
-		Health, Shield, PhysicalShield, MagicalShield
+		Health,
+		Shield,
+		PhysicalShield,
+		MagicalShield
 	}
 
 	public enum StatusEffectType {
-		Stun, Slow
+		Stun,
+		Slow
 	}
 
-	public Entity source;
-	public String name;
-	public String description;
-	public Action action;
-	public DateTime castTime;
+	public double CurrentCooldown;
+	public double BaseCooldown;
+	public int Level;
+	public Entity Source;
+	public string Name;
+	public string Description;
+	public readonly Action Action;
+	public DateTime CastTime;
 
-	public Ability(Entity source, String name, String description, Action action) { // Non-targeted ability
-		this.source = source;
-		this.name = name;
-		this.description = description;
-		this.action = action;
-		this.castTime = DateTime.Now;
+	public Ability(double maximumCooldown, Entity source, string name, string description, Action action) {
+		// Non-targeted ability
+		this.BaseCooldown = maximumCooldown;
+		this.CurrentCooldown = 0;
+		this.Level = 0;
+		this.Source = source;
+		this.Name = name;
+		this.Description = description;
+		this.Action = action;
+		this.CastTime = DateTime.Now;
 	}
 
-	public Ability(Entity source, String name, String description, double duration, Action<Entity> action, Entity target) : this(source, name, description, () => action(target)) { } // Targeted ability
+	public Ability(double maximumCooldown, Entity source, string name, string description, Action<Entity> action,
+		Entity target) : this(maximumCooldown, source, name, description, () => action(target)) { } // Targeted ability
+
+	public void UpdateCooldown() {
+		this.BaseCooldown = 0; // TODO
+	}
 
 	public static void DealDamage(Entity target, DamageType type, double flatAmount, double percentageAmount) {
 		double effectiveHealth;
@@ -50,7 +68,8 @@ public class Ability {
 		target.health -= effectiveDamageTaken;
 	}
 
-	public static void Heal(Entity target, HealthType type, double duration, double flatAmount, double percentageAmount) {
+	public static void Heal(Entity target, HealthType type, double duration, double flatAmount,
+		double percentageAmount) {
 		double finalAmount = flatAmount + (target.health + flatAmount) * percentageAmount;
 
 		switch (type) {
@@ -66,6 +85,8 @@ public class Ability {
 			case HealthType.Shield:
 				target.shield += finalAmount;
 				break;
+			default:
+				throw new ArgumentOutOfRangeException(nameof(type), type, null);
 		}
 
 		if (duration > 0) {
