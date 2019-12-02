@@ -4,7 +4,13 @@ using UnityEngine;
 using static Ability;
 
 public abstract class Entity : MonoBehaviourPun, IPunObservable {
-	[HideInInspector] public const int experienceToLevelUpPerLevel = 50;
+	public enum Team {
+		Red,
+		Blue,
+		Neutral
+	}
+
+	private const int ExperiencePerLevelPerLevel = 50;
 
 	[HideInInspector] public List<Ability> recentAbilitiesTaken;
 	[HideInInspector] public List<StatusEffectType> currentStatusEffects;
@@ -34,7 +40,13 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Stat efficiency;
 	[HideInInspector] public Stat range;
 
-	public void SetupEntity(double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
+	protected void SetupEntity(double vitalityBase, double vitalityScaling, double regenerationBase,
+		double regenerationScaling, double energyBase, double energyScaling, double enduranceBase,
+		double enduranceScaling, double armorBase, double armorScaling, double nullificationBase,
+		double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling,
+		double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase,
+		double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling,
+		double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
 		this.vitality = new Stat(vitalityBase, vitalityScaling, Stat.StatId.Vitality);
 		this.regeneration = new Stat(regenerationBase, regenerationScaling, Stat.StatId.Regeneration);
 		this.energy = new Stat(energyBase, energyScaling, Stat.StatId.Energy);
@@ -67,11 +79,11 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	}
 
 	public void ApplyAbility(Ability ability) {
-		ability.action();
+		ability.Action();
 		this.recentAbilitiesTaken.Add(ability);
 	}
 
-	public void UpdateStats() {
+	protected void UpdateStats() {
 		this.vitality.Update();
 		this.regeneration.Update();
 		this.energy.Update();
@@ -89,7 +101,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.range.Update();
 	}
 
-	public void RegenerateResources() {
+	protected void RegenerateResources() {
 		if (this.health < this.vitality.currentValue) {
 			this.health += this.regeneration.currentValue;
 		}
@@ -106,13 +118,13 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 			this.resource = this.energy.currentValue;
 		}
 
-		if (this.experience > this.level * experienceToLevelUpPerLevel) {
-			this.experience -= this.level * experienceToLevelUpPerLevel;
+		if (this.experience > this.level * ExperiencePerLevelPerLevel) {
+			this.experience -= this.level * ExperiencePerLevelPerLevel;
 			this.LevelUp();
 		}
 	}
 
-	public void LevelUp() {
+	private void LevelUp() {
 		level++;
 		this.vitality.LevelUp();
 		this.regeneration.LevelUp();
