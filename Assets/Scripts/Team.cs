@@ -1,2 +1,5 @@
-﻿
-public class Team { }
+﻿public class Team {
+	public enum TeamId {
+		Blue, Red, Neutral
+	}
+}

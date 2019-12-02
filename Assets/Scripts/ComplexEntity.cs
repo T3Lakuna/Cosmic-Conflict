@@ -1,10 +1,7 @@
-﻿using Photon.Pun;
-using System;
+﻿using System;
 using UnityEngine;
 
 public abstract class ComplexEntity : Entity {
-	[HideInInspector] public bool blueTeam;
-
 	[HideInInspector] public double passiveCooldown; // Seconds before next passive use
 	[HideInInspector] public double primaryCooldown; // Seconds before next primary ability use
 	[HideInInspector] public double secondaryCooldown; // Seconds before next secondary ability use
@@ -35,19 +32,8 @@ public abstract class ComplexEntity : Entity {
 	[HideInInspector] public Ability tertiaryAbility;
 	[HideInInspector] public Ability ultimateAbility;
 
-	public void SetupComplexEntity(double healthBase, double healthScaling, double regenerationBase,
-		double regenerationScaling, double manaBase, double manaScaling, double enduranceBase, double enduranceScaling,
-		double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase,
-		double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling,
-		double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase,
-		double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling,
-		double rangeBase, double rangeScaling, Team team, Ability passiveAbility, Ability primaryAbility,
-		Ability secondaryAbility, Ability tertiaryAbility, Ability ultimateAbility) {
-		this.SetupEntity(healthBase, healthScaling, regenerationBase, regenerationScaling, manaBase, manaScaling,
-			enduranceBase, enduranceScaling, armorBase, armorScaling, nullificationBase, nullificationScaling,
-			forceBase, forceScaling, pierceBase, pierceScaling, vampBase, vampScaling, fervorBase, fervorScaling,
-			speedBase, speedScaling, tenacityBase, tenacityScaling, critBase, critScaling, efficiencyBase,
-			efficiencyScaling, rangeBase, rangeScaling, team);
+	public void SetupComplexEntity(double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team, Ability passiveAbility, Ability primaryAbility, Ability secondaryAbility, Ability tertiaryAbility, Ability ultimateAbility) {
+		this.SetupEntity(vitalityBase, vitalityScaling, regenerationBase, regenerationScaling, energyBase, energyScaling, enduranceBase, enduranceScaling, armorBase, armorScaling, nullificationBase, nullificationScaling, forceBase, forceScaling, pierceBase, pierceScaling, vampBase, vampScaling, fervorBase, fervorScaling, speedBase, speedScaling, tenacityBase, tenacityScaling, critBase, critScaling, efficiencyBase, efficiencyScaling, rangeBase, rangeScaling, team);
 		this.passiveAbility = passiveAbility;
 		this.primaryAbility = primaryAbility;
 		this.secondaryAbility = secondaryAbility;
@@ -60,20 +46,12 @@ public abstract class ComplexEntity : Entity {
 		this.ultimateLevel = 0;
 	}
 
-	public void ComplexEntityUpdate() {
-		this.EntityUpdate();
-		this.UpdateCooldowns();
-		this.CheckPlayerActions();
-		this.passiveAbility.action();
-	}
-
-	private void UpdateCooldowns() {
-		this.currentPassiveCooldown = this.basePassiveCooldown - (this.basePassiveCooldown * this.currentEfficiency);
-		this.currentPrimaryCooldown = this.basePrimaryCooldown - (this.basePrimaryCooldown * this.currentEfficiency);
-		this.currentSecondaryCooldown =
-			this.baseSecondaryCooldown - (this.baseSecondaryCooldown * this.currentEfficiency);
-		this.currentTertiaryCooldown = this.baseTertiaryCooldown - (this.baseTertiaryCooldown * this.currentEfficiency);
-		this.currentUltimateCooldown = this.baseUltimateCooldown - (this.baseUltimateCooldown * this.currentEfficiency);
+	public void UpdateCooldowns() {
+		this.currentPassiveCooldown = this.basePassiveCooldown - (this.basePassiveCooldown * this.efficiency.currentValue);
+		this.currentPrimaryCooldown = this.basePrimaryCooldown - (this.basePrimaryCooldown * this.efficiency.currentValue);
+		this.currentSecondaryCooldown = this.baseSecondaryCooldown - (this.baseSecondaryCooldown * this.efficiency.currentValue);
+		this.currentTertiaryCooldown = this.baseTertiaryCooldown - (this.baseTertiaryCooldown * this.efficiency.currentValue);
+		this.currentUltimateCooldown = this.baseUltimateCooldown - (this.baseUltimateCooldown * this.efficiency.currentValue);
 
 		if (this.passiveCooldown > this.currentPassiveCooldown) {
 			this.passiveCooldown = this.currentPassiveCooldown;
@@ -100,28 +78,5 @@ public abstract class ComplexEntity : Entity {
 		this.secondaryCooldown = Math.Max(this.secondaryCooldown -= Time.deltaTime, 0);
 		this.tertiaryCooldown = Math.Max(this.tertiaryCooldown -= Time.deltaTime, 0);
 		this.ultimateCooldown = Math.Max(this.ultimateCooldown -= Time.deltaTime, 0);
-	}
-
-	private void CheckPlayerActions() {
-		if (PhotonNetwork.InRoom && !this.photonView.IsMine) {
-			return;
-		}
-
-		if (Input.GetKeyUp(KeyCode.Q) && this.primaryCooldown <= 0) {
-			this.primaryCooldown = this.currentPrimaryCooldown;
-			this.primaryAbility.action();
-		}
-		else if (Input.GetKeyUp(KeyCode.W) && this.secondaryCooldown <= 0) {
-			this.secondaryCooldown = this.currentSecondaryCooldown;
-			this.secondaryAbility.action();
-		}
-		else if (Input.GetKeyUp(KeyCode.E) && this.tertiaryCooldown <= 0) {
-			this.tertiaryCooldown = this.currentTertiaryCooldown;
-			this.tertiaryAbility.action();
-		}
-		else if (Input.GetKeyUp(KeyCode.R) && this.ultimateCooldown <= 0) {
-			this.ultimateCooldown = this.currentUltimateCooldown;
-			this.ultimateAbility.action();
-		}
 	}
 }
