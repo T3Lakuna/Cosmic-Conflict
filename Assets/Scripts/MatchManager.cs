@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class MatchManager : MonoBehaviour {
-	[HideInInspector] List<Champion> champions;
+	[HideInInspector] List<Champion> _champions;
 
 	// TODO
 }

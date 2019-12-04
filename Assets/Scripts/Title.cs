@@ -1,59 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Title : MonoBehaviour
-{
-    public GameObject titleScreen;
-    public GameObject heroScreen;
-    public GameObject optionScreen;
-    public GameObject setUpScene;
-    public GameObject exit;
-    public GameObject theHero1;
-    void Start()
-    {
-        titleScreen.gameObject.SetActive(true);
-        heroScreen.gameObject.SetActive(false);
-    }
+public class Title : MonoBehaviour {
+	public GameObject titleScreen;
+	public GameObject heroScreen;
+	public GameObject optionScreen;
+	public GameObject theHero1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Start() {
+		this.titleScreen.gameObject.SetActive(true);
+		this.heroScreen.gameObject.SetActive(false);
+	}
 
-    public void toHeroScreen()
-    {
-        titleScreen.gameObject.SetActive(false);
-        heroScreen.gameObject.SetActive(true);
-    }
+	public void ToHeroScreen() {
+		this.titleScreen.gameObject.SetActive(false);
+		this.heroScreen.gameObject.SetActive(true);
+	}
 
-    public void toTitleScreen()
-    {
-        titleScreen.gameObject.SetActive(true);
-        heroScreen.gameObject.SetActive(false);
-    }
+	public void ToTitleScreen() {
+		this.titleScreen.gameObject.SetActive(true);
+		this.heroScreen.gameObject.SetActive(false);
+	}
 
-    public void toOptions()
-    {
-        titleScreen.gameObject.SetActive(false);
-        optionScreen.gameObject.SetActive(true);
-    }
+	public void ToOptions() {
+		this.titleScreen.gameObject.SetActive(false);
+		this.optionScreen.gameObject.SetActive(true);
+	}
 
-    public void toExitGame()
-    {
-        Application.Quit();
-    }
+	public void BackToHero() {
+		this.heroScreen.gameObject.SetActive(true);
+		this.theHero1.gameObject.SetActive(false);
+	}
 
-    public void backToHero()
-    {
-        heroScreen.gameObject.SetActive(true);
-        theHero1.gameObject.SetActive(false);
-    }
-
-    public void toHero1()
-    {
-        heroScreen.gameObject.SetActive(false);
-        theHero1.gameObject.SetActive(true);
-    }
+	public void ToHero1() {
+		this.heroScreen.gameObject.SetActive(false);
+		this.theHero1.gameObject.SetActive(true);
+	}
 }
