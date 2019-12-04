@@ -4,11 +4,7 @@ using UnityEngine;
 using static Ability;
 
 public abstract class Entity : MonoBehaviourPun, IPunObservable {
-	public enum Team {
-		Red,
-		Blue,
-		Neutral
-	}
+	public enum Team { Red, Blue, Neutral }
 
 	private const int ExperiencePerLevelPerLevel = 50;
 
@@ -24,29 +20,23 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public double experience; // Current progress towards next level
 	[HideInInspector] public int level; // Current level
 
-	[HideInInspector] public Stat vitality;
-	[HideInInspector] public Stat regeneration;
-	[HideInInspector] public Stat energy;
-	[HideInInspector] public Stat endurance;
-	[HideInInspector] public Stat armor;
-	[HideInInspector] public Stat nullification;
-	[HideInInspector] public Stat force;
-	[HideInInspector] public Stat pierce;
-	[HideInInspector] public Stat vamp;
-	[HideInInspector] public Stat fervor;
-	[HideInInspector] public Stat speed;
-	[HideInInspector] public Stat tenacity;
-	[HideInInspector] public Stat crit;
-	[HideInInspector] public Stat efficiency;
-	[HideInInspector] public Stat range;
+	[HideInInspector] public Stat vitality; // Maximum health
+	[HideInInspector] public Stat regeneration; // Health regeneration
+	[HideInInspector] public Stat energy; // Maximum resource
+	[HideInInspector] public Stat endurance; // Resource regeneration
+	[HideInInspector] public Stat armor; // Physical damage resistance
+	[HideInInspector] public Stat nullification; // Magical damage resistance.
+	[HideInInspector] public Stat force; // Physical damage resistance penetration
+	[HideInInspector] public Stat pierce; // Magical damage resistance penetration
+	[HideInInspector] public Stat vamp; // Life steal
+	[HideInInspector] public Stat fervor; // Attack speed
+	[HideInInspector] public Stat speed; // Movement speed
+	[HideInInspector] public Stat tenacity; // Status effect duration reduction
+	[HideInInspector] public Stat crit; // Critical attack chance
+	[HideInInspector] public Stat efficiency; // Ability cooldown reduction
+	[HideInInspector] public Stat range; // Attack range
 
-	protected void SetupEntity(double vitalityBase, double vitalityScaling, double regenerationBase,
-		double regenerationScaling, double energyBase, double energyScaling, double enduranceBase,
-		double enduranceScaling, double armorBase, double armorScaling, double nullificationBase,
-		double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling,
-		double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase,
-		double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling,
-		double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
+	protected void SetupEntity(double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
 		this.vitality = new Stat(vitalityBase, vitalityScaling, Stat.StatId.Vitality);
 		this.regeneration = new Stat(regenerationBase, regenerationScaling, Stat.StatId.Regeneration);
 		this.energy = new Stat(energyBase, energyScaling, Stat.StatId.Energy);
@@ -65,11 +55,11 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 		this.UpdateStats();
 
-		this.health = this.vitality.currentValue;
+		this.health = this.vitality.CurrentValue;
 		this.shield = 0;
 		this.physicalShield = 0;
 		this.magicalShield = 0;
-		this.resource = this.energy.currentValue;
+		this.resource = this.energy.CurrentValue;
 		this.level = 0;
 		this.experience = 0;
 		this.team = team;
@@ -78,9 +68,14 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.LevelUp();
 	}
 
-	public void ApplyAbility(Ability ability) {
-		ability.Action();
+	public void AddToRecap(Ability ability) {
 		this.recentAbilitiesTaken.Add(ability);
+		this.StartCoroutine(Tools.DoAfterTime(20, () => { this.recentAbilitiesTaken.Remove(ability); }));
+		if (this.health <= 0) { this.Die(ability); }
+	}
+
+	public void Die(Ability cause) {
+		Debug.Log(this.name + " died."); // TODO
 	}
 
 	protected void UpdateStats() {
@@ -102,30 +97,22 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	}
 
 	protected void RegenerateResources() {
-		if (this.health < this.vitality.currentValue) {
-			this.health += this.regeneration.currentValue;
-		}
+		if (this.health < this.vitality.CurrentValue) { this.health += this.regeneration.CurrentValue; }
 
-		if (this.health > this.vitality.currentValue) {
-			this.health = this.vitality.currentValue;
-		}
+		if (this.health > this.vitality.CurrentValue) { this.health = this.vitality.CurrentValue; }
 
-		if (this.resource < this.energy.currentValue) {
-			this.resource += this.endurance.currentValue;
-		}
+		if (this.resource < this.energy.CurrentValue) { this.resource += this.endurance.CurrentValue; }
 
-		if (this.resource > this.energy.currentValue) {
-			this.resource = this.energy.currentValue;
-		}
+		if (this.resource > this.energy.CurrentValue) { this.resource = this.energy.CurrentValue; }
 
-		if (this.experience > this.level * ExperiencePerLevelPerLevel) {
-			this.experience -= this.level * ExperiencePerLevelPerLevel;
+		if (this.experience > this.level * Entity.ExperiencePerLevelPerLevel) {
+			this.experience -= this.level * Entity.ExperiencePerLevelPerLevel;
 			this.LevelUp();
 		}
 	}
 
 	private void LevelUp() {
-		level++;
+		this.level++;
 		this.vitality.LevelUp();
 		this.regeneration.LevelUp();
 		this.energy.LevelUp();

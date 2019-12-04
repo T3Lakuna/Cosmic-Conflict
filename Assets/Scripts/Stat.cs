@@ -17,27 +17,23 @@
 		Range // Attack range
 	}
 
-	public double currentValue;
-	private double baseValue;
-	private double scalingValue;
-	public double bonusValue;
-	public double percentageBonusValue;
-	public StatId id;
+	public double CurrentValue;
+	private double _baseValue;
+	private readonly double _scalingValue;
+	public readonly double BonusValue;
+	public readonly double PercentageBonusValue;
+	public StatId Id;
 
 	public Stat(double baseValue, double scalingValue, StatId id) {
-		this.baseValue = baseValue;
-		this.scalingValue = scalingValue;
-		this.id = id;
-		this.bonusValue = 0;
-		this.percentageBonusValue = 0;
-		this.currentValue = baseValue;
+		this._baseValue = baseValue;
+		this._scalingValue = scalingValue;
+		this.Id = id;
+		this.BonusValue = 0;
+		this.PercentageBonusValue = 0;
+		this.CurrentValue = baseValue;
 	}
 
-	public void Update() {
-		this.currentValue = this.baseValue + this.bonusValue + (this.baseValue + this.bonusValue) * this.percentageBonusValue;
-	}
+	public void Update() { this.CurrentValue = this._baseValue + this.BonusValue + (this._baseValue + this.BonusValue) * this.PercentageBonusValue; }
 
-	public void LevelUp() {
-		this.baseValue += this.scalingValue;
-	}
+	public void LevelUp() { this._baseValue += this._scalingValue; }
 }

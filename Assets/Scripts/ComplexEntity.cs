@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class ComplexEntity : Entity {
 	[HideInInspector] public Ability passiveAbility;
@@ -8,20 +7,8 @@ public abstract class ComplexEntity : Entity {
 	[HideInInspector] public Ability tertiaryAbility;
 	[HideInInspector] public Ability ultimateAbility;
 
-	public void SetupComplexEntity(double vitalityBase, double vitalityScaling, double regenerationBase,
-		double regenerationScaling, double energyBase, double energyScaling, double enduranceBase,
-		double enduranceScaling, double armorBase, double armorScaling, double nullificationBase,
-		double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling,
-		double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase,
-		double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling,
-		double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team,
-		Ability passiveAbility, Ability primaryAbility, Ability secondaryAbility, Ability tertiaryAbility,
-		Ability ultimateAbility) {
-		this.SetupEntity(vitalityBase, vitalityScaling, regenerationBase, regenerationScaling, energyBase,
-			energyScaling, enduranceBase, enduranceScaling, armorBase, armorScaling, nullificationBase,
-			nullificationScaling, forceBase, forceScaling, pierceBase, pierceScaling, vampBase, vampScaling, fervorBase,
-			fervorScaling, speedBase, speedScaling, tenacityBase, tenacityScaling, critBase, critScaling,
-			efficiencyBase, efficiencyScaling, rangeBase, rangeScaling, team);
+	public void SetupComplexEntity(double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team, Ability passiveAbility, Ability primaryAbility, Ability secondaryAbility, Ability tertiaryAbility, Ability ultimateAbility) {
+		this.SetupEntity(vitalityBase, vitalityScaling, regenerationBase, regenerationScaling, energyBase, energyScaling, enduranceBase, enduranceScaling, armorBase, armorScaling, nullificationBase, nullificationScaling, forceBase, forceScaling, pierceBase, pierceScaling, vampBase, vampScaling, fervorBase, fervorScaling, speedBase, speedScaling, tenacityBase, tenacityScaling, critBase, critScaling, efficiencyBase, efficiencyScaling, rangeBase, rangeScaling, team);
 		this.passiveAbility = passiveAbility;
 		this.primaryAbility = primaryAbility;
 		this.secondaryAbility = secondaryAbility;
@@ -30,6 +17,10 @@ public abstract class ComplexEntity : Entity {
 	}
 
 	public void UpdateCooldowns() {
-		// TODO
+		this.passiveAbility.UpdateCooldown();
+		this.primaryAbility.UpdateCooldown();
+		this.secondaryAbility.UpdateCooldown();
+		this.tertiaryAbility.UpdateCooldown();
+		this.ultimateAbility.UpdateCooldown();
 	}
 }

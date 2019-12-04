@@ -15,26 +15,12 @@ public abstract class Champion : ComplexEntity {
 		this.RegenerateResources();
 		this.UpdateCooldowns();
 		this.CheckPlayerActions();
-		this.passiveAbility.Action();
+		this.passiveAbility.Cast();
 	}
 
 	public void CheckPlayerActions() {
-		if (PhotonNetwork.InRoom && !this.photonView.IsMine) {
-			return;
-		}
+		if (PhotonNetwork.InRoom && !this.photonView.IsMine) { return; }
 
-		if (Input.GetKeyUp(KeyCode.Q) && this.primaryCooldown <= 0) {
-			this.primaryCooldown = this.currentPrimaryCooldown;
-			this.primaryAbility.Action();
-		} else if (Input.GetKeyUp(KeyCode.W) && this.secondaryCooldown <= 0) {
-			this.secondaryCooldown = this.currentSecondaryCooldown;
-			this.secondaryAbility.Action();
-		} else if (Input.GetKeyUp(KeyCode.E) && this.tertiaryCooldown <= 0) {
-			this.tertiaryCooldown = this.currentTertiaryCooldown;
-			this.tertiaryAbility.Action();
-		} else if (Input.GetKeyUp(KeyCode.R) && this.ultimateCooldown <= 0) {
-			this.ultimateCooldown = this.currentUltimateCooldown;
-			this.ultimateAbility.Action();
-		}
+		if (Input.GetKeyUp(KeyCode.Q) && this.primaryAbility.CurrentCooldown <= 0) { this.primaryAbility.Cast(); } else if (Input.GetKeyUp(KeyCode.W) && this.secondaryAbility.CurrentCooldown <= 0) { this.secondaryAbility.Cast(); } else if (Input.GetKeyUp(KeyCode.E) && this.tertiaryAbility.CurrentCooldown <= 0) { this.tertiaryAbility.Cast(); } else if (Input.GetKeyUp(KeyCode.R) && this.ultimateAbility.CurrentCooldown <= 0) { this.ultimateAbility.Cast(); }
 	}
 }
