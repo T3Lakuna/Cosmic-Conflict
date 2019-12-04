@@ -27,4 +27,22 @@ Preferred:
 Jayden, The Dormant God
 
 
-Passive - Restores 5 percent of Jayden's HP and mana with a 20 second cooldown
+Passive - Willing Sacrifice
+          Restores 10*level of Jayden's HP and mana with a 5 second cooldown and adds a "sacrifice" stack.
+          After 5 "sacrifice" stacks, Jayden enters Imperial Takeover boosting Jayden's damage by 20%.
+Q - Eldritch Blast:
+    Jayden blasts dark energy in a beam that ends in a square area. The square area slows enemies and takes dmg.
+    Beam: 50 - 250 + .4 AP
+    Square: 20% slow and 2% max hp dmg per second.
+
+W - Contempt:
+    Auto attack reset that does 200% damage if enemy is under 20% HP.
+
+E - Unrelenting Grasp
+    Jayden draws dark energy towards him, pulling anyone in the process.
+
+R - Inconceivable Power
+    Jayden automatically enters Imperial Takeover when activated
+    Recast the ability to call upon a meteor that reactivates if it kills an enemy.
+    125/400/600 + .7AD, executes enemies if enemy under 10% HP, otherwise does 50% more damage if enemy is under 50% HP.
+          
