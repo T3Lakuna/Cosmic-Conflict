@@ -36,10 +36,39 @@ E		Targeted Vortex
 
 R		Winds of War
 		Tiradas creates gales of piercing winds that he can fire off in three waves, each wave moving outwards as a semi circle with
-		Tiradas being the center. Each wave applies a stack of Oppressive Gust and enemies with full stacks take are slowed, 
+		Tiradas being the center. Each wave applies a stack of Oppressive Gust and enemies with full stacks are slowed.
 	
 
 Strengths	High damage output,  decently short cooldowns, good teamfighter
 		
 
 Weaknesses	Very combo reliant, no movement, little cc
+
+Tiradas, The Winds Of Change
+
+Passive		Oppressive Gust
+		As Tiradas hit enemies with abilities he stacks Oppressive Gust onto them. When an enemy has 3 stacks, his next ability onto them
+		will apply an additional effect.
+
+		
+Q		Gale Force Blast 
+		Tiradas Launches a blast of wind from his chest, slightly knocking back the first enemy hit and damaging subsequent ones. 
+		Enemies stacked with Oppressive Gale take bleed damage over the next 3 seconds. I smell like cheese.
+		75/135/195/255/315 + .5 AP
+                Bleed = 50% of dmg dealt with initial blast.
+
+		
+W		Breath of Renewal
+		Tiradas imbues himself with the powers of the sky, granting himself increased range and damage as well as allowing his autos to 
+		stack Oppressive Gust. No effect onto stacked enemies
+
+
+E		Targeted Vortex
+		Tiradas summons a localized typhoon at a location, dealing damage to all enemies hit. Enemies with full stacks of Oppressive
+		Gust are pulled to the center of the attack.
+
+
+R		Winds of War
+		Tiradas creates gales of piercing winds that he can fire off in three waves, each wave moving outwards as a semi circle with
+		Tiradas being the center. Each wave applies a stack of Oppressive Gust and enemies with full stacks are slowed.
+	
