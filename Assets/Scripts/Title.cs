@@ -8,7 +8,6 @@ public class Title : MonoBehaviour
     public GameObject heroScreen;
     public GameObject optionScreen;
     public GameObject setUpScene;
-    public GameObject exit;
     public GameObject theHero1;
     void Start()
     {
