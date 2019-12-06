@@ -1,4 +1,4 @@
-Character design - one of those Chinese latern with a little face ya dig?
+Character design - one of those Chinese lantern with a little face ya dig?
 Lots of Chinese influence
 
 Playstyle - Support/more of a mage/ jungler? pretty much anyone that can nae nae because of vision abuse
@@ -26,7 +26,7 @@ Weaknesses - No escape (regular ass mage), squishy as all hell, has to have room
 Jié
 
 Passive- Elucidation and Expedition
-         Gain 10% movement speed when not spotted by enemy structures. (Discludes any vision or wards because it can easily point out where wards are)
+         Gain 20% movement speed when not spotted by enemy structures. (Discludes any vision or wards because it can easily point out where wards are)
          25% increased vision range.
 
 Q - Firework Fisticuffs
@@ -42,5 +42,10 @@ E - In The Clouds
     Jié launches a slow moving updraft that knocks up enemies by .75 seconds
     50-250 AP dmg + .2 AP scaling
     Range increases by 300% and speeds up by 50% if the ability is used when Silk Shield is active.
+
+R - The Lion's Bite
+    Jié launches a giant lion fang that catches enemies and will continue to push enemies until they hit a wall.
+    0 DMG.
+    Will stun as long as it doesn't hit a wall.
 
 
