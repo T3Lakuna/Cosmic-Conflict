@@ -37,8 +37,5 @@ public class Title : MonoBehaviour {
 		this.hero1.gameObject.SetActive(true);
 	}
 
-	public void quit()
-	{
-		Application.Quit();
-	}
+	public void Quit() { Application.Quit(); }
 }
