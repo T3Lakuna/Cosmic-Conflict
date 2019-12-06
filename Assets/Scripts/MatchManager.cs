@@ -2,7 +2,18 @@
 using UnityEngine;
 
 public class MatchManager : MonoBehaviour {
-	[HideInInspector] List<Champion> _champions;
+	public const int MapBaseX = 256;
+	public const int MapBaseY = 16;
+	public const int MapBaseZ = 256;
 
-	// TODO
+	public static MatchManager Instance;
+	private List<Champion> _champions;
+	public Player localPlayer;
+	public GameObject mapObject;
+
+	private void Awake() {
+		if (!MatchManager.Instance) { MatchManager.Instance = this; } else if (MatchManager.Instance != this) { Object.Destroy(this); }
+	}
+
+	private void Start() { this._champions = new List<Champion>(); }
 }

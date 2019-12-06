@@ -54,6 +54,8 @@ public class Ability {
 		// TODO: Point-click ability. Creates object and moves it towards target.
 	}
 
+	public static void DoInArea() { } // TODO: For AoE things.
+
 	public static void DealDamage(Entity target, DamageType type, double flatAmount, double percentageAmount) {
 		double effectiveHealth;
 		HealthType[] damageOrder;

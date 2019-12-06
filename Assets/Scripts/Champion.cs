@@ -10,17 +10,31 @@ public abstract class Champion : ComplexEntity {
 		this.currency = 0;
 	}
 
-	private void Update() {
-		this.UpdateStats();
-		this.RegenerateResources();
-		this.UpdateCooldowns();
-		this.CheckPlayerActions();
-		this.passiveAbility.Cast();
+	private void Start() {
+		this.player = MatchManager.Instance.localPlayer;
+		this.StartCoroutine(this.Tick());
 	}
 
-	public void CheckPlayerActions() {
+	private void Update() {
+		this.CheckPlayerActions();
+	}
+
+	private System.Collections.IEnumerator Tick() {
+		while (true) {
+			this.UpdateStats();
+			this.RegenerateResources();
+			this.UpdateCooldowns();
+			this.passiveAbility.Cast();
+			this.currency += 3;
+			yield return new WaitForSeconds(1);
+		}
+	}
+
+	private void CheckPlayerActions() {
 		if (PhotonNetwork.InRoom && !this.photonView.IsMine) { return; }
 
 		if (Input.GetKeyUp(KeyCode.Q) && this.primaryAbility.CurrentCooldown <= 0) { this.primaryAbility.Cast(); } else if (Input.GetKeyUp(KeyCode.W) && this.secondaryAbility.CurrentCooldown <= 0) { this.secondaryAbility.Cast(); } else if (Input.GetKeyUp(KeyCode.E) && this.tertiaryAbility.CurrentCooldown <= 0) { this.tertiaryAbility.Cast(); } else if (Input.GetKeyUp(KeyCode.R) && this.ultimateAbility.CurrentCooldown <= 0) { this.ultimateAbility.Cast(); }
+
+		if (!Physics.Raycast(this.player.playerCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit mousePosition)) { return; }
 	}
 }
