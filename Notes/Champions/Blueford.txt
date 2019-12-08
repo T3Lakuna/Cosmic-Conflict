@@ -1,0 +1,40 @@
+- Character theme-Ghost Pirate Captain
+
+- Character playstyle-Fighter
+
+- Passive ability-Tidecallers Blade- Every 12 seconds Blueford gains an enhanced auto that does more damage and cleaves
+(the cleave works like a Titanic Hydra)
+
+- First ability-Gun to a Knife Fight-Blueford brings out his hidden flintlock pistol and fires it an an enemy.this applys on hit effects but not crit.
+If the target is in melee ranged of Blueford when he casts this ability, it does increased damage.(Gangplank q) Does Apply passive.
+
+- Second ability-Set Sail-Blueford gains increased movement speed for him and his nearby allies for 5 seconds.
+  This ability doesnt lose duration while Blueford is in the river.
+
+-Third ability- Join the Crew- Blueford Points his sword and his spectral crew comes from behind him and rush forward.
+ The crew is a skillshot that passes through enemies and damages them. Enemy Champions hit by the crew have an crew wrapped on them. 
+ The crew member does damage over time and slows. The crew member can be removed by being autoed.
+
+- Ultimate ability-A Legendary Catch-Blueford takes out his legendary fishing rod and casts his line. He almost instantly gets a bite and starts to reel in
+ The Giant Marlin on his hook will damage and drag enemys towards Blueford until they reach him.
+ Blueford when he fully reeled the fish gets a heal based on how many enemies he brought with him.
+ If no enemys are hooked in Blueford doesnt get healed and gets sad.
+
+
+- Proposed champion strengths-Jack of all trades but slightly stronger on aoe and mobility.
+
+- Proposed champion weaknesses-Low defenses,but dodgeable abilities.
+
+
+Preferred:
+
+- Name. Blueford Vexx
+- Concept art or lookalike references. Spooky Gangplank or Kunkka From Dota2
+- Similar character references from other video games/movies/etc. 
+- Backstory.
+ Blueford was a poor man with little to live for. When he was found drunk passed out in an alley.He was awakened by a pirate captain named Charles.
+ Charles led him to be part of his crew which Blueford accepts. Blueford feels great around the crew and loves to work with them. He was never happier.
+ One day he awakes and accidently listens in on Charles planning to abandon the crew and take all the loot. Blueford gets found out by Charles and is sent to walk the plank.
+ Blueford is tied up by his own friendly crew members and is thrown into the sea. He is filled with rage and curses Charles with his last breath. 
+ He awakes as a spirit to sea that his fellow crew members around him. He learns that they all jumped in after him trying to save him and all died in the process.
+ The crew makes Blueford the captain of the spectral crew and use wreckage from broken ships to make a new ship. They explore the seas seeking revenge on Charles and bringing justice to a lawless sea. 
