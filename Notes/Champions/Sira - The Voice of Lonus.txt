@@ -5,14 +5,14 @@ Concept and Role
 Origin and Theme
 	She comes from the planet Lonus a very tribal and wild planet and
 	is fighting to stop forth colonization of her planet using her
-	voice inhanment technique.
+	voice enhancement technique.
 Passive Ability
 	Charging Decibels - Sira charges up while walking or AA. Once at 100%
 	she empowers her next ability.
 Normal Abilities
 	Soprano Screech - Sira yells in a cone pushing back ememies
 			  (Empowered Increases range)
-	Voice of Protector - Sira yells at a teammate giveing them a ferver boost
+	Voice of Protectors - Sira yells at a teammate giveing them a ferver boost
 			     and movement speed boost (Empowered gives a AOE speed boost)
 	Lonus's Guildance - Gives an cleanes and ally or herself. If the cleanse is removes
 			    some CC its gives a shield.(Empowered Resets cooldown on successful cleanse)
