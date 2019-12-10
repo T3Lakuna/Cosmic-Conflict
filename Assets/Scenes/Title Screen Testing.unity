@@ -1182,7 +1182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &266001371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1645,7 +1645,7 @@ GameObject:
   - component: {fileID: 335845352}
   - component: {fileID: 335845353}
   m_Layer: 5
-  m_Name: ' Blind Pick Toggle (1)'
+  m_Name: Jungle Toggle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2412,7 +2412,7 @@ GameObject:
   - component: {fileID: 468830429}
   - component: {fileID: 468830430}
   m_Layer: 5
-  m_Name: Comp Pick Toggle (1)
+  m_Name: Bottom Toggle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2503,7 +2503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &478111865
 Transform:
   m_ObjectHideFlags: 0
@@ -6100,6 +6100,7 @@ MonoBehaviour:
   titleScreen: {fileID: 266001370}
   heroScreen: {fileID: 1558823594}
   optionScreen: {fileID: 187995870}
+  setUpScreen: {fileID: 478111864}
   hero1: {fileID: 103332909}
 --- !u!1 &1401708586
 GameObject:
@@ -9267,12 +9268,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1396973784}
-        m_MethodName: 
+      - m_Target: {fileID: 1396973788}
+        m_MethodName: ToSetUpScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9791,7 +9792,7 @@ GameObject:
   - component: {fileID: 2111776498}
   - component: {fileID: 2111776499}
   m_Layer: 5
-  m_Name: Comp Pick Toggle (2)
+  m_Name: MiddleToggle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

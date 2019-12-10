@@ -4,11 +4,14 @@ public class Title : MonoBehaviour {
 	public GameObject titleScreen;
 	public GameObject heroScreen;
 	public GameObject optionScreen;
+	public GameObject setUpScreen;
 	public GameObject hero1;
 
 	private void Start() {
 		this.titleScreen.gameObject.SetActive(true);
 		this.heroScreen.gameObject.SetActive(false);
+		this.optionScreen.gameObject.SetActive(false);
+		this.setUpScreen.gameObject.SetActive(false);
 	}
 
 	public void ToHeroScreen() {
@@ -16,10 +19,17 @@ public class Title : MonoBehaviour {
 		this.heroScreen.gameObject.SetActive(true);
 	}
 
+	public void ToSetUpScreen()
+	{
+		this.titleScreen.gameObject.SetActive(false);
+		this.setUpScreen.gameObject.SetActive(true);
+	}
+
 	public void ToTitleScreen() {
 		this.titleScreen.gameObject.SetActive(true);
 		this.heroScreen.gameObject.SetActive(false);
 		this.optionScreen.gameObject.SetActive(false);
+		this.setUpScreen.gameObject.SetActive(false);
 	}
 
 	public void ToOptions() {

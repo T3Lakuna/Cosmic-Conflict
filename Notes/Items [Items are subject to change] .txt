@@ -1,0 +1,124 @@
+Stat Worth
+1 ad = 35 g
+1 ap = 35 g
+1 nul = 30 g
+1 arm = 30 g
+1.5 eng =  1g
+2.5 hp = 1g
+1 reg = 3g
+1% edu = 5%
+10% eff = 800g
+12 speed = 1g
+1 crit = 25g
+
+
+minion  gold
+
+melee 20 g
+	
+range 15g
+	
+tank 100g
+
+
+	// Starting items//
+
+	Fighter Stating item (450 g) (for jugg & tanker skrimisher)
+	+health
+	+null
+	+armor
+	Passive taking damage grants a stack that reduces all damage 5 (cap 6 time)( 6 secs)
+
+	Energy Stating item (350g) (High energy heros)
+	++ energy
+	++ edu
+	+ health
+
+	Marksman Starting Item (400g)
+	++ad
+	+health
+	+fev
+	passive 5 more damage to minions
+
+	ap starting item ( for mages) (400g)
+	++ ap
+	+ hp
+	++ energy
+
+	Tank Starting item (450g)
+	++ Hp
+	+null
+	+armor
+	Passive gain armor and null will next to enemies
+
+	Sup Item 1 (400g)
+	++ hp
+	+ reg
+	
+	Passive sharing if a minion is killed by an ally near by grants 1 gold
+	Passive killing a minion grant you and one ally the gold and speed boost
+
+	Sup Item 2 (400g)
+	+ ap
+	+ end
+	Passive sharing if a minion is killed by an ally near by grants 1 gold
+	passive hitting an enemy grants gold and end boost
+	
+	Starting Potion (500g)
+	2 active
+	Gives 50 energy instatly and over time grants 125 hp and 100 energy
+	also gives a small speed boost
+	
+	jungle item
+	Ad+
+	hp+
+	50% damage against jungle
+	passive hitting an jungle enemy heals you for 5 health each it
+	disable the other item
+
+	2 jungle item
+	ap+
+	hp+
+	50% damage against jungle
+	passive slow a monster camp speed for a few second (cd 10 sec on indivials monster) (30% slow)
+
+
+	// Tier 1 Items //
+
+	blade 1 500g
+	15 ad
+
+
+	blade 2 1250g
+	40 ad
+
+	book 1 350g
+	10 ap
+	
+	book 2 1250g
+	40 ap 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
