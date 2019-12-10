@@ -13,6 +13,6 @@ Normal Abilities
 Ultimate Ability
 	Alliskator gains movement speed and health for a timespan.
 Strengths
-	High sustain damage, high durability.
+	Good sustained damage, good durability, good engage, good matchup into assassins and tanks.
 Weaknesses, Counters, and Counterplay
-	No multiple-target damage or abilities, lacks disengage, weak against sustained damage.
+	Short range, bad disengage, easily kited, no mobility, bad matchup into mages and marksmen.

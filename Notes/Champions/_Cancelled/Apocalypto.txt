@@ -15,6 +15,6 @@ Ultimate Ability
 Strengths
 	High wave clear, sustain damage, and self-peel.
 Weaknesses, Counters, and Counterplay
-	Low durability, no mobility. Susceptible to burst damage and long-ranged enemies.
+	Low durability, no mobility, susceptible to burst damage and long-ranged enemies.
 
 Denied. Sustain-damage champions with self-peel are inherently unbalanced, and "turret" abilities are unfun to play with or against.

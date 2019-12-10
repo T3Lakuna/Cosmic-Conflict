@@ -13,8 +13,8 @@ Normal Abilities
 Ultimate Ability
 	Launches an attack which deals more damage based on the target's missing health.
 Strengths
-	High burst damage.
+	Long range, high damage, good crowd-control, good chaining of abilities, good against marksmen and fighters.
 Weaknesses, Counters, and Counterplay
-	Low durability, no mobility.
+	Low durability, has abilities that are difficult to land, weak against assassins and tanks, weak against enemies with good sustain or any enemy who can withstand their initial damage.
 
 Note that, although this character is a mage, they will deal primarily physical damage.
