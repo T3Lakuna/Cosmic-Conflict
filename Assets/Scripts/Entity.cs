@@ -10,6 +10,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 	[HideInInspector] public List<Ability> recentAbilitiesTaken;
 	[HideInInspector] public List<StatusEffectType> currentStatusEffects;
+	[HideInInspector] public List<Item> items;
 	[HideInInspector] public Team team;
 
 	[HideInInspector] public double health; // Current health
@@ -64,6 +65,8 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.experience = 0;
 		this.team = team;
 		this.recentAbilitiesTaken = new List<Ability>();
+		this.currentStatusEffects = new List<StatusEffectType>();
+		this.items = new List<Item>();
 
 		this.LevelUp();
 	}

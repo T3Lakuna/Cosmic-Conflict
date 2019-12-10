@@ -6,7 +6,7 @@ public class Ability {
 
 	public enum HealthType { Health, Shield, PhysicalShield, MagicalShield }
 
-	public enum StatusEffectType { Stun, Slow }
+	public enum StatusEffectType { Stun, Slow, Root, Fear, Charm }
 
 	public double CurrentCooldown;
 	public readonly double BaseCooldown;
@@ -17,9 +17,10 @@ public class Ability {
 	public string Description;
 	public readonly Action Action;
 	public DateTime CastTime;
+	private int range;
+	public Sprite Icon;
 
-	public Ability(double maximumCooldown, Entity source, Entity target, string name, string description, Action action) {
-		// Non-targeted ability
+	public Ability(double maximumCooldown, Entity source, Entity target, string name, string description, int range, Sprite icon, Action action) {
 		this.BaseCooldown = maximumCooldown;
 		this.CurrentCooldown = 0;
 		this.Level = 0;
@@ -28,6 +29,8 @@ public class Ability {
 		this.Description = description;
 		this.Action = action;
 		this.Target = target;
+		this.range = range;
+		this.Icon = icon;
 		this.CastTime = DateTime.Now;
 	}
 
@@ -39,10 +42,11 @@ public class Ability {
 	}
 
 	public void Cast() {
-		this.CurrentCooldown = this.BaseCooldown;
-		if (this.Target) { Ability.GenerateProjectile(this); } else { Ability.GenerateProjectile(new Vector3(0, 0, 0), this); }
+		if (this.Target) { } else { }
 
-		// TODO: Replace placeholder (0, 0, 0) Vector3.
+		this.CurrentCooldown = this.BaseCooldown;
+		this.Action();
+
 		// TODO: Check if target is in-range before resetting cooldown.
 	}
 
