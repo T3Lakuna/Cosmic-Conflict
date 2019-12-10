@@ -1,0 +1,19 @@
+Name
+	Captain Armstrong
+Role
+	Marksman
+Origin, Theme, Concept, Backstory, and References.
+	Ex Captain that got was booted by mutiny due to a robot. 
+Passive Ability
+	Armstrong applies marks to an enemy on basic attack. When an enemy has 3 marks, the enemy takes more dmg.
+Normal Abilities
+	- Armstrong buffs his auto attacks for a duration. During this duration, Armstrong's AAs deal more damage and have an AoE explosion.
+	- Armstrong rolls a grenade, detonating on first impact or as enough time passes by.
+	- Passive: Armstrong does more crit dmg and gets crit chance based on level.
+Ultimate Ability
+	Armstrong gains AS and AA range.
+Strengths
+	Long range, high sustained damage, high objective control, excellent scaling, strong matchup into fighters and tanks.
+Weaknesses, Counters, and Counterplay
+	No crowd-control, no burst damage, low mobility, extremely vulnerable to burst damage, weak early, bad matchup into assassins and mages.
+
