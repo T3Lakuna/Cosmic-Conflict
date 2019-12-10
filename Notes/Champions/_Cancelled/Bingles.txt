@@ -1,0 +1,20 @@
+Name
+	Bingles
+Role
+	Specialist
+Origin, Theme, Concept, Backstory, and References.
+	Homeless person in an urban society.
+Passive Ability
+	Chance to earn a small amount of gold from attacking enemies.
+Normal Abilities
+	- If Bingles' next two basic attacks target the same enemy, that enemy is slowed.
+	- Fears all enemies around Bingles and grants him a shield.
+	- Summons two minions with reduced versions of Bingles' stats to attack enemies.
+Ultimate Ability
+	Throws a stack of money at a target, dealing damage and slowing them. If the target is killed, they grant double kill gold to Bingles.
+Strengths
+	High gold generation, high crowd-control, good in duels.
+Weaknesses, Counters, and Counterplay
+	No real offensive or defensive tools, no mobility, easy to kite, susceptible to crowd-control and ranged damage.
+
+Denied. Incoherent abilities - no clear gameplay goal.
