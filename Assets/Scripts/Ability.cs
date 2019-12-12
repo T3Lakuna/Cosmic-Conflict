@@ -12,7 +12,7 @@ public class Ability {
 	public readonly double BaseCooldown;
 	public int Level;
 	public readonly Entity Source;
-	public readonly Entity Target;
+	public Entity Target;
 	public string Name;
 	public string Description;
 	public readonly Action Action;
@@ -42,23 +42,40 @@ public class Ability {
 	}
 
 	public void Cast() {
-		if (this.Target) { } else { }
+		if (this.Target) {
+			if (Vector3.Distance(this.Source.transform.position, this.Target.transform.position) > this.range) { return; }
+		} else {
+			Champion sourceChampion = this.Source as Champion;
+			if (!sourceChampion) { return; }
+
+			if (Vector3.Distance(this.Source.transform.position, sourceChampion.player.mousePosition) > this.range) { return; }
+		}
 
 		this.CurrentCooldown = this.BaseCooldown;
 		this.Action();
-
-		// TODO: Check if target is in-range before resetting cooldown.
 	}
 
-	public static void GenerateProjectile(Vector3 targetPosition, Ability ability) {
-		// TODO: Skill-shot ability. Creates object and moves it towards target.
+	public static AbilityObject CreateAbilityObject(string prefabResourcesPath, bool destroyOnHit, Vector3 initialPosition, Vector3 target, int movementSpeed, Ability collisionAbility, Ability updateAbility) {
+		GameObject abilityObject = Tools.Instantiate(prefabResourcesPath, initialPosition);
+		AbilityObject ability = abilityObject.AddComponent<AbilityObject>();
+		ability.collisionAbility = collisionAbility;
+		ability.target = target;
+		ability.movementSpeed = movementSpeed;
+		ability.updateAbility = updateAbility;
+		ability.destroyOnHit = destroyOnHit;
+
+		return ability;
 	}
 
-	public static void GenerateProjectile(Ability ability) {
-		// TODO: Point-click ability. Creates object and moves it towards target.
-	}
+	public static void DoInArea(Vector3 center, double radius, Ability ability) {
+		foreach (Collider target in Physics.OverlapSphere(center, (float) radius)) {
+			Entity entity = target.GetComponent<Entity>();
+			if (!entity) { continue; }
 
-	public static void DoInArea() { } // TODO: For AoE things.
+			ability.Target = entity;
+			ability.Cast();
+		}
+	}
 
 	public static void DealDamage(Entity target, DamageType type, double flatAmount, double percentageAmount) {
 		double effectiveHealth;
