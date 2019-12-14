@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public static class Tools {
@@ -12,5 +13,20 @@ public static class Tools {
 
 	public static void Destroy(GameObject gameObject) {
 		if (Photon.Pun.PhotonNetwork.InRoom) { Photon.Pun.PhotonNetwork.Destroy(gameObject); } else { UnityEngine.Object.Destroy(gameObject); }
+	}
+
+	public static double HeightOfMapAt(double x, double z) {
+		Ray heightRay = new Ray(new Vector3((float) x, 100, (float) z), new Vector3(0, -90, 0));
+		Physics.Raycast(heightRay, out RaycastHit hit);
+		if (hit.collider != MatchManager.Instance.floorCollider && hit.collider != MatchManager.Instance.riverBedCollider && hit.collider != MatchManager.Instance.structureBaseCollider) { return -1; }
+		return hit.point.y;
+	}
+
+	public static double Random() {
+		RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+		byte[] bytes = new byte[8];
+		provider.GetBytes(bytes);
+		provider.Dispose();
+		return BitConverter.ToUInt64(bytes, 0) / (1 << 11) / (double) (1UL << 53);
 	}
 }

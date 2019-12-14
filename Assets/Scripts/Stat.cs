@@ -1,5 +1,7 @@
 ﻿public class Stat {
 	public enum StatId {
+		Damage, // Physical damage
+		Magic, // Magical damage
 		Vitality, // Maximum health
 		Regeneration, // Health regeneration
 		Energy, // Maximum resource
