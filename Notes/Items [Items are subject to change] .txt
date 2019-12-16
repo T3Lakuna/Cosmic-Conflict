@@ -1,15 +1,16 @@
 Stat Worth
 1 ad = 35 g
 1 ap = 35 g
-1 nul = 30 g
-1 arm = 30 g
-1.5 eng =  1g
-2.5 hp = 1g
+1 nul = 25 g
+1 arm = 25 g
+1 eng =  1.5g
+1 hp = 2.5g
 1 reg = 3g
 1% edu = 5%
 10% eff = 800g
 12 speed = 1g
-1 crit = 25g
+1 crit = 30g
+1 fev = 25g
 
 
 minion  gold
@@ -89,14 +90,103 @@ tank 100g
 	15 ad
 
 
-	blade 2 1250g
-	40 ad
+	blade 2 1700g
+	50 ad
 
 	book 1 350g
 	10 ap
 	
-	book 2 1250g
-	40 ap 
+	book 2 1700g
+	50 ap 
+
+	Null Armor 500g
+	20 Nul
+
+	Armor 375g
+	15 Armor
+
+	Mixed Armor 500g
+	10 armor
+	10 Nul
+
+	Energy item 450g
+	300 energy 
+	
+	Health Item 500g
+	500 HP
+	
+	Cooldown Item 450g
+	5% Eff
+
+	boots 350g
+	15 speed
+
+	crit item 300g
+	10% crit
+
+	Crit Item 2 600g
+	25% crit
+
+	Fev Item 300g
+	12 fev
+
+	// Tier 2 Items //
+
+	Upgraded Blade (blade 1 + 500 g)
+	25 ad 
+	10 force
+
+	Upgraded Blade 2 (blade 1 + crit Item 1 + 300g)
+	20 ad
+	5 Eff
+	10 crit %
+
+	Upgraded Blade 3 (Blade 1 + Health Item + 200g)
+	20 ad
+	500 health
+	passive : Fighting Mood : hitting an enemy grant user tencity for 6 secs (30 second CD)
+	
+	Upgrade Blade 4 (blade 1 + blade 1 + 150 g)
+	35 ad
+	5 eff
+	Passive : vulnerability : AA Reduce Healing by 33% for 3 secs (AA again resets debuff time)
+	
+	Upgrade blade 5 (Blade 1 + Fev Item + 300g)
+	20 ad
+	18 Fev
+	Passive : Shred : AA deal 30 Magic Damage and heal 10 hp
+	
+	Upgrade blade 6 (Blade 1 + 300g)
+	20 ad
+	5 Vamp
+	
+	Upgrade Blade 7 (Blade 1 + Mixed Armor + 400g)
+	15 ad 
+	10 null
+	10 armor
+	passive : resilience : getting hit by an enemy grants 2 armor and null (Stacks 8 / last 5 secs)
+
+	Upgraded book (book 1 + cooldown item + 400g)
+	15 ap 
+	10 Eff
+
+	Upgrade Book 2 (book 1 + energy Item + 200g)
+	10 Ap
+	400 energy
+
+	Upgrade Book 3 (book 1 + Null Item + 400g)
+	20 ap 
+	20 null
+	passive : Absorb null : Killing a minion gain 1 null (Stacks up 25 null)
+
+	Upgrade book 4 (Book 1 + Armor Item + 300g)
+	20 ap
+	20 armor
+	5 eff
+	
+	Upgrade Book 5 (Book 1 + Book 1 + 300g)
+	25 ap
+	10 Pierce
 
 
 
@@ -107,6 +197,23 @@ tank 100g
 
 
 
+
+
+
+
+//////// OH GOD OH LORD ////////
+	OH GOD OH HELP (blade 1 +blade 2 + book 1 + book 2 + Null Armor + Armor + Mixed Armor + Energy item + Health Item + Cooldown Item + Crit item + Crit Item 2 + Fev Item + 1000g)
+	100 ad
+	100 ap
+	40 null
+	40 armor
+	400 energy
+	500 hp
+	10 eff
+	25 crit
+	25 fev
+
+	Active : True Power : become god (Doesn't do anything) 
 
 
 
