@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using Photon.Pun;
-using UnityEditor;
 using UnityEngine;
 using static Ability;
 
@@ -42,7 +39,11 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Stat efficiency; // Ability cooldown reduction
 	[HideInInspector] public Stat range; // Attack range
 
+	[HideInInspector] public Renderer renderer;
+
 	protected void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
+		this.renderer = this.GetComponent<Renderer>();
+
 		this.damage = new Stat(damageBase, damageScaling, Stat.StatId.Damage);
 		this.magic = new Stat(magicBase, magicScaling, Stat.StatId.Magic);
 		this.vitality = new Stat(vitalityBase, vitalityScaling, Stat.StatId.Vitality);
@@ -74,6 +75,8 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.currentStatusEffects = new List<StatusEffectType>();
 		this.items = new List<Item>();
 
+		this.MovementCommand(this.transform.position);
+
 		this.LevelUp();
 	}
 
@@ -81,30 +84,26 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		Debug.Log(this.name + " died."); // TODO
 	}
 
-	public void MovementCommand(Vector3 targetPosition) {
-		this.MovementCommand(targetPosition.x, targetPosition.y);
-	}
+	public void MovementCommand(Vector3 targetPosition) { this.MovementCommand(targetPosition.x, targetPosition.z); }
 
-	public void MovementCommand(Vector2 targetPosition) {
-		this.MovementCommand(targetPosition.x, targetPosition.y);
-	}
-
-	public void MovementCommand(double x, double z) {
-		this.movementTarget = new Vector3((float) x, (float) Tools.HeightOfMapAt(x, z), (float) z);
-	}
+	public void MovementCommand(double x, double z) { this.movementTarget = new Vector3((float) x, (float) Tools.HeightOfMapAt(x, z) + this.renderer.bounds.size.y / 2 + 0.1f, (float) z); }
 
 	public void MovementUpdate() {
 		Vector3 step = Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime);
-		this.gameObject.transform.position = new Vector3(step.x, (float) Tools.HeightOfMapAt(step.x, step.z), step.z);
+		// this.gameObject.transform.position = new Vector3(step.x, (float) Tools.HeightOfMapAt(step.x, step.z), step.z);
+		this.gameObject.transform.position = step; // TODO: Fix line above for smoother movement.
 	}
 
 	public void BasicAttack(Entity target) {
 		if (Vector3.Distance(this.transform.position, target.transform.position) > this.range.CurrentValue) { return; }
+
 		AbilityObject ability = new GameObject().AddComponent<AbilityObject>();
 		ability = Ability.CreateAbilityObject("Prefabs/BasicAttack", true, target.transform.position, target.transform.position, 1, () => { Ability.DealDamage(target, Ability.DamageType.Physical, this.damage.CurrentValue, 0); }, () => { ability.target = target.transform.position; });
 	}
 
 	protected void UpdateStats() {
+		this.damage.Update();
+		this.magic.Update();
 		this.vitality.Update();
 		this.regeneration.Update();
 		this.energy.Update();
@@ -139,6 +138,8 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 	private void LevelUp() {
 		this.level++;
+		this.damage.LevelUp();
+		this.magic.LevelUp();
 		this.vitality.LevelUp();
 		this.regeneration.LevelUp();
 		this.energy.LevelUp();

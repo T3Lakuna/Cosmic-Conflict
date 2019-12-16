@@ -83,14 +83,14 @@ public class Ability {
 		switch (type) {
 			case DamageType.Magical:
 				effectiveHealth = target.health + target.health * (target.nullification.CurrentValue / 100.0);
-				damageOrder = new[] { HealthType.MagicalShield, HealthType.Shield, HealthType.Health };
+				damageOrder = new[] {HealthType.MagicalShield, HealthType.Shield, HealthType.Health};
 				break;
 			case DamageType.Physical:
-				damageOrder = new[] { HealthType.PhysicalShield, HealthType.Shield, HealthType.Health };
+				damageOrder = new[] {HealthType.PhysicalShield, HealthType.Shield, HealthType.Health};
 				effectiveHealth = target.health + target.health * (target.armor.CurrentValue / 100.0);
 				break;
 			case DamageType.True:
-				damageOrder = new[] { HealthType.Shield, HealthType.Health };
+				damageOrder = new[] {HealthType.Shield, HealthType.Health};
 				effectiveHealth = target.health;
 				break;
 			default:
@@ -152,23 +152,23 @@ public class Ability {
 
 		if (duration > 0) {
 			target.StartCoroutine(Tools.DoAfterTime(duration, () => {
-				switch (type) {
-					case HealthType.Health:
-						target.health -= finalAmount;
-						break;
-					case HealthType.MagicalShield:
-						target.magicalShield -= finalAmount;
-						break;
-					case HealthType.PhysicalShield:
-						target.physicalShield -= finalAmount;
-						break;
-					case HealthType.Shield:
-						target.shield -= finalAmount;
-						break;
-					default:
-						throw new ArgumentOutOfRangeException(nameof(type), type, null);
-				}
-			}));
+																  switch (type) {
+																	  case HealthType.Health:
+																		  target.health -= finalAmount;
+																		  break;
+																	  case HealthType.MagicalShield:
+																		  target.magicalShield -= finalAmount;
+																		  break;
+																	  case HealthType.PhysicalShield:
+																		  target.physicalShield -= finalAmount;
+																		  break;
+																	  case HealthType.Shield:
+																		  target.shield -= finalAmount;
+																		  break;
+																	  default:
+																		  throw new ArgumentOutOfRangeException(nameof(type), type, null);
+																  }
+															  }));
 		}
 	}
 
