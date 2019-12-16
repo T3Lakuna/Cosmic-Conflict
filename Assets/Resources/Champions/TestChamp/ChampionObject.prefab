@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6997048981710148160}
   - component: {fileID: 8124524181039321186}
   - component: {fileID: -1315549779352198419}
-  m_Layer: 0
-  m_Name: TestChamp
+  m_Layer: 2
+  m_Name: ChampionObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
