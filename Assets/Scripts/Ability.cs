@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Ability {
@@ -42,20 +43,11 @@ public class Ability {
 	}
 
 	public void Cast() {
-		if (this.Target) {
-			if (Vector3.Distance(this.Source.transform.position, this.Target.transform.position) > this.range) { return; }
-		} else {
-			Champion sourceChampion = this.Source as Champion;
-			if (!sourceChampion) { return; }
-
-			if (Vector3.Distance(this.Source.transform.position, sourceChampion.player.mousePosition) > this.range) { return; }
-		}
-
 		this.CurrentCooldown = this.BaseCooldown;
 		this.Action();
 	}
 
-	public static AbilityObject CreateAbilityObject(string prefabResourcesPath, bool destroyOnHit, Vector3 initialPosition, Vector3 target, int movementSpeed, Action collisionAction, Action updateAction) {
+	public static AbilityObject CreateAbilityObject(string prefabResourcesPath, bool destroyOnHit, Entity source, Vector3 initialPosition, Vector3 target, double movementSpeed, double range, double lifespan, Action collisionAction, Action updateAction) {
 		GameObject abilityObject = Tools.Instantiate(prefabResourcesPath, initialPosition);
 		AbilityObject ability = abilityObject.AddComponent<AbilityObject>();
 		ability.collisionAction = collisionAction;
@@ -63,6 +55,9 @@ public class Ability {
 		ability.movementSpeed = movementSpeed;
 		ability.updateAction = updateAction;
 		ability.destroyOnHit = destroyOnHit;
+		ability.maximumDistance = range;
+		ability.source = source;
+		ability.lifespan = lifespan;
 
 		return ability;
 	}
@@ -83,14 +78,14 @@ public class Ability {
 		switch (type) {
 			case DamageType.Magical:
 				effectiveHealth = target.health + target.health * (target.nullification.CurrentValue / 100.0);
-				damageOrder = new[] {HealthType.MagicalShield, HealthType.Shield, HealthType.Health};
+				damageOrder = new[] { HealthType.MagicalShield, HealthType.Shield, HealthType.Health };
 				break;
 			case DamageType.Physical:
-				damageOrder = new[] {HealthType.PhysicalShield, HealthType.Shield, HealthType.Health};
+				damageOrder = new[] { HealthType.PhysicalShield, HealthType.Shield, HealthType.Health };
 				effectiveHealth = target.health + target.health * (target.armor.CurrentValue / 100.0);
 				break;
 			case DamageType.True:
-				damageOrder = new[] {HealthType.Shield, HealthType.Health};
+				damageOrder = new[] { HealthType.Shield, HealthType.Health };
 				effectiveHealth = target.health;
 				break;
 			default:
@@ -152,23 +147,23 @@ public class Ability {
 
 		if (duration > 0) {
 			target.StartCoroutine(Tools.DoAfterTime(duration, () => {
-																  switch (type) {
-																	  case HealthType.Health:
-																		  target.health -= finalAmount;
-																		  break;
-																	  case HealthType.MagicalShield:
-																		  target.magicalShield -= finalAmount;
-																		  break;
-																	  case HealthType.PhysicalShield:
-																		  target.physicalShield -= finalAmount;
-																		  break;
-																	  case HealthType.Shield:
-																		  target.shield -= finalAmount;
-																		  break;
-																	  default:
-																		  throw new ArgumentOutOfRangeException(nameof(type), type, null);
-																  }
-															  }));
+				switch (type) {
+					case HealthType.Health:
+						target.health -= finalAmount;
+						break;
+					case HealthType.MagicalShield:
+						target.magicalShield -= finalAmount;
+						break;
+					case HealthType.PhysicalShield:
+						target.physicalShield -= finalAmount;
+						break;
+					case HealthType.Shield:
+						target.shield -= finalAmount;
+						break;
+					default:
+						throw new ArgumentOutOfRangeException(nameof(type), type, null);
+				}
+			}));
 		}
 	}
 

@@ -39,10 +39,10 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Stat efficiency; // Ability cooldown reduction
 	[HideInInspector] public Stat range; // Attack range
 
-	[HideInInspector] public Renderer renderer;
+	[HideInInspector] public Renderer entityRenderer;
 
 	protected void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
-		this.renderer = this.GetComponent<Renderer>();
+		this.entityRenderer = this.GetComponent<Renderer>();
 
 		this.damage = new Stat(damageBase, damageScaling, Stat.StatId.Damage);
 		this.magic = new Stat(magicBase, magicScaling, Stat.StatId.Magic);
@@ -80,25 +80,17 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.LevelUp();
 	}
 
-	public void Die(Ability cause) {
+	public void Die() {
 		Debug.Log(this.name + " died."); // TODO
+		this.gameObject.SetActive(false);
 	}
 
-	public void MovementCommand(Vector3 targetPosition) { this.MovementCommand(targetPosition.x, targetPosition.z); }
+	public void MovementCommand(Vector3 targetPosition) { this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y); }
 
-	public void MovementCommand(double x, double z) { this.movementTarget = new Vector3((float) x, (float) Tools.HeightOfMapAt(x, z) + this.renderer.bounds.size.y / 2 + 0.1f, (float) z); }
-
-	public void MovementUpdate() {
-		Vector3 step = Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime);
-		// this.gameObject.transform.position = new Vector3(step.x, (float) Tools.HeightOfMapAt(step.x, step.z), step.z);
-		this.gameObject.transform.position = step; // TODO: Fix line above for smoother movement.
-	}
+	public void MovementUpdate() { this.gameObject.transform.position = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime), this.entityRenderer.bounds.size.y); }
 
 	public void BasicAttack(Entity target) {
-		if (Vector3.Distance(this.transform.position, target.transform.position) > this.range.CurrentValue) { return; }
-
-		AbilityObject ability = new GameObject().AddComponent<AbilityObject>();
-		ability = Ability.CreateAbilityObject("Prefabs/BasicAttack", true, target.transform.position, target.transform.position, 1, () => { Ability.DealDamage(target, Ability.DamageType.Physical, this.damage.CurrentValue, 0); }, () => { ability.target = target.transform.position; });
+		// TODO
 	}
 
 	protected void UpdateStats() {

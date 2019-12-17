@@ -9,7 +9,6 @@ public class Player : UnityEngine.MonoBehaviour {
 	public int uniqueUserId;
 
 	private void Start() {
-		this.team = Team.Blue; // TODO: Assign team.
 		this.uniqueUserId = (int) (Tools.Random() * 99999);
 	}
 
