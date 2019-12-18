@@ -4,7 +4,7 @@ Entity models must include the following:
 - Mesh filter.
 - Mesh renderer.
 - Mesh collider.
-- Rigidbody (no gravity, not kinematic).
+- Rigidbody (no gravity, not kinematic, rotation constrained in all three dimensions).
 - Champion script.
 - Layer set to Ignore Raycast.
 Ability models must include the following:

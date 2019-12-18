@@ -1,16 +1,16 @@
 Name
 	
-Role
+Class/Role
 	
 Origin, Theme, Concept, Backstory, and References.
 	
-Passive Ability
+Passive Ability/Abilities
 	
-Normal Abilities
+Normal Ability/Abilities
 	- 
 	- 
 	- 
-Ultimate Ability
+Ultimate Ability/Abilities
 	
 Strengths
 	
