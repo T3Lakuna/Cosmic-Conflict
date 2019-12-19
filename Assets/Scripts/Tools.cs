@@ -13,7 +13,7 @@ public static class Tools {
 
 	public static void Destroy(GameObject gameObject) { if (Photon.Pun.PhotonNetwork.InRoom) { Photon.Pun.PhotonNetwork.Destroy(gameObject); } else { UnityEngine.Object.Destroy(gameObject); } }
 
-	public static Vector3 PositionOnMapAt(Vector3 position, double objectHeightForOffset) { return new Vector3(position.x, (float) Tools.HeightOfMapAt(position.x, position.z) + (float) objectHeightForOffset / 2 + 0.1f, position.z); }
+	public static Vector3 PositionOnMapAt(Vector3 position, double objectHeightForOffset) { return new Vector3(position.x, (float) Tools.HeightOfMapAt(position.x, position.z) + (float) objectHeightForOffset / 2 + 0.0f, position.z); }
 
 	public static double HeightOfMapAt(double x, double z) {
 		Ray heightRay = new Ray(new Vector3((float) x, 100, (float) z), new Vector3(0, -90, 0));

@@ -4,7 +4,6 @@ using UnityEngine;
 public abstract class Champion : ComplexEntity {
 	[HideInInspector] public Player player;
 	[HideInInspector] public int currency;
-	[HideInInspector] public string championName;
 	[HideInInspector] public int uniqueUserId;
 	[HideInInspector] public GameObject prefab;
 
@@ -14,26 +13,26 @@ public abstract class Champion : ComplexEntity {
 		this.player = MatchManager.Instance.localPlayer;
 		this.SetupComplexEntity(damageBase, damageScaling, magicBase, magicScaling, vitalityBase, vitalityScaling, regenerationBase, regenerationScaling, energyBase, energyScaling, enduranceBase, enduranceScaling, armorBase, armorScaling, nullificationBase, nullificationScaling, forceBase, forceScaling, pierceBase, pierceScaling, vampBase, vampScaling, fervorBase, fervorScaling, speedBase, speedScaling, tenacityBase, tenacityScaling, critBase, critScaling, efficiencyBase, efficiencyScaling, rangeBase, rangeScaling, this.player.team, passiveAbility, primaryAbility, secondaryAbility, tertiaryAbility, ultimateAbility);
 		this.currency = 0;
-		this.championName = name;
+		this.name = name;
 		this.player = MatchManager.Instance.localPlayer;
 		this.uniqueUserId = this.player.uniqueUserId;
 	}
 
-	private void Start() { this.StartCoroutine(this.Tick()); }
+	public void Start() {
+		this.StartCoroutine(this.Tick());
+	}
 
-	private void Update() {
+	public new void Update() {
+		base.Update();
+
 		if (!this.player) { return; }
 
 		this.CheckPlayerActions();
-		this.UpdateStats();
-		this.UpdateCooldowns();
-		this.MovementUpdate();
 		this.passiveAbility.Cast();
 	}
 
 	private System.Collections.IEnumerator Tick() {
 		while (true) {
-			this.RegenerateResources();
 			this.currency += 3;
 			yield return new WaitForSeconds(1);
 		}

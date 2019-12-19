@@ -16,7 +16,12 @@ public abstract class ComplexEntity : Entity {
 		this.ultimateAbility = ultimateAbility;
 	}
 
-	public void UpdateCooldowns() {
+	public new void Update() {
+		base.Update();
+		this.UpdateCooldowns();
+	}
+
+	private void UpdateCooldowns() {
 		this.passiveAbility.UpdateCooldown();
 		this.primaryAbility.UpdateCooldown();
 		this.secondaryAbility.UpdateCooldown();

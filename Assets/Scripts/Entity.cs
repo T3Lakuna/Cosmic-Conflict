@@ -12,6 +12,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public List<Item> items;
 	[HideInInspector] public Team team;
 	[HideInInspector] public Vector3 movementTarget;
+	[HideInInspector] private EntityDisplay display;
 
 	[HideInInspector] public double health; // Current health
 	[HideInInspector] public double shield; // Current shield
@@ -41,7 +42,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 	[HideInInspector] public Renderer entityRenderer;
 
-	protected void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
+	public void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
 		this.entityRenderer = this.GetComponent<Renderer>();
 
 		this.damage = new Stat(damageBase, damageScaling, Stat.StatId.Damage);
@@ -80,20 +81,37 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.LevelUp();
 	}
 
+	public void MovementCommand(Vector3 targetPosition) { this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y); }
+
 	public void Die() {
 		Debug.Log(this.name + " died."); // TODO
 		this.gameObject.SetActive(false);
 	}
 
-	public void MovementCommand(Vector3 targetPosition) { this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y); }
-
-	public void MovementUpdate() { this.gameObject.transform.position = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime), this.entityRenderer.bounds.size.y); }
-
 	public void BasicAttack(Entity target) {
 		// TODO
 	}
 
-	protected void UpdateStats() {
+	public void Update() {
+		if (this.health <= 0) { this.Die(); } // Death due to low health.
+		this.MovementUpdate();
+		this.UpdateStats();
+		this.UpdateDisplay();
+		this.RegenerateResources();
+	}
+
+	private void MovementUpdate() { this.gameObject.transform.position = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime), this.entityRenderer.bounds.size.y); }
+
+	private void UpdateDisplay() {
+		if (!this.display) { this.display = EntityDisplay.CreateEntityDisplay(this); }
+		this.display.healthText.text = (int) this.health + " / " + (int) this.vitality.CurrentValue;
+		this.display.physicalShieldText.text = "" + (int) this.physicalShield;
+		this.display.magicalShieldText.text = "" + (int) this.magicalShield;
+		this.display.shieldText.text = "" + (int) this.shield;
+		this.display.resourceText.text = (int) this.resource + " / " + (int) this.energy.CurrentValue;
+	}
+
+	private void UpdateStats() {
 		this.damage.Update();
 		this.magic.Update();
 		this.vitality.Update();
@@ -113,12 +131,12 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.range.Update();
 	}
 
-	protected void RegenerateResources() {
-		if (this.health < this.vitality.CurrentValue) { this.health += this.regeneration.CurrentValue; }
+	private void RegenerateResources() {
+		if (this.health < this.vitality.CurrentValue) { this.health += this.regeneration.CurrentValue * Time.deltaTime; }
 
 		if (this.health > this.vitality.CurrentValue) { this.health = this.vitality.CurrentValue; }
 
-		if (this.resource < this.energy.CurrentValue) { this.resource += this.endurance.CurrentValue; }
+		if (this.resource < this.energy.CurrentValue) { this.resource += this.endurance.CurrentValue * Time.deltaTime; }
 
 		if (this.resource > this.energy.CurrentValue) { this.resource = this.energy.CurrentValue; }
 

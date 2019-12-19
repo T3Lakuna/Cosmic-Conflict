@@ -18,10 +18,10 @@ public class Ability {
 	public string Description;
 	public readonly Action Action;
 	public DateTime CastTime;
-	private int range;
 	public Sprite Icon;
+	public double cost;
 
-	public Ability(double maximumCooldown, Entity source, Entity target, string name, string description, int range, Sprite icon, Action action) {
+	public Ability(double maximumCooldown, Entity source, Entity target, string name, string description, double cost, Sprite icon, Action action) {
 		this.BaseCooldown = maximumCooldown;
 		this.CurrentCooldown = 0;
 		this.Level = 0;
@@ -30,19 +30,29 @@ public class Ability {
 		this.Description = description;
 		this.Action = action;
 		this.Target = target;
-		this.range = range;
+		this.cost = cost;
 		this.Icon = icon;
 		this.CastTime = DateTime.Now;
 	}
 
 	public void UpdateCooldown() {
-		double actualCooldown = this.BaseCooldown * this.Source.efficiency.CurrentValue;
+		double actualCooldown = this.BaseCooldown * (1 - this.Source.efficiency.CurrentValue);
 		if (this.CurrentCooldown > actualCooldown) { this.CurrentCooldown = actualCooldown; }
 
 		this.CurrentCooldown = Math.Max(this.CurrentCooldown - Time.deltaTime, 0);
 	}
 
 	public void Cast() {
+		if (this.CurrentCooldown > 0) {
+			return;
+		}
+
+		if (this.Source.resource >= this.cost) {
+			this.Source.resource -= this.cost;
+		} else {
+			return;
+		}
+
 		this.CurrentCooldown = this.BaseCooldown;
 		this.Action();
 	}
