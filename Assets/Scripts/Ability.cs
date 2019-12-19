@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -11,7 +12,6 @@ public class Ability {
 
 	public double CurrentCooldown;
 	public readonly double BaseCooldown;
-	public int Level;
 	public readonly Entity Source;
 	public Entity Target;
 	public string Name;
@@ -24,7 +24,6 @@ public class Ability {
 	public Ability(double maximumCooldown, Entity source, Entity target, string name, string description, double cost, Sprite icon, Action action) {
 		this.BaseCooldown = maximumCooldown;
 		this.CurrentCooldown = 0;
-		this.Level = 0;
 		this.Source = source;
 		this.Name = name;
 		this.Description = description;
@@ -36,7 +35,7 @@ public class Ability {
 	}
 
 	public void UpdateCooldown() {
-		double actualCooldown = this.BaseCooldown * (1 - this.Source.efficiency.CurrentValue);
+		double actualCooldown = this.BaseCooldown * (1 - this.Source.efficiency.CurrentValue / 100);
 		if (this.CurrentCooldown > actualCooldown) { this.CurrentCooldown = actualCooldown; }
 
 		this.CurrentCooldown = Math.Max(this.CurrentCooldown - Time.deltaTime, 0);
@@ -156,29 +155,37 @@ public class Ability {
 		}
 
 		if (duration > 0) {
-			target.StartCoroutine(Tools.DoAfterTime(duration, () => {
-				switch (type) {
-					case HealthType.Health:
-						target.health -= finalAmount;
-						break;
-					case HealthType.MagicalShield:
-						target.magicalShield -= finalAmount;
-						break;
-					case HealthType.PhysicalShield:
-						target.physicalShield -= finalAmount;
-						break;
-					case HealthType.Shield:
-						target.shield -= finalAmount;
-						break;
-					default:
-						throw new ArgumentOutOfRangeException(nameof(type), type, null);
-				}
-			}));
+			target.StartCoroutine(Ability.RemoveHeal(target, type, duration, finalAmount));
+		}
+	}
+
+	private static IEnumerator RemoveHeal(Entity target, HealthType type, double delay, double amount) {
+		yield return new WaitForSeconds((float) delay);
+		switch (type) {
+			case HealthType.Health:
+				target.health -= amount;
+				break;
+			case HealthType.MagicalShield:
+				target.magicalShield -= amount;
+				break;
+			case HealthType.PhysicalShield:
+				target.physicalShield -= amount;
+				break;
+			case HealthType.Shield:
+				target.shield -= amount;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException(nameof(type), type, null);
 		}
 	}
 
 	public static void ApplyStatusEffect(Entity target, StatusEffectType type, double duration, double value) {
 		target.currentStatusEffects.Add(type);
-		target.StartCoroutine(Tools.DoAfterTime(duration, () => { target.currentStatusEffects.Remove(type); }));
+		target.StartCoroutine(Ability.RemoveStatusEffect(target, type, duration));
+	}
+
+	private static IEnumerator RemoveStatusEffect(Entity target, StatusEffectType type, double delay) {
+		yield return new WaitForSeconds((float) delay);
+		target.currentStatusEffects.Remove(type);
 	}
 }

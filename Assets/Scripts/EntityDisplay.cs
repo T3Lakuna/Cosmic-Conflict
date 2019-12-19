@@ -13,7 +13,6 @@ public class EntityDisplay : MonoBehaviour {
 	public TMP_Text resourceText;
 
 	public static EntityDisplay CreateEntityDisplay(Entity entity) {
-		Debug.Log("H");
 		EntityDisplay display = Instantiate(UnityEngine.Resources.Load<GameObject>("Prefabs/EntityDisplay"), new Vector3(0, 1, 0), Quaternion.identity).GetComponent<EntityDisplay>();
 		display.entity = entity;
 		display.transform.parent = entity.transform;

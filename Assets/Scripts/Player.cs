@@ -21,7 +21,6 @@ public class Player : UnityEngine.MonoBehaviour {
 	}
 
 	private void PositionCamera() {
-		this.playerCamera.transform.position = new Vector3(this.champion.transform.position.x, this.champion.transform.position.y + 50, this.champion.transform.position.z - 35); // For camera angle (60, 0, 0).
-																																												  // TODO: Smart Camera
+		this.playerCamera.transform.position = new Vector3(this.champion.transform.position.x, this.champion.transform.position.y + 50, this.champion.transform.position.z - 35); // For camera angle (60, 0, 0). TODO: Smart Camera
 	}
 }

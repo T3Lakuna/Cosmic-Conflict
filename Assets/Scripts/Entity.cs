@@ -6,13 +6,18 @@ using static Ability;
 public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	public enum Team { Red, Blue, Neutral }
 
-	private const int ExperiencePerLevelPerLevel = 50;
+	public const int ExperiencePerLevelPerLevel = 50;
 
 	[HideInInspector] public List<StatusEffectType> currentStatusEffects;
 	[HideInInspector] public List<Item> items;
+	[HideInInspector] public Item trinket;
 	[HideInInspector] public Team team;
 	[HideInInspector] public Vector3 movementTarget;
 	[HideInInspector] private EntityDisplay display;
+
+	[HideInInspector] public int kills;
+	[HideInInspector] public int deaths;
+	[HideInInspector] public int assists;
 
 	[HideInInspector] public double health; // Current health
 	[HideInInspector] public double shield; // Current shield
@@ -44,6 +49,10 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 	public void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
 		this.entityRenderer = this.GetComponent<Renderer>();
+
+		this.kills = 0;
+		this.deaths = 0;
+		this.assists = 0;
 
 		this.damage = new Stat(damageBase, damageScaling, Stat.StatId.Damage);
 		this.magic = new Stat(magicBase, magicScaling, Stat.StatId.Magic);
@@ -84,7 +93,6 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	public void MovementCommand(Vector3 targetPosition) { this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y); }
 
 	public void Die() {
-		Debug.Log(this.name + " died."); // TODO
 		this.gameObject.SetActive(false);
 	}
 
@@ -100,7 +108,14 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.RegenerateResources();
 	}
 
-	private void MovementUpdate() { this.gameObject.transform.position = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime), this.entityRenderer.bounds.size.y); }
+	private void MovementUpdate() {
+		Vector3 step = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime), this.entityRenderer.bounds.size.y);
+		if (Tools.HeightOfMapAt(step.x, step.z) == -1) {
+			this.movementTarget = this.transform.position;
+		} else {
+			this.gameObject.transform.position = step;
+		}
+	}
 
 	private void UpdateDisplay() {
 		if (!this.display) { this.display = EntityDisplay.CreateEntityDisplay(this); }
@@ -140,7 +155,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 		if (this.resource > this.energy.CurrentValue) { this.resource = this.energy.CurrentValue; }
 
-		if (this.experience > this.level * Entity.ExperiencePerLevelPerLevel) {
+		if (this.experience >= this.level * Entity.ExperiencePerLevelPerLevel) {
 			this.experience -= this.level * Entity.ExperiencePerLevelPerLevel;
 			this.LevelUp();
 		}
