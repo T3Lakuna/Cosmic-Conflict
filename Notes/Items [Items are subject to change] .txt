@@ -6,9 +6,9 @@ Stat Worth
 1 eng =  1.5g
 1 hp = 2.5g
 1 reg = 3g
-1% edu = 5%
+1% edu = 5g
 10% eff = 800g
-12 speed = 1g
+1 speed = 14g
 1 crit = 30g
 1 fev = 25g
 
@@ -86,6 +86,9 @@ tank 100g
 
 	// Tier 1 Items //
 
+	Boots 350g
+	25 speed
+
 	blade 1 500g
 	15 ad
 
@@ -133,6 +136,9 @@ tank 100g
 	End Item 130g
 	30% End
 
+	reg Item 130g
+	35% reg
+
 	// Tier 2 Items //
 
 	Upgraded Blade (blade 1 + 500 g)
@@ -142,7 +148,7 @@ tank 100g
 	Upgraded Blade 2 (blade 1 + crit Item 1 + 300g)
 	20 ad
 	5 Eff
-	10 crit %
+	15 crit %
 
 	Upgraded Blade 3 (Blade 1 + Health Item + 200g)
 	20 ad
@@ -191,7 +197,7 @@ tank 100g
 	Upgrade Book 5 (Book 1 + Book 1 + 300g)
 	25 ap
 	10 Pierce
-	10 eff
+	Passive : Magic Burn : After hitting an ability burn the enemy for 50 damage over 10 secs (30 cd)
 	
 	Upgrade Book 6 (Book 1 + HP Item + 200g)
 	20 ap
@@ -271,15 +277,88 @@ tank 100g
 	550 Hp
 	Active : Gaint's Field : Create an Aura that slows enemies by 15% (60 cd / Last 10 secs)
 
-	Upgraded Hp item 3 (Hp Item + Reg Item + 150)
+	Upgraded Hp item 3 (Hp Item + Reg Item + 250g)
 	500 Hp
-	25 reg
+	40 reg
 	Passive : Durable : Being out of combat give a bonus 25 reg
 	
-	Edu 
+	Upgrade Reg Item (Reg item + Reg Item + 150g)
+	50 reg
+	Passive : Survivalist : When Below 50% health Gain 50 reg
+	
+	Upgrade Reg Item 2 (Reg item + End item + 200g)
+	35 reg
+	35 end
+	passive : Convgence : Turn reg in to end (2 reg = 1 end)
+
+	Upgraded Fev Item (fev Item + fev Item + 50G)
+	25 fev
+	Passive : Blood Rush : grants a small speed boost (30 cd / 15 speed)
+	
+	Upgrade Fev Item 2 (Fev item + 400g)
+	15 fev
+	10 lifesteal
+
+	Upgrade Fev item 3 (Fev item + Crit Item 1 + 150g)
+	20% Crit
+	15 fev
+
+				// tier 3 Item//
+
+	assassin Item (Up blade 1 + Up blade 4 + 600g)
+	65 ad
+	10 eff
+	14 force
+	Passive :  true vulnerability : dealing damage deduce Healing by 45% for 3 secs (AA again resets debuff time)
+
+	assassin  Item 2 (Up Blade 1 + Up blade 1 + 500g)
+	40 ad 
+	20 force
+	10 eff
+	Passive : Stalker : next attack aganist an enemy slows them for 50% for 1 sec (30 cd)
+
+	juggernaut Item 1 (basic Blade 2 + UP HP item 3  + 550g)
+	600hp
+	60 ad
+	Active : tyrant's Field : Create an Aura that slows enemies by 25% (60 cd / Last 10 secs)
+
+	Juggernaut Item 2 (Up Blade 4 +  Up Hp Item + 450g)
+	40 ad 
+	10 eff
+	Passive : Run Down : hitting an emeny give you a speed boost (25 speed)
+
+	Juggernaut Item 3 ( Up Armor Item 2 + Basic Blade 2 + 500g)
+	50 ad
+	45 armor
+	Passive : Imiating : (aura) Reduce Enemy fev by 30%
+
+	AD Tank Item 1 (UP HP item 3   + Up armor item + 500g)
+	500 Hp
+	50 reg
+	45 armor
+	Passive : Spiney : AA the user places a debuff on the champion reducing their healing by 33%
+	Passive : Durable : Being out of combat give a bonus 25 reg
+	
+	AD tank Item 2 ( UP Armor Item 3 + UP armor item 2 + 500g)
+	70 armor
+	10 eff
+	450 hp 
+	Passive : Imimating : Aura enemies gain -25% Feveor 
+
+	AD tank Item 3 (Upgraded Armor Item 4 + Upgrade HP item 1 + 300g)
+	800 hp 
+	10 eff
+	35 armor
+	500 energy
+	Passive : Energy Mastery : Spell give a stack of energy granting 25 energy (CD between stacks 15 / 10 Stacks cap)
 	
 
 	
+
+	
+	
+	
+		
 
 	
 
