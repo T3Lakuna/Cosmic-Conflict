@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3622518771935463443
+--- !u!1 &7750600299980968549
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3622518771935463535}
-  - component: {fileID: 3622518771935463534}
-  - component: {fileID: 3622518771935463533}
-  - component: {fileID: 3622518771935463532}
-  - component: {fileID: 931576792521349666}
-  - component: {fileID: -5701039082827108570}
-  m_Layer: 9
-  m_Name: ChampionObject
+  - component: {fileID: 7103960051204486505}
+  - component: {fileID: 2363785876577894717}
+  - component: {fileID: 5401093605646208654}
+  - component: {fileID: 7924928323111399417}
+  - component: {fileID: 3446150714520933826}
+  m_Layer: 10
+  m_Name: TertiaryModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3622518771935463535
+--- !u!4 &7103960051204486505
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622518771935463443}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7750600299980968549}
+  m_LocalRotation: {x: 0.46193978, y: 0.19134173, z: 0.19134173, w: 0.84462327}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 5, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3622518771935463534
+  m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
+--- !u!33 &2363785876577894717
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622518771935463443}
+  m_GameObject: {fileID: 7750600299980968549}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3622518771935463533
+--- !u!23 &5401093605646208654
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622518771935463443}
+  m_GameObject: {fileID: 7750600299980968549}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18d0c54b222a63a4cb984f2bcfbf8422, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,26 +80,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3622518771935463532
+--- !u!65 &7924928323111399417
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622518771935463443}
+  m_GameObject: {fileID: 7750600299980968549}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &931576792521349666
+--- !u!54 &3446150714520933826
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622518771935463443}
+  m_GameObject: {fileID: 7750600299980968549}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -110,34 +109,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-5701039082827108570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622518771935463443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d3ad3920dbe6b4bbc072d1f4ad820f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentStatusEffects: 
-  team: 0
-  movementTarget: {x: 0, y: 0, z: 0}
-  kills: 0
-  deaths: 0
-  assists: 0
-  health: 0
-  shield: 0
-  physicalShield: 0
-  magicalShield: 0
-  resource: 0
-  experience: 0
-  level: 0
-  entityRenderer: {fileID: 0}
-  player: {fileID: 0}
-  currency: 0
-  uniqueUserId: 0
-  prefab: {fileID: 0}
-  icon: {fileID: 0}

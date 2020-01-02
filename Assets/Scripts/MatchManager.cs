@@ -34,6 +34,9 @@ public class MatchManager : MonoBehaviour {
 	public Image sixthItemIcon;
 	public Sprite cooldownSprite;
 	public Sprite missingSprite;
+	public LayerMask mapLayerMask;
+	public LayerMask entityLayerMask;
+	public LayerMask abilityLayerMask;
 
 	private void Awake() {
 		if (!MatchManager.Instance) { MatchManager.Instance = this; } else if (MatchManager.Instance != this) { UnityEngine.Object.Destroy(this); }
@@ -42,6 +45,9 @@ public class MatchManager : MonoBehaviour {
 	private void Start() {
 		this.champions = new List<Champion>();
 		this.matchStartTime = DateTime.Now;
+		mapLayerMask = LayerMask.GetMask("Map");
+		entityLayerMask = LayerMask.GetMask("Entity");
+		abilityLayerMask = LayerMask.GetMask("Ability");
 	}
 
 	private void Update() {

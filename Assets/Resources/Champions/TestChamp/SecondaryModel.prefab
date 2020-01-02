@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2847223596464591434}
   - component: {fileID: 805746055243931310}
   - component: {fileID: 8163815273119266636}
-  m_Layer: 2
-  m_Name: SecondaryAbilityObject
+  m_Layer: 10
+  m_Name: SecondaryModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

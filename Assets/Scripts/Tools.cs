@@ -11,7 +11,7 @@ public static class Tools {
 
 	public static double HeightOfMapAt(double x, double z) {
 		Ray heightRay = new Ray(new Vector3((float) x, 100, (float) z), new Vector3(0, -90, 0));
-		Physics.Raycast(heightRay, out RaycastHit hit);
+		Physics.Raycast(heightRay, out RaycastHit hit, float.MaxValue, MatchManager.Instance.mapLayerMask);
 		if (hit.collider != MatchManager.Instance.floorCollider && hit.collider != MatchManager.Instance.riverBedCollider && hit.collider != MatchManager.Instance.structureBaseCollider) { return -1; }
 
 		return hit.point.y;

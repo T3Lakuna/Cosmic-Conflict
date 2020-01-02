@@ -1,7 +1,7 @@
 If your champion isn't working in the game, or if you need help finding something, make sure to refer back to this document.
 
 Issues in the inspector:
-- If your character or ability object is falling into the floor, make sure that the GameObject layer is set to "Ignore Raycast."
+- If your character or ability object is falling into the floor, make sure that the GameObject layer is set to "Entity" or "Ability," respectively.
 - If your character or ability object is having issues climbing inclines, walking into things, or shaking, make sure that the Rigidbody component has all six boxes marked under "Constraints," and that it is set to no gravity, not kinematic.
 - If your character or ability object isn't being displayed or isn't interacting with anything, ensure that the GameObject has each of a Mesh Filter, Mesh Renderer, and Mesh Collider component attached.
 - If your character object isn't doing anything, make sure that you attached the champion's script to the GameObject.

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Ability {
@@ -82,6 +81,7 @@ public class Ability {
 	}
 
 	public static void DealDamage(Entity target, DamageType type, double flatAmount, double percentageAmount) {
+		string debugString = "DealDamage (target: " + target.name + ", type: " + type.ToString() + ", flat: " + flatAmount + ", percent: " + percentageAmount + "):\n";
 		double effectiveHealth;
 		HealthType[] damageOrder;
 		switch (type) {
@@ -100,38 +100,53 @@ public class Ability {
 			default:
 				throw new ArgumentOutOfRangeException(nameof(type), type, null);
 		}
+		debugString += "Target effective health: " + effectiveHealth + ".\n";
+		debugString += "Damage order: " + damageOrder + ".\n";
 
-		double damageTaken = (effectiveHealth * percentageAmount) + flatAmount;
+		double damageTaken = (effectiveHealth * (percentageAmount / 100)) + flatAmount;
+		debugString += "Damage taken: " + damageTaken + ".\n";
 		double effectiveDamageTaken = damageTaken * (target.vitality.CurrentValue / effectiveHealth);
+		debugString += "Effective damage taken: " + effectiveDamageTaken + ".\n";
 		double remainingDamage = effectiveDamageTaken;
+		debugString += "---\n";
 
 		foreach (HealthType healthType in damageOrder) {
 			double originalValue;
 			switch (healthType) {
 				case HealthType.Health:
+					debugString += "To health: " + remainingDamage + " damage on " + target.health + " hit points (";
 					originalValue = target.health;
 					target.health -= Math.Min(remainingDamage, target.health);
 					remainingDamage -= originalValue - target.health;
+					debugString += target.health + " health remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				case HealthType.Shield:
+					debugString += "To shield: " + remainingDamage + " damage on " + target.shield + " hit points (";
 					originalValue = target.shield;
 					target.shield -= Math.Min(remainingDamage, target.shield);
 					remainingDamage -= originalValue - target.shield;
+					debugString += target.shield + " shield remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				case HealthType.PhysicalShield:
+					debugString += "To physical shield: " + remainingDamage + " damage on " + target.physicalShield + " hit points (";
 					originalValue = target.physicalShield;
 					target.physicalShield -= Math.Min(remainingDamage, target.physicalShield);
 					remainingDamage -= originalValue - target.physicalShield;
+					debugString += target.physicalShield + " physical shield remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				case HealthType.MagicalShield:
+					debugString += "To magical shield: " + remainingDamage + " damage on " + target.magicalShield + " hit points (";
 					originalValue = target.magicalShield;
 					target.magicalShield -= Math.Min(remainingDamage, target.magicalShield);
 					remainingDamage -= originalValue - target.magicalShield;
+					debugString += target.magicalShield + " magical shield remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
 		}
+
+		Debug.Log(debugString); // TODO: Remove debugString.
 	}
 
 	public static void Heal(Entity target, HealthType type, double duration, double flatAmount, double percentageAmount) {

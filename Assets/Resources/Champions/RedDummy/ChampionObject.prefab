@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3622518771935463532}
   - component: {fileID: 931576792521349666}
   - component: {fileID: 5016881833250820575}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: ChampionObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,9 @@ MonoBehaviour:
   currentStatusEffects: 
   team: 0
   movementTarget: {x: 0, y: 0, z: 0}
+  kills: 0
+  deaths: 0
+  assists: 0
   health: 0
   shield: 0
   physicalShield: 0
@@ -137,3 +140,4 @@ MonoBehaviour:
   currency: 0
   uniqueUserId: 0
   prefab: {fileID: 0}
+  icon: {fileID: 0}

@@ -34,6 +34,7 @@ public class AbilityObject : MonoBehaviour {
 		if (collisionEntity.team == this.source.team) { return; }
 
 		this.collidedEntity = collisionEntity;
+		Debug.Log("Collision!"); // TODO: Remove.
 		this.collisionAction();
 
 		if (this.destroyOnHit) { Tools.Destroy(this.gameObject); }
