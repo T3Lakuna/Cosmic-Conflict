@@ -47,10 +47,13 @@ public abstract class Champion : ComplexEntity {
 
 		if (Input.GetKeyUp(KeyCode.S)) { this.MovementCommand(this.transform.position); }
 
-		if (!Physics.Raycast(this.player.playerCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit mousePosition)) { return; }
-
-		if (mousePosition.collider != MatchManager.Instance.floorCollider && mousePosition.collider != MatchManager.Instance.structureBaseCollider && mousePosition.collider != MatchManager.Instance.riverBedCollider) { return; }
-
-		if (Input.GetMouseButton(1)) { this.MovementCommand(mousePosition.point); }
+		if (Input.GetMouseButton(1)) {
+			RaycastHit movementRaycast = this.player.RaycastOnLayer(MatchManager.Instance.mapLayerMask);
+			RaycastHit basicAttackRaycast = this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask);
+			if (basicAttackRaycast.collider) {
+				Entity basicAttackEntity = basicAttackRaycast.collider.GetComponent<Entity>();
+				if (basicAttackEntity) { this.BasicAttackCommand(basicAttackEntity); }
+			} else if (movementRaycast.collider && movementRaycast.collider != MatchManager.Instance.wallCollider) { this.MovementCommand(movementRaycast.point); }
+		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using static Ability;
@@ -13,6 +14,9 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Item trinket;
 	[HideInInspector] public Team team;
 	[HideInInspector] public Vector3 movementTarget;
+	[HideInInspector] public Entity basicAttackTarget;
+	[HideInInspector] public double basicAttackCooldown;
+	[HideInInspector] public Ability basicAttackAbility;
 	[HideInInspector] private EntityDisplay display;
 
 	[HideInInspector] public int kills;
@@ -86,22 +90,35 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.items = new List<Item>();
 
 		this.MovementCommand(this.transform.position);
+		this.basicAttackTarget = null;
+		this.basicAttackCooldown = 0;
+		this.basicAttackAbility = null;
 
 		this.LevelUp();
 	}
 
-	public void MovementCommand(Vector3 targetPosition) { this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y); }
+	public void MovementCommand(Vector3 targetPosition) {
+		this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y);
+	}
 
 	public void Die() {
 		this.gameObject.SetActive(false);
 	}
 
-	public void BasicAttack(Entity target) {
-		// TODO
+	public void BasicAttackCommand(Entity target) {
+		this.basicAttackTarget = target;
+		double oldBasicAttackCooldown;
+		if (this.basicAttackAbility != null) { oldBasicAttackCooldown = this.basicAttackAbility.CurrentCooldown; } else { oldBasicAttackCooldown = 0; }
+		this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
+			AbilityObject abilityObject = Ability.CreateAbilityObject("Models/BasicAttackModel", true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
+			abilityObject.collisionAction = () => { Ability.DealDamage(abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
+		});
+		this.basicAttackAbility.CurrentCooldown = oldBasicAttackCooldown;
 	}
 
 	public void Update() {
 		if (this.health <= 0) { this.Die(); } // Death due to low health.
+		this.BasicAttackUpdate();
 		this.MovementUpdate();
 		this.UpdateStats();
 		this.UpdateDisplay();
@@ -110,11 +127,14 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 	private void MovementUpdate() {
 		Vector3 step = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime), this.entityRenderer.bounds.size.y);
-		if (Tools.HeightOfMapAt(step.x, step.z) == -1) {
-			this.movementTarget = this.transform.position;
-		} else {
-			this.gameObject.transform.position = step;
-		}
+		if (Tools.HeightOfMapAt(step.x, step.z) == -1) { this.movementTarget = this.transform.position; } else { this.gameObject.transform.position = step; }
+	}
+
+	private void BasicAttackUpdate() {
+		if (this.basicAttackAbility != null) { this.basicAttackAbility.UpdateCooldown(); }
+		if (!this.basicAttackTarget) { return; }
+		if (Vector3.Distance(this.transform.position, this.basicAttackTarget.transform.position) > this.range.CurrentValue || this.basicAttackTarget.team == this.team) { this.basicAttackTarget = null; return; }
+		this.basicAttackAbility.Cast();
 	}
 
 	private void UpdateDisplay() {

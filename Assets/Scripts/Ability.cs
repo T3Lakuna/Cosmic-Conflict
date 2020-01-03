@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Ability {
@@ -12,22 +13,21 @@ public class Ability {
 	public double CurrentCooldown;
 	public readonly double BaseCooldown;
 	public readonly Entity Source;
-	public Entity Target;
 	public string Name;
 	public string Description;
-	public readonly Action Action;
+	public Action Action;
 	public DateTime CastTime;
 	public Sprite Icon;
 	public double cost;
+	public Entity target; // Used for area-of-effect abilities.
 
-	public Ability(double maximumCooldown, Entity source, Entity target, string name, string description, double cost, Sprite icon, Action action) {
+	public Ability(double maximumCooldown, Entity source, string name, string description, double cost, Sprite icon, Action action) {
 		this.BaseCooldown = maximumCooldown;
 		this.CurrentCooldown = 0;
 		this.Source = source;
 		this.Name = name;
 		this.Description = description;
 		this.Action = action;
-		this.Target = target;
 		this.cost = cost;
 		this.Icon = icon;
 		this.CastTime = DateTime.Now;
@@ -41,112 +41,91 @@ public class Ability {
 	}
 
 	public void Cast() {
-		if (this.CurrentCooldown > 0) {
-			return;
-		}
-
-		if (this.Source.resource >= this.cost) {
-			this.Source.resource -= this.cost;
-		} else {
-			return;
-		}
+		if (this.CurrentCooldown > 0) { return; }
+		if (this.Source.resource >= this.cost) { this.Source.resource -= this.cost; } else { return; }
 
 		this.CurrentCooldown = this.BaseCooldown;
 		this.Action();
 	}
 
-	public static AbilityObject CreateAbilityObject(string prefabResourcesPath, bool destroyOnHit, Entity source, Vector3 initialPosition, Vector3 target, double movementSpeed, double range, double lifespan, Action collisionAction, Action updateAction) {
+	public static AbilityObject CreateAbilityObject(string prefabResourcesPath, bool destroyOnHit, bool canHitAllies, bool canOnlyHitTarget, Entity source, Vector3 initialPosition, Vector3 target, Entity targetEntity, double movementSpeed, double range, double lifespan) {
 		GameObject abilityObject = Tools.Instantiate(prefabResourcesPath, initialPosition);
 		AbilityObject ability = abilityObject.AddComponent<AbilityObject>();
-		ability.collisionAction = collisionAction;
 		ability.target = target;
 		ability.movementSpeed = movementSpeed;
-		ability.updateAction = updateAction;
 		ability.destroyOnHit = destroyOnHit;
 		ability.maximumDistance = range;
 		ability.source = source;
 		ability.lifespan = lifespan;
+		ability.canHitAllies = canHitAllies;
+		ability.canOnlyHitTarget = canOnlyHitTarget;
+		ability.targetEntity = targetEntity;
 
 		return ability;
 	}
 
-	public static void DoInArea(Vector3 center, double radius, Ability ability) {
+	public static void DoInArea(Vector3 center, double radius, bool canHitAllies, Ability ability) {
 		foreach (Collider target in Physics.OverlapSphere(center, (float) radius)) {
 			Entity entity = target.GetComponent<Entity>();
 			if (!entity) { continue; }
+			if (!canHitAllies && entity.team == ability.Source.team) { continue; }
 
-			ability.Target = entity;
+			ability.target = entity;
 			ability.Cast();
 		}
 	}
 
 	public static void DealDamage(Entity target, DamageType type, double flatAmount, double percentageAmount) {
-		string debugString = "DealDamage (target: " + target.name + ", type: " + type.ToString() + ", flat: " + flatAmount + ", percent: " + percentageAmount + "):\n";
 		double effectiveHealth;
 		HealthType[] damageOrder;
 		switch (type) {
 			case DamageType.Magical:
-				effectiveHealth = target.health + target.health * (target.nullification.CurrentValue / 100.0);
+				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.nullification.CurrentValue / 100.0);
 				damageOrder = new[] { HealthType.MagicalShield, HealthType.Shield, HealthType.Health };
 				break;
 			case DamageType.Physical:
+				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.armor.CurrentValue / 100.0);
 				damageOrder = new[] { HealthType.PhysicalShield, HealthType.Shield, HealthType.Health };
-				effectiveHealth = target.health + target.health * (target.armor.CurrentValue / 100.0);
 				break;
 			case DamageType.True:
+				effectiveHealth = target.vitality.CurrentValue;
 				damageOrder = new[] { HealthType.Shield, HealthType.Health };
-				effectiveHealth = target.health;
 				break;
 			default:
 				throw new ArgumentOutOfRangeException(nameof(type), type, null);
 		}
-		debugString += "Target effective health: " + effectiveHealth + ".\n";
-		debugString += "Damage order: " + damageOrder + ".\n";
 
 		double damageTaken = (effectiveHealth * (percentageAmount / 100)) + flatAmount;
-		debugString += "Damage taken: " + damageTaken + ".\n";
 		double effectiveDamageTaken = damageTaken * (target.vitality.CurrentValue / effectiveHealth);
-		debugString += "Effective damage taken: " + effectiveDamageTaken + ".\n";
 		double remainingDamage = effectiveDamageTaken;
-		debugString += "---\n";
 
 		foreach (HealthType healthType in damageOrder) {
 			double originalValue;
 			switch (healthType) {
 				case HealthType.Health:
-					debugString += "To health: " + remainingDamage + " damage on " + target.health + " hit points (";
 					originalValue = target.health;
 					target.health -= Math.Min(remainingDamage, target.health);
 					remainingDamage -= originalValue - target.health;
-					debugString += target.health + " health remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				case HealthType.Shield:
-					debugString += "To shield: " + remainingDamage + " damage on " + target.shield + " hit points (";
 					originalValue = target.shield;
 					target.shield -= Math.Min(remainingDamage, target.shield);
 					remainingDamage -= originalValue - target.shield;
-					debugString += target.shield + " shield remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				case HealthType.PhysicalShield:
-					debugString += "To physical shield: " + remainingDamage + " damage on " + target.physicalShield + " hit points (";
 					originalValue = target.physicalShield;
 					target.physicalShield -= Math.Min(remainingDamage, target.physicalShield);
 					remainingDamage -= originalValue - target.physicalShield;
-					debugString += target.physicalShield + " physical shield remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				case HealthType.MagicalShield:
-					debugString += "To magical shield: " + remainingDamage + " damage on " + target.magicalShield + " hit points (";
 					originalValue = target.magicalShield;
 					target.magicalShield -= Math.Min(remainingDamage, target.magicalShield);
 					remainingDamage -= originalValue - target.magicalShield;
-					debugString += target.magicalShield + " magical shield remaining, " + remainingDamage + " still to be dealt).\n";
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
 		}
-
-		Debug.Log(debugString); // TODO: Remove debugString.
 	}
 
 	public static void Heal(Entity target, HealthType type, double duration, double flatAmount, double percentageAmount) {
