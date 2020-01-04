@@ -1,0 +1,18 @@
+Name
+	Shion, the Esoteric Swordsman
+Role
+	Specialist
+Origin, Theme, Concept, Backstory, and References.
+	A swordsman that combines breathing and magic to wield his sword. Uses two swords if in desperation.
+Passive Ability
+	After a certain number of ability casts, Shion casts an empowered ability. Abilities deal increased damage when cast nearby to each other.
+Normal Abilities
+	- Short range instant slice that does more damage based on the amount of maximum health the target has over Shion. (Empowered: Dashes behind the enemy and does more damage.)
+	- Two-pronged attack that lowers the target's armor on the second hit. (Empowered: Slows the target.)
+	- Shion swings his sword in a cone shape in front of him. (Empowered: Stuns the target.)
+Ultimate Ability
+	Shion gains cooldown reduction, raises damage, reduced his resistances, and empowers all of his abilities for a duration.
+Strengths
+	Good sustained damage, alright durability, good engage, good matchup into bruisers and tanks, good chaining of abilities.
+Weaknesses, Counters, and Counterplay
+	Low mobility, short range, easily kited, bad matchup into marksmen, assassins, and mages, weak against enemies with good healing.

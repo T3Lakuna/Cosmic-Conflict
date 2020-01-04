@@ -3,15 +3,17 @@ Name
 Role
 	Assassins
 Origin, Theme, Concept, Backstory, and References.
-	Monkey, reference: Jayden Ellery for lookalike
+	Monkey, reference: Jayden Ellery for lookalike.
 Passive Ability
-	Gains base movement speed based on level. Armor, MR, and bonus HP converted into a shield with cooldown.
+	Gains base movement speed based on level. Resistances and bonus health is converted into a shield every once-in-a-while.
+	Every third attack in a row on a single target does additional damage based on the target's missing health.
+	Gains movement speed while near a wall.
 Normal Abilities
-	- Dashes to enemy and does missing percent hp
-	- Passive: 3 consecutive autos reduce armor. Active: Ritokong punches the enemy.
-	- Passive: Gain 20% movement speed around terrain. Active: Dashes towards terrain.
+	- Dashes to a target and does damage based on their missing health.
+	- Deals damage to a target within melee range.
+	- Dash towards a wall.
 Ultimate Ability
-	Increase AD, MS, and Armor Pen.
+	Ritokong gains additional movement speed, damage, and armor penetration for a duration.
 Strengths
 	High burst damage, very high mobility, good stealth, defensive tricks, good at fighting targets who are alone, great matchup into mages and marksmen.
 Weaknesses, Counters, and Counterplay

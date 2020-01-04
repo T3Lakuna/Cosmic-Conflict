@@ -1,5 +1,5 @@
 Name
-	Chef Norris, Chef De Cuisine
+	Chef Norris, Chef de Cuisine
 Role
 	Enchanter
 Origin, Theme, Concept, Backstory, and References.

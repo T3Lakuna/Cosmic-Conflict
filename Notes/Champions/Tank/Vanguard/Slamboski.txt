@@ -1,17 +1,17 @@
 Name
-	Slamboski, The Valley Shaper
+	Slambowski, The Valley Shaper
 Role
 	Vanguard
 Origin, Theme, Concept, Backstory, and References.
-	Slamboski was the landshaper of the war planet Ignia. He shaped the lands and went into slumber once life began. He awoke to a wasteland instead of his paradise.
+	Slambowski was the landshaper of the war planet Ignia. He shaped the lands and went into slumber once life began. He awoke to a wasteland instead of his paradise.
 Passive Ability
-	After casting any ability, Slamboski creates a shockwave around him that deals low dmg and stuns enemies for .05 seconds.
+	After casting any ability, Slambowski creates a shockwave around him that deals low damage and stuns enemies for a very short amount of time.
 Normal Abilities
-	- Slamboski slams the ground and creates a earthen wall after 1 second. Interacts like Trundle pillar. Added ability levels make its more prominent 
-	- Slamboski slams his fists together to deal a small AoE atk infront of him. Enemies hit by the AoE have their resistances lowered.
-	- Slamboski climbs up a wall. Afterwards, he launches himself off the wall dealing damage to enemies in the way, at max range, his passive triggers.
+	- Slambowski slams the ground and creates a earthen wall after 1 second. Interacts like Trundle pillar.
+	- Slambowski slams his fists together to lower the resistances of enemies in front of him.
+	- Slambowski climbs up a wall. Can be recast to launch him off the wall, dealing damage to enemies in the way.
 Ultimate Ability
-	Slamboski winds up a punch. The longer the punch is wound up, the more magnitude his punch does. Any cc will cause Slamboski to activate his ulti. (He cannot manually cancel it) (Magnitude increases in the higher stages are more effective than the lower stage increases.
+	Slambowski winds up a punch. The longer the punch is wound up, the more damage it does. Any crowd-control will cause Slamboski to activate his ulti (he cannot manually cancel it).
 Strengths
 	Very high durability, very high crowd-control, great engage, good disruption/diversion, good lockdown, good tools to increase defenses, great matchup into assassins and mages.
 Weaknesses, Counters, and Counterplay

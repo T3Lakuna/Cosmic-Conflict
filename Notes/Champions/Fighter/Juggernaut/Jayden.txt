@@ -1,22 +1,18 @@
 Name
-	Jyaden, The Dormant God
+	Jyaden, the Dormant God
 Role
 	Juggernaut
 Origin, Theme, Concept, Backstory, and References.
-	Kurt Russel from The Thing. Elder God inhabits the body of Jayden and lends immaculate power to Jayden.
+	Kurt Russel from The Thing. An elder god inhabits Jayden's body and lends him immaculate power.
 Passive Ability
-	Resotres hp and mana when attacking an enemy and adds "sacrifice" stack.
-	At 5 stacks, Jayden enters Imperial Takeover which boosteds Jayden's dmg by 20%.
+	Attacks which hit an enemy champion restore Jayden's health and energy, and gives Jayden a sacrifice stack. At 5 stacks, Jayden enters Celestial Takeover, which increases his damage for a while.
 Normal Abilities
-	- Jayden blasts dark energy in a beam that ends with a square that slows and deals dmg.
-	- Auto attack reset that does extra dmg if underneath an HP threshold
-	- Jayden draws dark energy towards him, pulling anyone in the process.
+	- Jayden blasts dark energy in a beam that ends with a square that slows and deals damage.
+	- Basic attack reset that does extra damage to the target if it is beneath a health threshold
+	- Jayden pulls nearby enemies towards him.
 Ultimate Ability
-	Jayden automatically enters Imperial Takeover when activated.
-	Recast the ability to call upon a meteor that reactivates if it kills an enemy.
-	Executes at a low HP threshold otherwise does extra dmg at a medium HP threshold.
+	Can only be used while Jayden is in Celestial Takeover. Launches a meteor which kills the target if they are below a certain amount of health, otherwise dealing moderate damage. If the target dies, the cooldown on this ability is set to 0.
 Strengths
 	Good sustained damage, good durability, good engage, good matchup into assassins and tanks.
 Weaknesses, Counters, and Counterplay
         Short range, bad disengage, easily kited, no mobility, bad matchup into mages and marksmen.
-  

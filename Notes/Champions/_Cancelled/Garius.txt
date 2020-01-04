@@ -1,17 +1,20 @@
-Garius
-a tribal orc with future tech
-sustain duelist
-p-orchish rage- every 4 second gains an empowered auto attack that does percent ad 
-   and percent total health as bonus damage
-q-sprint- boosts movement speed and attack speed
-w-guerilla tactics- lays a field of slow and attack speed slow for enemys
-e-War tech- gives a percent scaling lifesteal
-r-windwrecker- switches between ranged(gun/ap) and melee(sword/ad) auto attacks
-strengths- very good sustain good 1v1s very good early game.
-weaknesses- falls off late game 
-references- a mix of jayce and trundle
-Backstory- was the leader of a tribe of orcs lead by the strongest(him) aliens crashed and he raided their ship 
-           and then they killed his tribe so he hunts aliens
-should have really(really) high base stats
+Name
+	Garius.
+Class/Role
+	Juggernaut
+Origin, Theme, Concept, Backstory, and References.
+	Tribal orc with futuristic technology.
+Passive Ability/Abilities
+	Every once-in-a-while, Garius' next basic attack is empowered, dealing damage based on the target's maximum health.
+Normal Ability/Abilities
+	- Garius gains movement and attack speed for a duration.
+	- Create a zone that slows enemies' movement and attack speed.
+	- Garius gains vamp for a duration.
+Ultimate Ability/Abilities
+	Toggle basic attack range between melee and ranged.
+Strengths
+	Good sustained damage, good durability, good engage, good matchup into assassins and tanks.
+Weaknesses, Counters, and Counterplay
+	Short range, bad disengage, easily kited, no mobility, bad matchup into mages and marksmen.
 
-Don't submit a champion ever again.
+Denied. Incoherent kit with no well-defined playstyle. Boring.
