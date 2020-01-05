@@ -39,6 +39,12 @@ public class MatchManager : MonoBehaviour {
 	public LayerMask mapLayerMask;
 	public LayerMask entityLayerMask;
 	public LayerMask abilityLayerMask;
+	public Inhibitor blueTopInhibitor;
+	public Inhibitor blueMiddleInhibitor;
+	public Inhibitor blueBottomInhibitor;
+	public Inhibitor redTopInhibitor;
+	public Inhibitor redMiddleInhibitor;
+	public Inhibitor redBottomInhibitor;
 
 	private void Awake() {
 		if (!MatchManager.Instance) { MatchManager.Instance = this; } else if (MatchManager.Instance != this) { UnityEngine.Object.Destroy(this); }

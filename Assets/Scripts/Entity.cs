@@ -101,11 +101,12 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y);
 	}
 
-	public Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
+	public Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeSelf, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, (float) maximumRange, MatchManager.Instance.entityLayerMask);
 		Entity closestEntity = null;
 		foreach (Collider collider in hitColliders) {
 			Entity collidedEntity = collider.GetComponent<Entity>();
+			if (!includeSelf && collidedEntity == this) { continue; }
 			if (!includeEnemies && collidedEntity.team != this.team || !includeAllies && collidedEntity.team == this.team) { continue; }
 			Champion collidedChampion = collidedEntity.GetComponent<Champion>();
 			Structure collidedStructure = collidedEntity.GetComponent<Structure>();
