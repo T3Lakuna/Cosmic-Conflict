@@ -8,7 +8,7 @@ public abstract class Structure : Entity {
 		this.position = this.transform.position;
 	}
 
-	public void Update() {
+	public new void Update() {
 		base.Update();
 		this.transform.position = this.position;
 	}

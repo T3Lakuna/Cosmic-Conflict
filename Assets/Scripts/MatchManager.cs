@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MatchManager : MonoBehaviour {
+	public enum Lane { Top, Middle, Bottom }
+
 	public static MatchManager Instance;
 	[HideInInspector] public List<Champion> champions;
 	[HideInInspector] public DateTime matchStartTime;
@@ -45,9 +47,6 @@ public class MatchManager : MonoBehaviour {
 	private void Start() {
 		this.champions = new List<Champion>();
 		this.matchStartTime = DateTime.Now;
-		mapLayerMask = LayerMask.GetMask("Map");
-		entityLayerMask = LayerMask.GetMask("Entity");
-		abilityLayerMask = LayerMask.GetMask("Ability");
 	}
 
 	private void Update() {

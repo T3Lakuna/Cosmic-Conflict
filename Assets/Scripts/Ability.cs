@@ -65,7 +65,7 @@ public class Ability {
 	}
 
 	public static void DoInArea(Vector3 center, double radius, bool canHitAllies, Ability ability) {
-		foreach (Collider target in Physics.OverlapSphere(center, (float) radius)) {
+		foreach (Collider target in Physics.OverlapSphere(center, (float) radius, MatchManager.Instance.entityLayerMask)) {
 			Entity entity = target.GetComponent<Entity>();
 			if (!entity) { continue; }
 			if (!canHitAllies && entity.team == ability.Source.team) { continue; }

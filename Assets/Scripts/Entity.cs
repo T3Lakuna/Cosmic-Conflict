@@ -101,6 +101,22 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y);
 	}
 
+	public Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
+		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, (float) maximumRange, MatchManager.Instance.entityLayerMask);
+		Entity closestEntity = null;
+		foreach (Collider collider in hitColliders) {
+			Entity collidedEntity = collider.GetComponent<Entity>();
+			if (!includeEnemies && collidedEntity.team != this.team || !includeAllies && collidedEntity.team == this.team) { continue; }
+			Champion collidedChampion = collidedEntity.GetComponent<Champion>();
+			Structure collidedStructure = collidedEntity.GetComponent<Structure>();
+			if (!includeChampions && collidedChampion || !includeStructures && collidedStructure || !includeOtherEntities && !collidedStructure && !collidedChampion) { continue; }
+			if (!closestEntity) { closestEntity = collidedEntity; }
+			if (Vector3.Distance(this.transform.position, closestEntity.transform.position) < Vector3.Distance(this.transform.position, collidedEntity.transform.position)) { continue; }
+			closestEntity = collidedEntity;
+		}
+		return closestEntity;
+	}
+
 	public void Die() {
 		this.gameObject.SetActive(false);
 	}
@@ -133,7 +149,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	private void BasicAttackUpdate() {
 		if (this.basicAttackAbility != null) { this.basicAttackAbility.UpdateCooldown(); }
 		if (!this.basicAttackTarget) { return; }
-		if (Vector3.Distance(this.transform.position, this.basicAttackTarget.transform.position) > this.range.CurrentValue || this.basicAttackTarget.team == this.team) { this.basicAttackTarget = null; return; }
+		if (Vector3.Distance(this.transform.position, this.basicAttackTarget.transform.position) > this.range.CurrentValue || this.basicAttackTarget.team == this.team || !this.basicAttackTarget.isActiveAndEnabled) { this.basicAttackTarget = null; return; }
 		this.basicAttackAbility.Cast();
 	}
 
