@@ -75,7 +75,7 @@ public class Ability {
 		}
 	}
 
-	public static void DealDamage(Entity target, DamageType type, double flatAmount, double percentageAmount) {
+	public static void DealDamage(Entity source, Entity target, DamageType type, double flatAmount, double percentageAmount) {
 		double effectiveHealth;
 		HealthType[] damageOrder;
 		switch (type) {
@@ -126,6 +126,9 @@ public class Ability {
 					throw new ArgumentOutOfRangeException();
 			}
 		}
+
+		Champion sourceChampion = source.GetComponent<Champion>();
+		if (sourceChampion && target.GetComponent<Champion>()) { sourceChampion.lastTimeDamagedEnemyChampion = DateTime.Now; }
 	}
 
 	public static void Heal(Entity target, HealthType type, double duration, double flatAmount, double percentageAmount) {
