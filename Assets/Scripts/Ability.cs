@@ -42,6 +42,7 @@ public class Ability {
 
 	public void Cast() {
 		if (this.CurrentCooldown > 0) { return; }
+
 		if (this.Source.resource >= this.cost) { this.Source.resource -= this.cost; } else { return; }
 
 		this.CurrentCooldown = this.BaseCooldown;
@@ -68,6 +69,7 @@ public class Ability {
 		foreach (Collider target in Physics.OverlapSphere(center, (float) radius, MatchManager.Instance.entityLayerMask)) {
 			Entity entity = target.GetComponent<Entity>();
 			if (!entity) { continue; }
+
 			if (!canHitAllies && entity.team == ability.Source.team) { continue; }
 
 			ability.target = entity;
@@ -81,15 +83,15 @@ public class Ability {
 		switch (type) {
 			case DamageType.Magical:
 				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.nullification.CurrentValue / 100.0);
-				damageOrder = new[] { HealthType.MagicalShield, HealthType.Shield, HealthType.Health };
+				damageOrder = new[] {HealthType.MagicalShield, HealthType.Shield, HealthType.Health};
 				break;
 			case DamageType.Physical:
 				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.armor.CurrentValue / 100.0);
-				damageOrder = new[] { HealthType.PhysicalShield, HealthType.Shield, HealthType.Health };
+				damageOrder = new[] {HealthType.PhysicalShield, HealthType.Shield, HealthType.Health};
 				break;
 			case DamageType.True:
 				effectiveHealth = target.vitality.CurrentValue;
-				damageOrder = new[] { HealthType.Shield, HealthType.Health };
+				damageOrder = new[] {HealthType.Shield, HealthType.Health};
 				break;
 			default:
 				throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -151,9 +153,7 @@ public class Ability {
 				throw new ArgumentOutOfRangeException(nameof(type), type, null);
 		}
 
-		if (duration > 0) {
-			target.StartCoroutine(Ability.RemoveHeal(target, type, duration, finalAmount));
-		}
+		if (duration > 0) { target.StartCoroutine(Ability.RemoveHeal(target, type, duration, finalAmount)); }
 	}
 
 	private static IEnumerator RemoveHeal(Entity target, HealthType type, double delay, double amount) {

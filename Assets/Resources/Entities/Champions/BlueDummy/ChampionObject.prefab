@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3622518771935463533}
   - component: {fileID: 3622518771935463532}
   - component: {fileID: 931576792521349666}
-  - component: {fileID: -5701039082827108570}
+  - component: {fileID: 2675402805281426432}
   m_Layer: 9
   m_Name: ChampionObject
   m_TagString: Untagged
@@ -110,7 +110,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-5701039082827108570
+--- !u!114 &2675402805281426432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,12 +119,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3622518771935463443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d3ad3920dbe6b4bbc072d1f4ad820f, type: 3}
+  m_Script: {fileID: 11500000, guid: b72178dfd480c6c4aabfa4cf3f520f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentStatusEffects: 
   team: 0
   movementTarget: {x: 0, y: 0, z: 0}
+  basicAttackTarget: {fileID: 0}
+  basicAttackCooldown: 0
   kills: 0
   deaths: 0
   assists: 0

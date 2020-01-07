@@ -96,9 +96,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.LevelUp();
 	}
 
-	public void MovementCommand(Vector3 targetPosition) {
-		this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y);
-	}
+	public void MovementCommand(Vector3 targetPosition) { this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y); }
 
 	public Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeSelf, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, (float) maximumRange, MatchManager.Instance.entityLayerMask);
@@ -106,34 +104,44 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		foreach (Collider collider in hitColliders) {
 			Entity collidedEntity = collider.GetComponent<Entity>();
 			if (!includeSelf && collidedEntity == this) { continue; }
+
 			if (!includeEnemies && collidedEntity.team != this.team || !includeAllies && collidedEntity.team == this.team) { continue; }
+
 			Champion collidedChampion = collidedEntity.GetComponent<Champion>();
 			Structure collidedStructure = collidedEntity.GetComponent<Structure>();
 			if (!includeChampions && collidedChampion || !includeStructures && collidedStructure || !includeOtherEntities && !collidedStructure && !collidedChampion) { continue; }
+
 			if (!closestEntity) { closestEntity = collidedEntity; }
+
 			if (Vector3.Distance(this.transform.position, closestEntity.transform.position) < Vector3.Distance(this.transform.position, collidedEntity.transform.position)) { continue; }
+
 			closestEntity = collidedEntity;
 		}
+
 		return closestEntity;
 	}
 
-	public void Die() {
-		this.gameObject.SetActive(false);
-	}
+	public void Die() { this.gameObject.SetActive(false); }
 
 	public void BasicAttackCommand(Entity target) {
+		// TODO: Fix basic attack not dealing damage.
+
+		if (!target) { return; }
+
 		this.basicAttackTarget = target;
 		double oldBasicAttackCooldown;
 		if (this.basicAttackAbility != null) { oldBasicAttackCooldown = this.basicAttackAbility.CurrentCooldown; } else { oldBasicAttackCooldown = 0; }
+
 		this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
-			AbilityObject abilityObject = Ability.CreateAbilityObject("Models/BasicAttackModel", true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
-			abilityObject.collisionAction = () => { Ability.DealDamage(this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
-		});
-		this.basicAttackAbility.CurrentCooldown = oldBasicAttackCooldown;
+																																  AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
+																																  abilityObject.collisionAction = () => { Ability.DealDamage(this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
+																															  }) {CurrentCooldown = oldBasicAttackCooldown};
+		Debug.Log(this.name + " is now basic attacking " + target.name);
 	}
 
 	public void Update() {
 		if (this.health <= 0) { this.Die(); } // Death due to low health.
+
 		this.BasicAttackUpdate();
 		this.MovementUpdate();
 		this.UpdateStats();
@@ -147,14 +155,21 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	}
 
 	private void BasicAttackUpdate() {
-		if (this.basicAttackAbility != null) { this.basicAttackAbility.UpdateCooldown(); }
+		this.basicAttackAbility?.UpdateCooldown();
+
 		if (!this.basicAttackTarget) { return; }
-		if (Vector3.Distance(this.transform.position, this.basicAttackTarget.transform.position) > this.range.CurrentValue || this.basicAttackTarget.team == this.team || !this.basicAttackTarget.isActiveAndEnabled) { this.basicAttackTarget = null; return; }
-		this.basicAttackAbility.Cast();
+
+		if (Vector3.Distance(this.transform.position, this.basicAttackTarget.transform.position) > this.range.CurrentValue || this.basicAttackTarget.team == this.team || !this.basicAttackTarget.isActiveAndEnabled) {
+			this.basicAttackTarget = null;
+			return;
+		}
+
+		this.basicAttackAbility?.Cast();
 	}
 
 	private void UpdateDisplay() {
 		if (!this.display) { this.display = EntityDisplay.CreateEntityDisplay(this); }
+
 		this.display.healthText.text = (int) this.health + " / " + (int) this.vitality.CurrentValue;
 		this.display.physicalShieldText.text = "" + (int) this.physicalShield;
 		this.display.magicalShieldText.text = "" + (int) this.magicalShield;
