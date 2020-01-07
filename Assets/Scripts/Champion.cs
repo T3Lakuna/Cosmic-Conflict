@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using UnityEngine;
 
 public abstract class Champion : ComplexEntity {
@@ -7,6 +8,7 @@ public abstract class Champion : ComplexEntity {
 	[HideInInspector] public int uniqueUserId;
 	[HideInInspector] public GameObject prefab;
 	[HideInInspector] public Sprite icon;
+	[HideInInspector] public DateTime lastTimeDamagedEnemyChampion;
 
 	protected void SetupChampion(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, string name, Sprite icon, Ability passiveAbility, Ability primaryAbility, Ability secondaryAbility, Ability tertiaryAbility, Ability ultimateAbility) {
 		if (PhotonNetwork.InRoom && !this.photonView.IsMine) { return; }

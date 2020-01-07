@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using static Ability;
@@ -128,7 +127,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		if (this.basicAttackAbility != null) { oldBasicAttackCooldown = this.basicAttackAbility.CurrentCooldown; } else { oldBasicAttackCooldown = 0; }
 		this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
 			AbilityObject abilityObject = Ability.CreateAbilityObject("Models/BasicAttackModel", true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
-			abilityObject.collisionAction = () => { Ability.DealDamage(abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
+			abilityObject.collisionAction = () => { Ability.DealDamage(this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
 		});
 		this.basicAttackAbility.CurrentCooldown = oldBasicAttackCooldown;
 	}

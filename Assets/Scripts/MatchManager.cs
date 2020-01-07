@@ -45,6 +45,28 @@ public class MatchManager : MonoBehaviour {
 	public Inhibitor redTopInhibitor;
 	public Inhibitor redMiddleInhibitor;
 	public Inhibitor redBottomInhibitor;
+	public Vector2 blueTopNexusWaypoint;
+	public Vector2 blueTopWaypoint;
+	public Vector2 topWaypoint;
+	public Vector2 redTopWaypoint;
+	public Vector2 redTopNexusWaypoint;
+	public Vector2 blueMidWaypoint;
+	public Vector2 redMidWaypoint;
+	public Vector2 blueBottomNexusWaypoint;
+	public Vector2 blueBottomWaypoint;
+	public Vector2 bottomWaypoint;
+	public Vector2 redBottomWaypoint;
+	public Vector2 redBottomNexusWaypoint;
+	public Vector2 blueSpawnWaypointTop;
+	public Vector2 blueSpawnWaypointTopMiddle;
+	public Vector2 blueSpawnWaypointMiddle;
+	public Vector2 blueSpawnWaypointBottomMiddle;
+	public Vector2 blueSpawnWaypointBottom;
+	public Vector2 redSpawnWaypointTop;
+	public Vector2 redSpawnWaypointTopMiddle;
+	public Vector2 redSpawnWaypointMiddle;
+	public Vector2 redSpawnWaypointBottomMiddle;
+	public Vector2 redSpawnWaypointBottom;
 
 	private void Awake() {
 		if (!MatchManager.Instance) { MatchManager.Instance = this; } else if (MatchManager.Instance != this) { UnityEngine.Object.Destroy(this); }

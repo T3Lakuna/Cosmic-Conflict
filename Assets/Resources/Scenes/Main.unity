@@ -2252,7 +2252,7 @@ PrefabInstance:
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -107
+      value: -97
       objectReference: {fileID: 0}
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}
@@ -2349,7 +2349,7 @@ PrefabInstance:
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 107
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}
@@ -5992,7 +5992,7 @@ PrefabInstance:
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 107
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}
@@ -7701,6 +7701,28 @@ MonoBehaviour:
   redTopInhibitor: {fileID: 49744722}
   redMiddleInhibitor: {fileID: 1118487465}
   redBottomInhibitor: {fileID: 376272362}
+  blueTopNexusWaypoint: {x: -251, y: -221}
+  blueTopWaypoint: {x: -301, y: -158}
+  topWaypoint: {x: -301, y: 301}
+  redTopWaypoint: {x: 158, y: 301}
+  redTopNexusWaypoint: {x: 221, y: 251}
+  blueMidWaypoint: {x: -166, y: -166}
+  redMidWaypoint: {x: 166, y: 166}
+  blueBottomNexusWaypoint: {x: -221, y: -251}
+  blueBottomWaypoint: {x: -158, y: -301}
+  bottomWaypoint: {x: 301, y: -301}
+  redBottomWaypoint: {x: 301, y: 158}
+  redBottomNexusWaypoint: {x: 251, y: 221}
+  blueSpawnWaypointTop: {x: -310, y: -290}
+  blueSpawnWaypointTopMiddle: {x: -300, y: -290}
+  blueSpawnWaypointMiddle: {x: -290, y: -290}
+  blueSpawnWaypointBottomMiddle: {x: -290, y: -300}
+  blueSpawnWaypointBottom: {x: -290, y: -310}
+  redSpawnWaypointTop: {x: 290, y: 310}
+  redSpawnWaypointTopMiddle: {x: 290, y: 300}
+  redSpawnWaypointMiddle: {x: 290, y: 290}
+  redSpawnWaypointBottomMiddle: {x: 300, y: 290}
+  redSpawnWaypointBottom: {x: 310, y: 290}
 --- !u!4 &1584535497
 Transform:
   m_ObjectHideFlags: 0
@@ -8164,7 +8186,7 @@ PrefabInstance:
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -220
+      value: -210
       objectReference: {fileID: 0}
     - target: {fileID: 7963728898244828529, guid: 9e4720e6b78d5034580c6a1a75092555,
         type: 3}

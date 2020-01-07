@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-public class BlueDummy : Champion {
+﻿public class BlueDummy : Champion {
 	private new void Start() {
 		base.Start();
 
