@@ -49,9 +49,11 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Stat range; // Attack range
 
 	[HideInInspector] public double entityHeight;
+	[HideInInspector] public Animator entityAnimator;
 
-	public void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, double entityHeight, Team team) {
+	public void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, double entityHeight, Animator entityAnimator, Team team) {
 		this.entityHeight = entityHeight;
+		this.entityAnimator = entityAnimator;
 
 		this.kills = 0;
 		this.deaths = 0;
@@ -100,6 +102,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.movementTarget = Tools.PositionOnMapAt(targetPosition);
 		this.transform.LookAt(this.movementTarget);
 		this.transform.rotation = Quaternion.Euler(0, this.transform.rotation.eulerAngles.y, this.transform.rotation.eulerAngles.z);
+		if (this.entityAnimator) { this.entityAnimator.runtimeAnimatorController = MatchManager.Instance.runAnimation; }
 	}
 
 	public Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeSelf, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
@@ -154,6 +157,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	private void MovementUpdate() {
 		Vector3 step = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime));
 		if (Tools.HeightOfMapAt(step.x, step.z) == -1) { this.movementTarget = this.transform.position; } else { this.gameObject.transform.position = step; }
+		if (this.entityAnimator && this.transform.position == this.movementTarget) { this.entityAnimator.runtimeAnimatorController = MatchManager.Instance.idleAnimation; }
 	}
 
 	private void BasicAttackUpdate() {

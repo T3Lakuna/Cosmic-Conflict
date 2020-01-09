@@ -9,7 +9,7 @@ public class Armstrong : Champion {
 			// TODO
 		}
 
-		this.SetupChampion(80, 4, 0, 0, 800, 100, 4, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.9, 0.05, 35, 0, 0, 0, 25, 0, 0, 0, 30, 0, 5, "Captain Armstrong", UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/Icon"),
+		this.SetupChampion(80, 4, 0, 0, 800, 100, 4, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.9, 0.05, 35, 0, 0, 0, 25, 0, 0, 0, 30, 0, 5, this.GetComponent<Animator>(), "Captain Armstrong", UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/Icon"),
 						   new Ability(0, this, "Focus Fire", "Armstrong applies marks to targets that he basic attacks. When an enemy has 3 marks, they take additional damage from Captain Armstrong's attacks.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/PassiveIcon"), () => {
 
 						   }),
@@ -30,5 +30,4 @@ public class Armstrong : Champion {
 							   })
 						  );
 	}
-
 }

@@ -6,7 +6,7 @@ public class TestChamp : Champion {
 	private new void Start() {
 		base.Start();
 
-		this.SetupChampion(30, 5, 30, 5, 550, 15, 3, 0.5, 300, 20, 3, 0.5, 20, 3, 20, 3, 0, 0, 0, 0, 0, 0, 0.75, 0, 10, 1, 0, 0, 0, 0, 0, 1, 30, 0, 5, "TestChamp", Resources.Load<Sprite>("Entities/Champions/TestChamp/Icon"),
+		this.SetupChampion(30, 5, 30, 5, 550, 15, 3, 0.5, 300, 20, 3, 0.5, 20, 3, 20, 3, 0, 0, 0, 0, 0, 0, 0.75, 0, 10, 1, 0, 0, 0, 0, 0, 1, 30, 0, 5, this.GetComponent<Animator>(), "TestChamp", Resources.Load<Sprite>("Entities/Champions/TestChamp/Icon"),
 			new Ability(0, this, "TestPassive", "Test.", 0, UnityEngine.Resources.Load<Sprite>("Entities/Champions/TestChamp/PassiveIcon"), () => {
 				// Used with primary to easily test leveling up.
 

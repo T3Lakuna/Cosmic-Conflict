@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -68,6 +69,8 @@ public class MatchManager : MonoBehaviour {
 	public Vector2 redSpawnWaypointMiddle;
 	public Vector2 redSpawnWaypointBottomMiddle;
 	public Vector2 redSpawnWaypointBottom;
+	public AnimatorController idleAnimation;
+	public AnimatorController runAnimation;
 
 	private void Awake() {
 		if (!MatchManager.Instance) { MatchManager.Instance = this; } else if (MatchManager.Instance != this) { UnityEngine.Object.Destroy(this); }
