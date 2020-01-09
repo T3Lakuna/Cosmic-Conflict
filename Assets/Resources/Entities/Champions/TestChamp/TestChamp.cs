@@ -18,7 +18,7 @@ public class TestChamp : Champion {
 			new Ability(0, this, "TestPrimary", "Test.", 0, UnityEngine.Resources.Load<Sprite>("Entities/Champions/TestChamp/PrimaryIcon"), () => {
 				// Can be used with passive to test leveling up, or to test items.
 
-				this.currency += 1000;
+				this.currency += 10000000;
 			}),
 			new Ability(3, this, "TestSecondary", "Test.", 100, UnityEngine.Resources.Load<Sprite>("Entities/Champions/TestChamp/SecondaryIcon"), () => {
 				// Example skillshot ability.
