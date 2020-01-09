@@ -7321,7 +7321,7 @@ MonoBehaviour:
     m_Bits: 1024
   allGameLayerMasks:
     serializedVersion: 2
-    m_Bits: 3840
+    m_Bits: 0
   blueTopInhibitor: {fileID: 1347721748}
   blueMiddleInhibitor: {fileID: 1936775571}
   blueBottomInhibitor: {fileID: 1821432980}
