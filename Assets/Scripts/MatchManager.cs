@@ -71,6 +71,12 @@ public class MatchManager : MonoBehaviour {
 	public Vector2 redSpawnWaypointBottom;
 	public AnimatorController idleAnimation;
 	public AnimatorController runAnimation;
+	private Vector2[] blueTopPath;
+	private Vector2[] blueMiddlePath;
+	private Vector2[] blueBottomPath;
+	private Vector2[] redTopPath;
+	private Vector2[] redMiddlePath;
+	private Vector2[] redBottomPath;
 
 	private void Awake() {
 		if (!MatchManager.Instance) { MatchManager.Instance = this; } else if (MatchManager.Instance != this) { UnityEngine.Object.Destroy(this); }
@@ -79,6 +85,21 @@ public class MatchManager : MonoBehaviour {
 	private void Start() {
 		this.champions = new List<Champion>();
 		this.matchStartTime = DateTime.Now;
+		this.blueTopPath = new[] {this.blueTopWaypoint, this.topWaypoint, this.redTopWaypoint, this.redTopNexusWaypoint, this.redBottomNexusWaypoint};
+		this.blueMiddlePath = new[] {this.blueMidWaypoint, this.redMidWaypoint, this.redTopNexusWaypoint, this.redBottomNexusWaypoint};
+		this.blueBottomPath = new[] {this.blueBottomWaypoint, this.bottomWaypoint, this.redBottomWaypoint, this.redBottomNexusWaypoint, this.redTopNexusWaypoint};
+		this.redTopPath = new[] {this.redTopWaypoint, this.topWaypoint, this.blueTopWaypoint, this.blueTopNexusWaypoint, this.blueBottomNexusWaypoint};
+		this.redMiddlePath = new[] {this.redMidWaypoint, this.blueMidWaypoint, this.blueTopNexusWaypoint, this.blueBottomNexusWaypoint};
+		this.redBottomPath = new[] {this.redBottomWaypoint, this.bottomWaypoint, this.blueBottomWaypoint, this.blueBottomNexusWaypoint, this.blueTopNexusWaypoint};
+
+		this.StartCoroutine(this.SpawnMinionTick());
+	}
+
+	private System.Collections.IEnumerator SpawnMinionTick() {
+		while (true) {
+			yield return new WaitForSeconds(30);
+			// TODO
+		}
 	}
 
 	private void Update() {
@@ -91,74 +112,45 @@ public class MatchManager : MonoBehaviour {
 		int redTeamKills = 0;
 		int blueTeamKills = 0;
 		foreach (Champion champion in this.champions) {
-			if (champion.team == Entity.Team.Blue) {
-				blueTeamKills += champion.kills;
-			} else if (champion.team == Entity.Team.Red) {
-				redTeamKills += champion.kills;
+			switch (champion.team) {
+				case Entity.Team.Blue:
+					blueTeamKills += champion.kills;
+					break;
+				case Entity.Team.Red:
+					redTeamKills += champion.kills;
+					break;
+				case Entity.Team.Neutral:
+					// LMAO somebody died to a creep.
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
 			}
 		}
+
 		this.blueTeamKillsText.text = "" + blueTeamKills;
 		this.redTeamKillsText.text = "" + redTeamKills;
 
 		TimeSpan matchTime = DateTime.Now - this.matchStartTime;
 		this.matchTimerText.text = (int) matchTime.TotalMinutes + ":" + (int) (matchTime.TotalSeconds % 60);
-
-		if (this.localPlayer.champion.passiveAbility.CurrentCooldown > 0) {
-			this.passiveIcon.sprite = this.cooldownSprite;
-		} else {
-			this.passiveIcon.sprite = this.localPlayer.champion.passiveAbility.Icon;
-		}
-
-		if (this.localPlayer.champion.primaryAbility.CurrentCooldown > 0) {
-			this.primaryIcon.sprite = this.cooldownSprite;
-		} else {
-			this.primaryIcon.sprite = this.localPlayer.champion.primaryAbility.Icon;
-		}
-
-		if (this.localPlayer.champion.secondaryAbility.CurrentCooldown > 0) {
-			this.secondaryIcon.sprite = this.cooldownSprite;
-		} else {
-			this.secondaryIcon.sprite = this.localPlayer.champion.secondaryAbility.Icon;
-		}
-
-		if (this.localPlayer.champion.tertiaryAbility.CurrentCooldown > 0) {
-			this.tertiaryIcon.sprite = this.cooldownSprite;
-		} else {
-			this.tertiaryIcon.sprite = this.localPlayer.champion.tertiaryAbility.Icon;
-		}
-
-		if (this.localPlayer.champion.ultimateAbility.CurrentCooldown > 0) {
-			this.ultimateIcon.sprite = this.cooldownSprite;
-		} else {
-			this.ultimateIcon.sprite = this.localPlayer.champion.ultimateAbility.Icon;
-		}
-
+		this.passiveIcon.sprite = this.localPlayer.champion.passiveAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.passiveAbility.Icon;
+		this.primaryIcon.sprite = this.localPlayer.champion.primaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.primaryAbility.Icon;
+		this.secondaryIcon.sprite = this.localPlayer.champion.secondaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.secondaryAbility.Icon;
+		this.tertiaryIcon.sprite = this.localPlayer.champion.tertiaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.tertiaryAbility.Icon;
+		this.ultimateIcon.sprite = this.localPlayer.champion.ultimateAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.ultimateAbility.Icon;
 		this.currencyText.text = "" + this.localPlayer.champion.currency;
-
-		if (this.localPlayer.champion.trinket == null) {
-			this.trinketIcon.sprite = this.missingSprite;
-		} else {
-			this.trinketIcon.sprite = this.localPlayer.champion.trinket.icon;
-		}
+		this.trinketIcon.sprite = this.localPlayer.champion.trinket == null ? this.missingSprite : this.localPlayer.champion.trinket.icon;
 
 		Item[] items = this.localPlayer.champion.items.ToArray();
-		if (items.Length > 0) {
-			this.firstItemIcon.sprite = items[0].icon;
-		}
-		if (items.Length > 1) {
-			this.secondItemIcon.sprite = items[1].icon;
-		}
-		if (items.Length > 2) {
-			this.thirdItemIcon.sprite = items[2].icon;
-		}
-		if (items.Length > 3) {
-			this.fourthItemIcon.sprite = items[3].icon;
-		}
-		if (items.Length > 4) {
-			this.fifthItemIcon.sprite = items[4].icon;
-		}
-		if (items.Length > 5) {
-			this.sixthItemIcon.sprite = items[5].icon;
-		}
+		if (items.Length > 0) { this.firstItemIcon.sprite = items[0].icon; }
+
+		if (items.Length > 1) { this.secondItemIcon.sprite = items[1].icon; }
+
+		if (items.Length > 2) { this.thirdItemIcon.sprite = items[2].icon; }
+
+		if (items.Length > 3) { this.fourthItemIcon.sprite = items[3].icon; }
+
+		if (items.Length > 4) { this.fifthItemIcon.sprite = items[4].icon; }
+
+		if (items.Length > 5) { this.sixthItemIcon.sprite = items[5].icon; }
 	}
 }

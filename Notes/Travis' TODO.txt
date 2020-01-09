@@ -8,6 +8,7 @@ Balance turrets.
 Make stat guidelines.
 Items.
 Waypoints, including those for champion spawning, minion movement, and monster/boss spawning.
+FOG OF WAR
 
 Improvements to make when rewriting:
 - Extra parameters for static methods
