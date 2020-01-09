@@ -16,15 +16,15 @@ public class Armstrong : Champion {
 						   new Ability(20, this, "Rocket Fire", "Captain Armstrong loads his plasma rifle with rocket ammo, causing his basic attacks to deal area-of-effect damage.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/PrimaryIcon"), () => {
 
 						   }),
-						   new Ability(10, this, "Grenade Toss", "Captain Armstrong throws a grenade at targeted location that will explode after a few seconds or when Armstrong detonates it.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champion/Armstrong/SecondaryIcon"),
+						   new Ability(10, this, "Grenade Toss", "Captain Armstrong throws a grenade at targeted location that will explode after a few seconds or when Armstrong detonates it.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/SecondaryIcon"),
 							   () => {
 								   AbilityObject abilityObject = Ability.CreateAbilityObject("Entities/Champions/TestChamp/SecondaryModel", false, false, false, false, this, this.transform.position, this.player.RaycastOnLayer(MatchManager.Instance.allGameLayerMasks).point, null, 30, 30, 10);
 							   }),
-						   new Ability(0, this, "Military Training", "Captain Armstrong's training taught him to take better aim, granting him bonus critical damage and bonus critical strike chance.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champion/Armstrong/TertiaryIcon"),
+						   new Ability(0, this, "Military Training", "Captain Armstrong's training taught him to take better aim, granting him bonus critical damage and bonus critical strike chance.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/TertiaryIcon"),
 							   () => {
 
 							   }),
-						   new Ability(120, this, "Tactical Vision", "Captain Armstrong activates his visor, granting him bonus range and fervor.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champion/Armstrong/UltimateIcon"),
+						   new Ability(120, this, "Tactical Vision", "Captain Armstrong activates his visor, granting him bonus range and fervor.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/UltimateIcon"),
 							   () => {
 
 							   })
