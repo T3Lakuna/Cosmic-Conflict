@@ -1,11 +1,13 @@
-﻿public class Tower : Structure {
+﻿using UnityEngine;
+
+public class Tower : Structure {
 	public Team inspectorTeam;
 	public Tower protectorTower;
 	public Inhibitor protectorInhibitorTop;
 	public Inhibitor protectorInhibitorMiddle;
 	public Inhibitor protectorInhibitorBottom;
 
-	private void Start() { this.SetupStructure(300, 0, 0, 0, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, this.inspectorTeam); }
+	private void Start() { this.SetupStructure(300, 0, 0, 0, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, 15, this.inspectorTeam); }
 
 	private new void Update() {
 		base.Update();

@@ -48,10 +48,10 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Stat efficiency; // Ability cooldown reduction
 	[HideInInspector] public Stat range; // Attack range
 
-	[HideInInspector] public Renderer entityRenderer;
+	[HideInInspector] public double entityHeight;
 
-	public void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, Team team) {
-		this.entityRenderer = this.GetComponent<Renderer>();
+	public void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, double entityHeight, Team team) {
+		this.entityHeight = entityHeight;
 
 		this.kills = 0;
 		this.deaths = 0;
@@ -88,7 +88,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.currentStatusEffects = new List<StatusEffectType>();
 		this.items = new List<Item>();
 
-		this.MovementCommand(this.transform.position);
+		this.movementTarget = Tools.PositionOnMapAt(this.transform.position);
 		this.basicAttackTarget = null;
 		this.basicAttackCooldown = 0;
 		this.basicAttackAbility = null;
@@ -96,7 +96,11 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.LevelUp();
 	}
 
-	public void MovementCommand(Vector3 targetPosition) { this.movementTarget = Tools.PositionOnMapAt(targetPosition, this.entityRenderer.bounds.size.y); }
+	public void MovementCommand(Vector3 targetPosition) {
+		this.movementTarget = Tools.PositionOnMapAt(targetPosition);
+		this.transform.LookAt(this.movementTarget);
+		this.transform.rotation = Quaternion.Euler(0, this.transform.rotation.eulerAngles.y, this.transform.rotation.eulerAngles.z);
+	}
 
 	public Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeSelf, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, (float) maximumRange, MatchManager.Instance.entityLayerMask);
@@ -124,8 +128,6 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	public void Die() { this.gameObject.SetActive(false); }
 
 	public void BasicAttackCommand(Entity target) {
-		// TODO: Fix basic attack not dealing damage.
-
 		if (!target) { return; }
 
 		this.basicAttackTarget = target;
@@ -133,10 +135,10 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		if (this.basicAttackAbility != null) { oldBasicAttackCooldown = this.basicAttackAbility.CurrentCooldown; } else { oldBasicAttackCooldown = 0; }
 
 		this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
-																																  AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
-																																  abilityObject.collisionAction = () => { Ability.DealDamage(this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
-																															  }) {CurrentCooldown = oldBasicAttackCooldown};
-		Debug.Log(this.name + " is now basic attacking " + target.name);
+			AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", false, true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
+			abilityObject.collisionAction = () => { Ability.DealDamage(this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
+			abilityObject.updateAction = () => { abilityObject.movementSpeed += abilityObject.movementSpeed * Time.deltaTime / 2; }; // Accelerate to guarantee connection with target.
+		}) { CurrentCooldown = oldBasicAttackCooldown };
 	}
 
 	public void Update() {
@@ -150,7 +152,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	}
 
 	private void MovementUpdate() {
-		Vector3 step = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime), this.entityRenderer.bounds.size.y);
+		Vector3 step = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime));
 		if (Tools.HeightOfMapAt(step.x, step.z) == -1) { this.movementTarget = this.transform.position; } else { this.gameObject.transform.position = step; }
 	}
 

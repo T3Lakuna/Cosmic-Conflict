@@ -49,11 +49,12 @@ public class Ability {
 		this.Action();
 	}
 
-	public static AbilityObject CreateAbilityObject(string prefabResourcesPath, bool destroyOnHit, bool canHitAllies, bool canOnlyHitTarget, Entity source, Vector3 initialPosition, Vector3 target, Entity targetEntity, double movementSpeed, double range, double lifespan) {
+	public static AbilityObject CreateAbilityObject(string prefabResourcesPath, bool destroyAtMaxRange, bool destroyOnHit, bool canHitAllies, bool canOnlyHitTarget, Entity source, Vector3 initialPosition, Vector3 target, Entity targetEntity, double movementSpeed, double range, double lifespan) {
 		GameObject abilityObject = Tools.Instantiate(prefabResourcesPath, initialPosition);
 		AbilityObject ability = abilityObject.AddComponent<AbilityObject>();
 		ability.target = target;
 		ability.movementSpeed = movementSpeed;
+		ability.destroyAtMaxRange = destroyAtMaxRange;
 		ability.destroyOnHit = destroyOnHit;
 		ability.maximumDistance = range;
 		ability.source = source;
@@ -83,15 +84,15 @@ public class Ability {
 		switch (type) {
 			case DamageType.Magical:
 				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.nullification.CurrentValue / 100.0);
-				damageOrder = new[] {HealthType.MagicalShield, HealthType.Shield, HealthType.Health};
+				damageOrder = new[] { HealthType.MagicalShield, HealthType.Shield, HealthType.Health };
 				break;
 			case DamageType.Physical:
 				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.armor.CurrentValue / 100.0);
-				damageOrder = new[] {HealthType.PhysicalShield, HealthType.Shield, HealthType.Health};
+				damageOrder = new[] { HealthType.PhysicalShield, HealthType.Shield, HealthType.Health };
 				break;
 			case DamageType.True:
 				effectiveHealth = target.vitality.CurrentValue;
-				damageOrder = new[] {HealthType.Shield, HealthType.Health};
+				damageOrder = new[] { HealthType.Shield, HealthType.Health };
 				break;
 			default:
 				throw new ArgumentOutOfRangeException(nameof(type), type, null);

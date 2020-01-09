@@ -5,6 +5,7 @@ public class AbilityObject : MonoBehaviour {
 	public Action collisionAction;
 	public Action updateAction;
 	public bool destroyOnHit;
+	public bool destroyAtMaxRange;
 	public Vector3 target;
 	public Entity targetEntity;
 	public double movementSpeed;
@@ -25,7 +26,7 @@ public class AbilityObject : MonoBehaviour {
 	private void Update() {
 		if (DateTime.Now - this._timeCreated > TimeSpan.FromSeconds(this.lifespan)) { Tools.Destroy(this.gameObject); }
 
-		if (Vector3.Distance(this.originalPosition, this.transform.position) > this.maximumDistance) { Tools.Destroy(this.gameObject); }
+		if (this.destroyAtMaxRange && Vector3.Distance(this.originalPosition, this.transform.position) > this.maximumDistance) { Tools.Destroy(this.gameObject); }
 
 		if (this.transform.position == this.target) { Tools.Destroy(this.gameObject); }
 

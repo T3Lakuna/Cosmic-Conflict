@@ -39,6 +39,7 @@ public class MatchManager : MonoBehaviour {
 	public LayerMask mapLayerMask;
 	public LayerMask entityLayerMask;
 	public LayerMask abilityLayerMask;
+	public LayerMask allGameLayerMasks;
 	public Inhibitor blueTopInhibitor;
 	public Inhibitor blueMiddleInhibitor;
 	public Inhibitor blueBottomInhibitor;

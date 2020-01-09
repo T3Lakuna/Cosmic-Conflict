@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EntityDisplay : MonoBehaviour {
 	[HideInInspector] public Entity entity;
@@ -16,10 +14,11 @@ public class EntityDisplay : MonoBehaviour {
 		EntityDisplay display = Instantiate(UnityEngine.Resources.Load<GameObject>("Prefabs/EntityDisplay"), new Vector3(0, 1, 0), Quaternion.identity).GetComponent<EntityDisplay>();
 		display.entity = entity;
 		display.transform.parent = entity.transform;
-		display.transform.localPosition = new Vector3(0, 1, 0);
-		display.transform.localScale = new Vector3(1, 1, 1);
+		if (display.entity.entityHeight <= 5) { display.transform.localPosition = new Vector3(0, 2, 0); } else { display.transform.localPosition = new Vector3(0, 0.5f, 0); }
 		return display;
 	}
 
-	void Update() { this.transform.LookAt(MatchManager.Instance.localPlayer.playerCamera.transform); }
+	private void Update() {
+		this.transform.rotation = Quaternion.identity;
+	}
 }
