@@ -2010,6 +2010,7 @@ MonoBehaviour:
   experience: 0
   level: 0
   entityHeight: 0
+  entityAnimator: {fileID: 0}
   player: {fileID: 0}
   currency: 0
   uniqueUserId: 0

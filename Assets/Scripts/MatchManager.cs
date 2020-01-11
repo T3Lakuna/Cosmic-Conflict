@@ -47,36 +47,21 @@ public class MatchManager : MonoBehaviour {
 	public Inhibitor redTopInhibitor;
 	public Inhibitor redMiddleInhibitor;
 	public Inhibitor redBottomInhibitor;
-	public Vector2 blueTopNexusWaypoint;
-	public Vector2 blueTopWaypoint;
-	public Vector2 topWaypoint;
-	public Vector2 redTopWaypoint;
-	public Vector2 redTopNexusWaypoint;
-	public Vector2 blueMidWaypoint;
-	public Vector2 redMidWaypoint;
-	public Vector2 blueBottomNexusWaypoint;
-	public Vector2 blueBottomWaypoint;
-	public Vector2 bottomWaypoint;
-	public Vector2 redBottomWaypoint;
-	public Vector2 redBottomNexusWaypoint;
-	public Vector2 blueSpawnWaypointTop;
-	public Vector2 blueSpawnWaypointTopMiddle;
-	public Vector2 blueSpawnWaypointMiddle;
-	public Vector2 blueSpawnWaypointBottomMiddle;
-	public Vector2 blueSpawnWaypointBottom;
-	public Vector2 redSpawnWaypointTop;
-	public Vector2 redSpawnWaypointTopMiddle;
-	public Vector2 redSpawnWaypointMiddle;
-	public Vector2 redSpawnWaypointBottomMiddle;
-	public Vector2 redSpawnWaypointBottom;
 	public AnimatorController idleAnimation;
 	public AnimatorController runAnimation;
-	private Vector2[] blueTopPath;
-	private Vector2[] blueMiddlePath;
-	private Vector2[] blueBottomPath;
-	private Vector2[] redTopPath;
-	private Vector2[] redMiddlePath;
-	private Vector2[] redBottomPath;
+	public Transform abilityHolder;
+	public Material redMaterial;
+	public Material blueMaterial;
+	public Transform blueMinionHolder;
+	public Transform redMinionHolder;
+	public GameObject minionPrefab;
+	public GameObject[] blueTopPath;
+	public GameObject[] blueMiddlePath;
+	public GameObject[] blueBottomPath;
+	public GameObject[] redTopPath;
+	public GameObject[] redMiddlePath;
+	public GameObject[] redBottomPath;
+	private int minionWavesSpawned;
 
 	private void Awake() {
 		if (!MatchManager.Instance) { MatchManager.Instance = this; } else if (MatchManager.Instance != this) { UnityEngine.Object.Destroy(this); }
@@ -85,20 +70,60 @@ public class MatchManager : MonoBehaviour {
 	private void Start() {
 		this.champions = new List<Champion>();
 		this.matchStartTime = DateTime.Now;
-		this.blueTopPath = new[] {this.blueTopWaypoint, this.topWaypoint, this.redTopWaypoint, this.redTopNexusWaypoint, this.redBottomNexusWaypoint};
-		this.blueMiddlePath = new[] {this.blueMidWaypoint, this.redMidWaypoint, this.redTopNexusWaypoint, this.redBottomNexusWaypoint};
-		this.blueBottomPath = new[] {this.blueBottomWaypoint, this.bottomWaypoint, this.redBottomWaypoint, this.redBottomNexusWaypoint, this.redTopNexusWaypoint};
-		this.redTopPath = new[] {this.redTopWaypoint, this.topWaypoint, this.blueTopWaypoint, this.blueTopNexusWaypoint, this.blueBottomNexusWaypoint};
-		this.redMiddlePath = new[] {this.redMidWaypoint, this.blueMidWaypoint, this.blueTopNexusWaypoint, this.blueBottomNexusWaypoint};
-		this.redBottomPath = new[] {this.redBottomWaypoint, this.bottomWaypoint, this.blueBottomWaypoint, this.blueBottomNexusWaypoint, this.blueTopNexusWaypoint};
+		this.minionWavesSpawned = 0;
 
 		this.StartCoroutine(this.SpawnMinionTick());
 	}
 
 	private System.Collections.IEnumerator SpawnMinionTick() {
 		while (true) {
-			yield return new WaitForSeconds(30);
-			// TODO
+			yield return new WaitForSeconds(28);
+			this.minionWavesSpawned++;
+			int minionLevel = minionWavesSpawned / 3;
+
+			// Super minions
+			if (!this.blueTopInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redTopPath).LevelUp(minionLevel); }
+			if (!this.blueMiddleInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redMiddlePath).LevelUp(minionLevel); }
+			if (!this.blueBottomInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redBottomPath).LevelUp(minionLevel); }
+			if (!this.redTopInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueTopPath).LevelUp(minionLevel); }
+			if (!this.redMiddleInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueMiddlePath).LevelUp(minionLevel); }
+			if (!this.redBottomInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueBottomPath).LevelUp(minionLevel); }
+			yield return new WaitForSeconds(0.25f);
+
+			// Melee minions
+			for (int i = 0; i < 3; i++) {
+				MeleeMinion.CreateMeleeMinion(Entity.Team.Blue, this.blueTopPath).LevelUp(minionLevel);
+				MeleeMinion.CreateMeleeMinion(Entity.Team.Blue, this.blueMiddlePath).LevelUp(minionLevel);
+				MeleeMinion.CreateMeleeMinion(Entity.Team.Blue, this.blueBottomPath).LevelUp(minionLevel);
+				MeleeMinion.CreateMeleeMinion(Entity.Team.Red, this.redTopPath).LevelUp(minionLevel);
+				MeleeMinion.CreateMeleeMinion(Entity.Team.Red, this.redMiddlePath).LevelUp(minionLevel);
+				MeleeMinion.CreateMeleeMinion(Entity.Team.Red, this.redBottomPath).LevelUp(minionLevel);
+				yield return new WaitForSeconds(0.25f);
+			}
+
+			// Ranged minions
+			for (int i = 0; i < 3; i++) {
+				RangedMinion.CreateRangedMinion(Entity.Team.Blue, this.blueTopPath).LevelUp(minionLevel);
+				RangedMinion.CreateRangedMinion(Entity.Team.Blue, this.blueMiddlePath).LevelUp(minionLevel);
+				RangedMinion.CreateRangedMinion(Entity.Team.Blue, this.blueBottomPath).LevelUp(minionLevel);
+				RangedMinion.CreateRangedMinion(Entity.Team.Red, this.redTopPath).LevelUp(minionLevel);
+				RangedMinion.CreateRangedMinion(Entity.Team.Red, this.redMiddlePath).LevelUp(minionLevel);
+				RangedMinion.CreateRangedMinion(Entity.Team.Red, this.redBottomPath).LevelUp(minionLevel);
+				yield return new WaitForSeconds(0.25f);
+			}
+
+			// Cannon minions
+			if (this.minionWavesSpawned % 3 == 0) {
+				for (int i = 0; i < 3; i++) {
+					CannonMinion.CreateCannonMinion(Entity.Team.Blue, this.blueTopPath).LevelUp(minionLevel);
+					CannonMinion.CreateCannonMinion(Entity.Team.Blue, this.blueMiddlePath).LevelUp(minionLevel);
+					CannonMinion.CreateCannonMinion(Entity.Team.Blue, this.blueBottomPath).LevelUp(minionLevel);
+					CannonMinion.CreateCannonMinion(Entity.Team.Red, this.redTopPath).LevelUp(minionLevel);
+					CannonMinion.CreateCannonMinion(Entity.Team.Red, this.redMiddlePath).LevelUp(minionLevel);
+					CannonMinion.CreateCannonMinion(Entity.Team.Red, this.redBottomPath).LevelUp(minionLevel);
+					yield return new WaitForSeconds(0.25f);
+				}
+			}
 		}
 	}
 

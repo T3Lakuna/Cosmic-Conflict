@@ -18,5 +18,9 @@ Improvements to make when rewriting:
 - More clear split between ability and ability instance.
 - Improved death recap and attack and ability logging.
 - Split up MatchManager.
-- Store waypoints as gameobjects.
+- Clean waypoints.
 - Extra properties in Entity to store subclasses.
+- Auto attacking as a setting. Can use current tower/minion targeting.
+- Utilize abstraction.
+- Basic entity sample to modify for all non-structure entities.
+- Toggleable combat UI which contains health bars and activates smart camera mode.
