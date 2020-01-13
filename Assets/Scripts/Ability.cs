@@ -7,7 +7,7 @@ public class Ability {
 
 	public enum HealthType { Health, Shield, PhysicalShield, MagicalShield }
 
-	public enum StatusEffectType { Stun, Slow, Root, Fear, Charm }
+	public enum StatusEffectType { Stun, Slow, Root, Fear, Charm, Silence }
 
 	public double CurrentCooldown;
 	public readonly double BaseCooldown;

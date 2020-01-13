@@ -4,6 +4,7 @@ public class Armstrong : Champion {
 
 	private System.Collections.Generic.Dictionary<Champion, int> _marks;
 	private new void Start() {
+		base.Start();
 		this._marks = new System.Collections.Generic.Dictionary<Champion, int>();
 		foreach (Champion champion in MatchManager.Instance.champions) {
 			// TODO
@@ -14,7 +15,7 @@ public class Armstrong : Champion {
 
 						   }),
 						   new Ability(20, this, "Rocket Fire", "Captain Armstrong loads his plasma rifle with rocket ammo, causing his basic attacks to deal area-of-effect damage.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/PrimaryIcon"), () => {
-
+							   
 						   }),
 						   new Ability(10, this, "Grenade Toss", "Captain Armstrong throws a grenade at targeted location that will explode after a few seconds or when Armstrong detonates it.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Armstrong/SecondaryIcon"),
 							   () => {
@@ -29,5 +30,10 @@ public class Armstrong : Champion {
 
 							   })
 						  );
+	}
+
+	private void Update()
+	{
+		base.Update();
 	}
 }
