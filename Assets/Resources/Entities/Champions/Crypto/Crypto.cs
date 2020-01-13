@@ -24,7 +24,8 @@ public class Crypto : Champion
               false, true, false, true, this, this.transform.position, targetEntity.transform.position, targetEntity, 10000, 10, 100);
             abilityObject.collisionAction = () =>
             {
-              Ability.DealDamage(true,this, targetEntity, Ability.DamageType.Magical, 100.0, 0.0);
+              Ability.DealDamage(false,this, targetEntity, Ability.DamageType.Magical, 100.0, 0.0);
+              Ability.ApplyStatusEffect(targetEntity,Ability.ApplyStatusEffect());
 
             };
 
@@ -33,7 +34,7 @@ public class Crypto : Champion
         new Ability(20, this, "EMP", "Crypto lobes an EMP exploding on contact dealing damage and slowing and silenceing everyone in the area", 80, UnityEngine.Resources.Load<UnityEngine.Sprite>("ok look im tired and i messed up my leg so ill do the art later"),
           () =>
           {
-
+            
           }),
         new Ability(18, this, "Holo-Trans-Locator","Crypto creates a hologram while going invisable Crypto can recast the ability to swap places with the clone",90, UnityEngine.Resources.Load<UnityEngine.Sprite>("Same thing i said in his w"),
           () =>
