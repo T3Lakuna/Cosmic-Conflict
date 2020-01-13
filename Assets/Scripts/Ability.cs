@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Ability {
@@ -78,7 +77,9 @@ public class Ability {
 		}
 	}
 
-	public static void DealDamage(Entity source, Entity target, DamageType type, double flatAmount, double percentageAmount) {
+	public static void DealDamage(bool canHitStructures, Entity source, Entity target, DamageType type, double flatAmount, double percentageAmount) {
+		if (!canHitStructures && target.GetComponent<Structure>()) { return; }
+
 		double effectiveHealth;
 		HealthType[] damageOrder;
 		switch (type) {

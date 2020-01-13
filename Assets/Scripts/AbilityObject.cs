@@ -21,6 +21,8 @@ public class AbilityObject : MonoBehaviour {
 	private void Start() {
 		this.originalPosition = this.transform.position;
 		this._timeCreated = DateTime.Now;
+		this.transform.parent = MatchManager.Instance.abilityHolder;
+		this.name = this.source.name + "'s Ability";
 	}
 
 	private void Update() {

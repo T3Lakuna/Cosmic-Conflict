@@ -1,20 +1,31 @@
-Redo health bars (better shield display, hopefully bars > numbers, hide shields when invisible, add background, add champ name and level, make NOT scale size with champ size, make not turn awkwardly).
-Client and matchmaking, including custom lobbies.
-Minions and towers, plus their "AI."
-Inhibitor and nexus actions.
-Fountains. Respawning.
-Re-write champion README while making a champion so that it's all-inclusive, including things such as "model the champion," preferably in a step-by-step order. Also include a recap at the end, i.e. "make sure the champion model has a mesh renderer, the champion script, a rigidbody, etc."
-Balance turrets.
-Make stat guidelines.
-Items.
-Waypoints, including those for champion spawning, minion movement, and monster/boss spawning.
-FOG OF WAR
+Must be done before alpha:
+- Client.
+- Matchmaking, including custom lobbies.
+- Photon stuff.
+- Inhibitor and nexus death effects.
+- Fountains.
+- Respawning.
+- Items.
+- Boss and monster spawn waypoints.
+- Jungle monsters and bosses.
+
+Other things preferably done before end of project:
+- Health bars.
+- Fog of war.
+- Chat.
+- Attack-move.
+- Combine attacking and moving into a single action.
 
 Improvements to make when rewriting:
-- Extra parameters for static methods
-- Combine auto attack and movement commands to be more like League. Also, attack-move. When there is an auto target, the player should move towards the target when they're out of range instead of forgetting them.
+- Extra parameters for static methods.
 - Better map.
 - More clear split between ability and ability instance.
-- Improved death recap and attack/ability logging (also helps with tower/minion targeting AI :D).
-- Maybe split up MatchManager a bit. Waypoint-storer class to hold references to waypoints, which should be stored as empty gameobjects instead of vector2s.
-- Extra properties in entity such as "champion" and "structure" to reduce lag (by calling GetComponent<Type>() less).
+- Improved death recap and attack and ability logging.
+- Split up MatchManager.
+- Clean waypoints.
+- Extra properties in Entity to store subclasses.
+- Auto attacking as a setting. Can use current tower/minion targeting.
+- Utilize abstraction.
+- Basic entity sample to modify for all non-structure entities.
+- Toggleable combat UI which contains health bars and activates smart camera mode.
+- Make all entity models' positions be based on the center of the model.
