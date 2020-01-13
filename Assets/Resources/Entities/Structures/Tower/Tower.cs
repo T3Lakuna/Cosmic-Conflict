@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Tower : Structure {
 	public Team inspectorTeam;
@@ -20,7 +21,7 @@ public class Tower : Structure {
 
 		if (!this.basicAttackTarget) { this.BasicAttackCommand(this.ClosestEntityInRange(true, false, false, true, false, true, this.range.CurrentValue)); } // Non-structure enemies in range.
 
-		// TODO: Target enemy champion if they attack an ally champion and the current target isn't a champion.
-		// TODO: Leveling up.
+		Entity championPriorityTarget = this.ClosestEntityInRange(true, false, false, true, false, false, this.range.CurrentValue);
+		if (championPriorityTarget && DateTime.Now - championPriorityTarget.GetComponent<Champion>().lastTimeDamagedEnemyChampion < TimeSpan.FromSeconds(Time.deltaTime)) { this.BasicAttackCommand(championPriorityTarget); } // Target champions which attack allies.
 	}
 }

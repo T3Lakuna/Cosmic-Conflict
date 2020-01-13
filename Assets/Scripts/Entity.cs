@@ -109,6 +109,8 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, (float) maximumRange, MatchManager.Instance.entityLayerMask);
 		Entity closestEntity = null;
 		foreach (Collider collider in hitColliders) {
+			if (Vector3.Distance(collider.transform.position, this.transform.position) > maximumRange) { continue; } // Necessary for some reason. Redundancy is always good, I guess...
+
 			Entity collidedEntity = collider.GetComponent<Entity>();
 			if (!includeSelf && collidedEntity == this) { continue; }
 
@@ -137,11 +139,13 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		double oldBasicAttackCooldown;
 		if (this.basicAttackAbility != null) { oldBasicAttackCooldown = this.basicAttackAbility.CurrentCooldown; } else { oldBasicAttackCooldown = 0; }
 
-		this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
-			AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", false, true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
-			abilityObject.collisionAction = () => { Ability.DealDamage(this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
-			abilityObject.updateAction = () => { abilityObject.movementSpeed += abilityObject.movementSpeed * Time.deltaTime / 2; }; // Accelerate to guarantee connection with target.
-		}) { CurrentCooldown = oldBasicAttackCooldown };
+		if (this.range.CurrentValue > 5) { // Ranged
+			this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
+				AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", false, true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
+				abilityObject.collisionAction = () => { Ability.DealDamage(true, this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
+				abilityObject.updateAction = () => { abilityObject.movementSpeed += abilityObject.movementSpeed * Time.deltaTime / 2; }; // Accelerate to guarantee connection with target.
+			}) { CurrentCooldown = oldBasicAttackCooldown };
+		} else { this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => { Ability.DealDamage(true, this, this.basicAttackTarget, DamageType.Physical, this.damage.CurrentValue, 0); }) { CurrentCooldown = oldBasicAttackCooldown }; } // Melee
 	}
 
 	public void Update() {
@@ -218,8 +222,13 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		}
 	}
 
+	public void LevelUp(int times) {
+		for (int i = 0; i < times; i++) { this.LevelUp(); }
+	}
+
 	private void LevelUp() {
 		this.level++;
+		if (this.level == 1) { return; } // Start with base stats.
 		this.damage.LevelUp();
 		this.magic.LevelUp();
 		this.vitality.LevelUp();
