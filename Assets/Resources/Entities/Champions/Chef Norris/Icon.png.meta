@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Resources/Entities/Champions/Chef Norris/PrimaryIcon.png.meta
 guid: a5012f5761055d74294955cbb2e8a51e
 =======
 guid: 073678a085a8f924ebaecd14a91fe529
 >>>>>>> 6ef7bd26ff0d146062c874d0bd224aa9c2ac7685:Assets/Resources/Entities/Champions/Chef Norris/Icon.png.meta
-=======
-guid: 71a478f3cfec9e142afd015072cc3b7f
->>>>>>> 6ef7bd26ff0d146062c874d0bd224aa9c2ac7685
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
