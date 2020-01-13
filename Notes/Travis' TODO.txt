@@ -1,16 +1,20 @@
-Health bars.
-Client.
-Matchmaking, including custom lobbies.
-Inhibitor and nexus death effects.
-Fountains.
-Respawning.
-Items.
-Boss and monster spawn waypoints.
-Jungle monsters and bosses.
-Fog of war.
-Chat.
-Attack-move.
-Combine attacking and moving into a single action.
+Must be done before alpha:
+- Client.
+- Matchmaking, including custom lobbies.
+- Photon stuff.
+- Inhibitor and nexus death effects.
+- Fountains.
+- Respawning.
+- Items.
+- Boss and monster spawn waypoints.
+- Jungle monsters and bosses.
+
+Other things preferably done before end of project:
+- Health bars.
+- Fog of war.
+- Chat.
+- Attack-move.
+- Combine attacking and moving into a single action.
 
 Improvements to make when rewriting:
 - Extra parameters for static methods.
@@ -24,3 +28,4 @@ Improvements to make when rewriting:
 - Utilize abstraction.
 - Basic entity sample to modify for all non-structure entities.
 - Toggleable combat UI which contains health bars and activates smart camera mode.
+- Make all entity models' positions be based on the center of the model.
