@@ -3,7 +3,7 @@
 public class Crypto : Champion {
 	// Start is called before the first frame update
 	private new void Start() {
-
+		base.Start();
 		this.SetupChampion(70, 2.5, 0, 0, 850, 100, 6, .5, 455, 18, 6, .5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, .7, .04, 40, 0,
 		  0, 0, 0, 0, 0, 0, 10, 0, 4, this.GetComponent<Animator>(), "Crypto",
 		  UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Crypto/Icon"),
@@ -51,12 +51,14 @@ public class Crypto : Champion {
 				{
 					Ability.DealDamage(false,this, aoeAbiility.target,Ability.DamageType.Magical,250,0);
 					Ability.ApplyStatusEffect(aoeAbiility.target,Ability.StatusEffectType.Silence,1.5,100);
-					
+
 				};
 				Ability.DoInArea(this.transform.position,100,false,aoeAbiility);
 
 			})
 		);
 	}
+	private new void Update(){
+		base.Update();
+	}
 }
-
