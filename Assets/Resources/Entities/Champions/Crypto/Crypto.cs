@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class Crypto : Champion {
-	// Start is called before the first frame update
+	/*
 	private new void Start() {
 		base.Start();
 		this.SetupChampion(70, 2.5, 0, 0, 850, 100, 6, .5, 455, 18, 6, .5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, .7, .04, 40, 0,
@@ -61,4 +61,5 @@ public class Crypto : Champion {
 	private new void Update(){
 		base.Update();
 	}
+	*/
 }
