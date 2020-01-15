@@ -18,8 +18,7 @@ public class Crypto : Champion
 				"Crypto loads his blade with a virse that will slow the enemy hit ", 45,
 				UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Crypto/Primary"), () =>
 				{
-					Collider targetCollider =
-						this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
+					Collider targetCollider = this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
 					if (!targetCollider)
 					{
 						this.resource += 45;
@@ -51,7 +50,7 @@ public class Crypto : Champion
 
 					Ability.DealDamage(false, this, targetEntity, Ability.DamageType.Magical, 200, 0);
 					targetEntity.speed.PercentageBonusValue = -.25;
-					this.StartCoroutine(this.RemoveSlow());
+					this.StartCoroutine(this.RemoveSlow(targetEntity));
 				}),
 			new Ability(20, this, "EMP",
 				"Crypto lobes an EMP exploding on contact dealing damage and silenceing everyone in the area", 90,
@@ -77,15 +76,15 @@ public class Crypto : Champion
 
 				}),
 			new Ability(18, this, "Holo-Trans-Locator",
-				"Crypto creates a hologram while going invisable Crypto can recast the ability to swap places with the clone",
+				"Crypto creates a hologram of his exact likeness Crypto can then recast the ability to swap places with the clone",
 				90, UnityEngine.Resources.Load<UnityEngine.Sprite>("Same thing i said in his w"),
 				() =>
 				{
-					AbilityObject abilityObect = Ability.CreateAbilityObject(
-						"Entities/Champions/TestChamp/SecondaryModel", true, false, false, false, this,
-						this.transform.position,
-						Tools.PositionOnMapAt(this.player.RaycastOnLayer(MatchManager.Instance.mapLayerMask).point),
-						null, 25, 50, 6);
+					AbilityObject abilityObect = Ability.CreateAbilityObject("Entities/Champions/TestChamp/SecondaryModel", false, false, false, false, this, this.transform.position, Tools.PositionOnMapAt(this.player.RaycastOnLayer(MatchManager.Instance.mapLayerMask).point), null, 30, 50, 5);
+					if (this.tertiaryAbility.CurrentCooldown.Equals(this.tertiaryAbility.BaseCooldown - 5.0) )
+					{
+						
+					}
 				}),
 			new Ability(120, this, "Black Out",
 				"Crypto unleashes a burst of energy all around the area dealing damaging and silenceing everyone inside the area",
@@ -102,17 +101,18 @@ public class Crypto : Champion
 
 				})
 		);
+	}
 
 	private new void Update()
 	{
 		base.Update();
 	}
-		private IEnumerator RemoveSlow()
+		private IEnumerator RemoveSlow(Entity targetEntity)
 		{
+			
+			yield return new WaitForSeconds(2);
+			targetEntity.speed.PercentageBonusValue = -.25;
 
 
-
-			return;
 		}
 	}
-}
