@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7172189332679884083}
   - component: {fileID: 1254112405918551875}
   - component: {fileID: 970377618843971752}
+  - component: {fileID: 8632704937071353887}
+  - component: {fileID: 5729205253498053533}
   m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
@@ -120,5 +122,45 @@ MonoBehaviour:
   resource: 0
   experience: 0
   level: 0
-  entityRenderer: {fileID: 0}
+  entityHeight: 0
+  entityAnimator: {fileID: 0}
   inspectorTeam: 0
+  protector: {fileID: 0}
+--- !u!114 &8632704937071353887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856469396107867194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 5729205253498053533}
+  - {fileID: 970377618843971752}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &5729205253498053533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856469396107867194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1

@@ -22,9 +22,7 @@ public abstract class Champion : ComplexEntity {
 		this.uniqueUserId = this.player.uniqueUserId;
 	}
 
-	public void Start() {
-		this.StartCoroutine(this.Tick());
-	}
+	public void Start() { this.StartCoroutine(this.Tick()); }
 
 	public new void Update() {
 		base.Update();
