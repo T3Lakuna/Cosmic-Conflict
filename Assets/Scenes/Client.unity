@@ -4599,27 +4599,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1116a3156fa35b94d8eeaf9f40e7334a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
-  playMenu: {fileID: 0}
-  championSelectMenu: {fileID: 0}
-  mainPlayButton: {fileID: 0}
-  mainExitButton: {fileID: 0}
-  playQueueButton: {fileID: 0}
-  playPracticeButton: {fileID: 0}
-  playBackButton: {fileID: 0}
-  championSelectChefNorrisSelectButton: {fileID: 0}
-  championSelectAlliskatorSelectButton: {fileID: 0}
-  championSelectJaydenSelectButton: {fileID: 0}
-  championSelectVespaSelectButton: {fileID: 0}
-  championSelectAtaraxiaSelectButton: {fileID: 0}
-  championSelectCaptainArmstrongSelectButton: {fileID: 0}
-  championSelectCryptoSelectButton: {fileID: 0}
-  championSelectRitokongSelectButton: {fileID: 0}
-  championSelectBearFactSelectButton: {fileID: 0}
-  championSelectPenumbraSelectButton: {fileID: 0}
-  championSelectShionSelectButton: {fileID: 0}
-  championSelectSlambowskiSelectButton: {fileID: 0}
-  championSelectJamesSelectButton: {fileID: 0}
+  mainMenu: {fileID: 33921909}
+  playMenu: {fileID: 2140968586}
+  championSelectMenu: {fileID: 1395691082}
+  mainPlayButton: {fileID: 961243605}
+  mainExitButton: {fileID: 347542455}
+  playQueueButton: {fileID: 1140355381}
+  playPracticeButton: {fileID: 294178191}
+  playBackButton: {fileID: 1194152470}
+  championSelectChefNorrisSelectButton: {fileID: 935126480}
+  championSelectAlliskatorSelectButton: {fileID: 761307150}
+  championSelectJaydenSelectButton: {fileID: 1035080467}
+  championSelectVespaSelectButton: {fileID: 990912049}
+  championSelectAtaraxiaSelectButton: {fileID: 2092145753}
+  championSelectCaptainArmstrongSelectButton: {fileID: 2027293394}
+  championSelectCryptoSelectButton: {fileID: 1455244055}
+  championSelectRitokongSelectButton: {fileID: 493067430}
+  championSelectBearFactSelectButton: {fileID: 1445561207}
+  championSelectPenumbraSelectButton: {fileID: 1420124416}
+  championSelectShionSelectButton: {fileID: 873462858}
+  championSelectSlambowskiSelectButton: {fileID: 1142742702}
+  championSelectJamesSelectButton: {fileID: 1701753157}
 --- !u!1 &1395691082
 GameObject:
   m_ObjectHideFlags: 0

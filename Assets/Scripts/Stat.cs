@@ -22,8 +22,8 @@
 	public double CurrentValue;
 	private double _baseValue;
 	private readonly double _scalingValue;
-	public readonly double BonusValue;
-	public readonly double PercentageBonusValue;
+	public double BonusValue;
+	public double PercentageBonusValue;
 	public StatId Id;
 
 	public Stat(double baseValue, double scalingValue, StatId id) {

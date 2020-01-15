@@ -6,9 +6,9 @@ using static Ability;
 public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	public enum Team { Red, Blue, Neutral }
 
-	public const int ExperiencePerLevelPerLevel = 50;
+	protected const int ExperiencePerLevelPerLevel = 50;
 
-	[HideInInspector] public List<StatusEffectType> currentStatusEffects;
+	[HideInInspector] public List<StatusEffect> currentStatusEffects;
 	[HideInInspector] public List<Item> items;
 	[HideInInspector] public Item trinket;
 	[HideInInspector] public Team team;
@@ -16,7 +16,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Entity basicAttackTarget;
 	[HideInInspector] public double basicAttackCooldown;
 	[HideInInspector] public Ability basicAttackAbility;
-	[HideInInspector] private EntityDisplay display;
+	private EntityDisplay _display;
 
 	[HideInInspector] public int kills;
 	[HideInInspector] public int deaths;
@@ -51,7 +51,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public double entityHeight;
 	[HideInInspector] public Animator entityAnimator;
 
-	public void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, double entityHeight, Animator entityAnimator, Team team) {
+	protected void SetupEntity(double damageBase, double damageScaling, double magicBase, double magicScaling, double vitalityBase, double vitalityScaling, double regenerationBase, double regenerationScaling, double energyBase, double energyScaling, double enduranceBase, double enduranceScaling, double armorBase, double armorScaling, double nullificationBase, double nullificationScaling, double forceBase, double forceScaling, double pierceBase, double pierceScaling, double vampBase, double vampScaling, double fervorBase, double fervorScaling, double speedBase, double speedScaling, double tenacityBase, double tenacityScaling, double critBase, double critScaling, double efficiencyBase, double efficiencyScaling, double rangeBase, double rangeScaling, double entityHeight, Animator entityAnimator, Team team) {
 		this.entityHeight = entityHeight;
 		this.entityAnimator = entityAnimator;
 
@@ -87,7 +87,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.level = 0;
 		this.experience = 0;
 		this.team = team;
-		this.currentStatusEffects = new List<StatusEffectType>();
+		this.currentStatusEffects = new List<StatusEffect>();
 		this.items = new List<Item>();
 
 		this.movementTarget = Tools.PositionOnMapAt(this.transform.position);
@@ -98,20 +98,20 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.LevelUp();
 	}
 
-	public void MovementCommand(Vector3 targetPosition) {
+	protected void MovementCommand(Vector3 targetPosition) {
 		this.movementTarget = Tools.PositionOnMapAt(targetPosition);
 		this.transform.LookAt(this.movementTarget);
 		this.transform.rotation = Quaternion.Euler(0, this.transform.rotation.eulerAngles.y, this.transform.rotation.eulerAngles.z);
 		if (this.entityAnimator) { this.entityAnimator.runtimeAnimatorController = MatchManager.Instance.runAnimation; }
 	}
 
-	public Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeSelf, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
+	protected Entity ClosestEntityInRange(bool includeEnemies, bool includeAllies, bool includeSelf, bool includeChampions, bool includeStructures, bool includeOtherEntities, double maximumRange) {
 		Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, (float) maximumRange, MatchManager.Instance.entityLayerMask);
 		Entity closestEntity = null;
-		foreach (Collider collider in hitColliders) {
-			if (Vector3.Distance(collider.transform.position, this.transform.position) > maximumRange) { continue; } // Necessary for some reason. Redundancy is always good, I guess...
+		foreach (Collider hitCollider in hitColliders) {
+			if (Vector3.Distance(hitCollider.transform.position, this.transform.position) > maximumRange) { continue; } // Necessary for some reason. Redundancy is always good, I guess...
 
-			Entity collidedEntity = collider.GetComponent<Entity>();
+			Entity collidedEntity = hitCollider.GetComponent<Entity>();
 			if (!includeSelf && collidedEntity == this) { continue; }
 
 			if (!includeEnemies && collidedEntity.team != this.team || !includeAllies && collidedEntity.team == this.team) { continue; }
@@ -130,9 +130,9 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		return closestEntity;
 	}
 
-	public void Die() { this.gameObject.SetActive(false); }
+	private void Die() { this.gameObject.SetActive(false); }
 
-	public void BasicAttackCommand(Entity target) {
+	protected void BasicAttackCommand(Entity target) {
 		if (!target) { return; }
 
 		this.basicAttackTarget = target;
@@ -178,13 +178,13 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	}
 
 	private void UpdateDisplay() {
-		if (!this.display) { this.display = EntityDisplay.CreateEntityDisplay(this); }
+		if (!this._display) { this._display = EntityDisplay.CreateEntityDisplay(this); }
 
-		this.display.healthText.text = (int) this.health + " / " + (int) this.vitality.CurrentValue;
-		this.display.physicalShieldText.text = "" + (int) this.physicalShield;
-		this.display.magicalShieldText.text = "" + (int) this.magicalShield;
-		this.display.shieldText.text = "" + (int) this.shield;
-		this.display.resourceText.text = (int) this.resource + " / " + (int) this.energy.CurrentValue;
+		this._display.healthText.text = (int) this.health + " / " + (int) this.vitality.CurrentValue;
+		this._display.physicalShieldText.text = "" + (int) this.physicalShield;
+		this._display.magicalShieldText.text = "" + (int) this.magicalShield;
+		this._display.shieldText.text = "" + (int) this.shield;
+		this._display.resourceText.text = (int) this.resource + " / " + (int) this.energy.CurrentValue;
 	}
 
 	private void UpdateStats() {

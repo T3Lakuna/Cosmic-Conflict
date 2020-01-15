@@ -7,8 +7,6 @@ public class Ability {
 
 	public enum HealthType { Health, Shield, PhysicalShield, MagicalShield }
 
-	public enum StatusEffectType { Stun, Slow, Root, Fear, Charm, Silence }
-
 	public double CurrentCooldown;
 	public readonly double BaseCooldown;
 	public readonly Entity Source;
@@ -84,11 +82,11 @@ public class Ability {
 		HealthType[] damageOrder;
 		switch (type) {
 			case DamageType.Magical:
-				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.nullification.CurrentValue / 100.0);
+				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * ((target.nullification.CurrentValue - source.pierce.CurrentValue) / 100.0);
 				damageOrder = new[] { HealthType.MagicalShield, HealthType.Shield, HealthType.Health };
 				break;
 			case DamageType.Physical:
-				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * (target.armor.CurrentValue / 100.0);
+				effectiveHealth = target.vitality.CurrentValue + target.vitality.CurrentValue * ((target.armor.CurrentValue - source.force.CurrentValue) / 100.0);
 				damageOrder = new[] { HealthType.PhysicalShield, HealthType.Shield, HealthType.Health };
 				break;
 			case DamageType.True:
@@ -102,6 +100,8 @@ public class Ability {
 		double damageTaken = (effectiveHealth * (percentageAmount / 100)) + flatAmount;
 		double effectiveDamageTaken = damageTaken * (target.vitality.CurrentValue / effectiveHealth);
 		double remainingDamage = effectiveDamageTaken;
+
+		Ability.Heal(source, HealthType.Health, 0, effectiveDamageTaken * source.vamp.CurrentValue, 0); // Vamp
 
 		foreach (HealthType healthType in damageOrder) {
 			double originalValue;
@@ -176,15 +176,5 @@ public class Ability {
 			default:
 				throw new ArgumentOutOfRangeException(nameof(type), type, null);
 		}
-	}
-
-	public static void ApplyStatusEffect(Entity target, StatusEffectType type, double duration, double value) {
-		target.currentStatusEffects.Add(type);
-		target.StartCoroutine(Ability.RemoveStatusEffect(target, type, duration));
-	}
-
-	private static IEnumerator RemoveStatusEffect(Entity target, StatusEffectType type, double delay) {
-		yield return new WaitForSeconds((float) delay);
-		target.currentStatusEffects.Remove(type);
 	}
 }
