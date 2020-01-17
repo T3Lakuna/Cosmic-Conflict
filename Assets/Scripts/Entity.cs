@@ -16,6 +16,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Entity basicAttackTarget;
 	[HideInInspector] public double basicAttackCooldown;
 	[HideInInspector] public Ability basicAttackAbility;
+	[HideInInspector] public System.Action<Entity>[] basicAttackActions;
 	private EntityDisplay _display;
 
 	[HideInInspector] public int kills;
@@ -120,7 +121,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 			Structure collidedStructure = collidedEntity.GetComponent<Structure>();
 			if (!includeChampions && collidedChampion || !includeStructures && collidedStructure || !includeOtherEntities && !collidedStructure && !collidedChampion) { continue; }
 
-			if (!closestEntity) { closestEntity = collidedEntity; }
+			if (closestEntity == null) { closestEntity = collidedEntity; }
 
 			if (Vector3.Distance(this.transform.position, closestEntity.transform.position) < Vector3.Distance(this.transform.position, collidedEntity.transform.position)) { continue; }
 
@@ -141,11 +142,14 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 
 		if (this.range.CurrentValue > 5) { // Ranged
 			this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
-				AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", false, true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
-				abilityObject.collisionAction = () => { Ability.DealDamage(true, this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0); };
-				abilityObject.updateAction = () => { abilityObject.movementSpeed += abilityObject.movementSpeed * Time.deltaTime / 2; }; // Accelerate to guarantee connection with target.
-			}) { CurrentCooldown = oldBasicAttackCooldown };
-		} else { this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => { Ability.DealDamage(true, this, this.basicAttackTarget, DamageType.Physical, this.damage.CurrentValue, 0); }) { CurrentCooldown = oldBasicAttackCooldown }; } // Melee
+																																	  AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", false, true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
+																																	  abilityObject.collisionAction = () => {
+																																										  Ability.DealDamage(true, this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0);
+																																										  foreach (System.Action<Entity> action in this.basicAttackActions) { action.Invoke(abilityObject.collidedEntity); }
+																																									  };
+																																	  abilityObject.updateAction = () => { abilityObject.movementSpeed += abilityObject.movementSpeed * Time.deltaTime / 2; }; // Accelerate to guarantee connection with target.
+																																  }) {CurrentCooldown = oldBasicAttackCooldown};
+		} else { this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => { Ability.DealDamage(true, this, this.basicAttackTarget, DamageType.Physical, this.damage.CurrentValue, 0); }) {CurrentCooldown = oldBasicAttackCooldown}; } // Melee
 	}
 
 	public void Update() {
@@ -161,6 +165,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	private void MovementUpdate() {
 		Vector3 step = Tools.PositionOnMapAt(Vector3.MoveTowards(this.transform.position, movementTarget, (float) this.speed.CurrentValue * Time.deltaTime));
 		if (Tools.HeightOfMapAt(step.x, step.z) == -1) { this.movementTarget = this.transform.position; } else { this.gameObject.transform.position = step; }
+
 		if (this.entityAnimator && this.transform.position == this.movementTarget) { this.entityAnimator.runtimeAnimatorController = MatchManager.Instance.idleAnimation; }
 	}
 
@@ -229,6 +234,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	private void LevelUp() {
 		this.level++;
 		if (this.level == 1) { return; } // Start with base stats.
+
 		this.damage.LevelUp();
 		this.magic.LevelUp();
 		this.vitality.LevelUp();

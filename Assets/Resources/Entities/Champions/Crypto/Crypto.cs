@@ -6,7 +6,29 @@
 	private new void Start() {
 		base.Start();
 
-		this.tertiaryPartOne = new Ability(18, this, "Holo-Translocator", "Crypto creates a hologram of his exact likeness. Crypto can then re-cast the ability to swap places with the clone.", 90, null, () => { });
+		this.tertiaryPartOne = new Ability(18, this, "Holo-Translocator", "Crypto creates a hologram of his exact likeness. Crypto can then re-cast the ability to swap places with the clone.", 90, null, () => {
+																																																			   this.tertiaryClone = Ability.CreateAbilityObject("Entities/Champions/Crypto/Model", false, false, false, false, this, this.transform.position, this.player.RaycastOnLayer(MatchManager.Instance.mapLayerMask).point, null, this.speed.CurrentValue, 50, 10);
+																																																			   UnityEngine.Object.Destroy(this.tertiaryClone.GetComponent<Entity>());
+																																																			   this.tertiaryAbility = this.tertiaryPartTwo;
+																																																		   });
+		this.tertiaryPartTwo = new Ability(0, this, "Holo-Translocator", "Crypto creates a hologram of his exact likeness. Crypto can then re-cast the ability to swap places with the clone.", 0, null, () => {
+																																																			 UnityEngine.Vector3 temp = this.transform.position;
+																																																			 this.transform.position = this.tertiaryClone.transform.position;
+																																																			 this.movementTarget = this.transform.position;
+																																																			 this.tertiaryClone.transform.position = temp;
+																																																			 this.tertiaryClone.target = this.tertiaryClone.transform.position;
+																																																			 this.tertiaryAbility = this.tertiaryPartOne;
+																																																		 });
+
+		this.SetupChampion(70, 2.5, 0, 0, 850, 100, 3, 0.5, 450, 18, 2, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.7, 0, 35, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, this.GetComponent<UnityEngine.Animator>(), "Crypto", UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Crypto/Icon"), new Ability(10, this, "Vulnerability Breach", "Crypto finds the weaknesses in his enemies, allowing his next attack on the enemy to deal bonus damage based on their missing health.", 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Crypto/PassiveIcon"), () => {
+																																																																																																																																												   // TODO
+																																																																																																																																											   }), new Ability(8, this, "Firewall Breaker", "Crypto loads its blade with a virus that will slow the enemy hit.", 45, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Crypto/PrimaryIcon"), () => {
+																																																																																																																																																																																																  // TODO
+																																																																																																																																																																																															  }), new Ability(20, this, "EMP", "Crypto releases an EMP which explodes on contact, dealing damage and silencing enemies in the blast.", 90, null, () => {
+																																																																																																																																																																																																																																					 // TODO
+																																																																																																																																																																																																																																				 }), this.tertiaryPartOne, new Ability(120, this, "Blackout", "Crypto releases a burst of energy, damaging and silencing enemies around it.", 100, null, () => {
+																																																																																																																																																																																																																																																																											 // TODO
+																																																																																																																																																																																																																																																																										 }));
 	}
 
 	/*
