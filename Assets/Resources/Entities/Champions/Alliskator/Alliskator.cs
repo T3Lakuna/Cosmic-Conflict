@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alliskator : Champion
+/*public class Alliskator : Champion
 {
     // Start is called before the first frame update
     private new void Start()
@@ -51,4 +51,5 @@ public class Alliskator : Champion
 
 
 
-// Update is called once per fram}
+// Update is called once per frame
+*/
