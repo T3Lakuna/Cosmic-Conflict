@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class Ataraxia : Champion
+/*public class Ataraxia : Champion
 {
     void Start()
     {
@@ -15,4 +15,4 @@ public class Ataraxia : Champion
             );
     }
 
-}
+}*/
