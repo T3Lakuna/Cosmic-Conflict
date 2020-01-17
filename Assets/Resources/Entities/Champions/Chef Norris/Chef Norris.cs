@@ -34,6 +34,7 @@ public class ChefNorris : Champion
                     if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 50) {this.resource += 70; return;}
                     targetEntity.fervor.PercentageBonusValue += .2;
                     targetEntity.speed.PercentageBonusValue += .1;
+                    this.StartCoroutine(RemoveBuff("Spicy Chicken Teriyaki",targetEntity));
                     toBuff = true;
                 }),
             new Ability(12,this,"Steak And Eggs", "Chef Norris feeds Steak and Eggs to an ally. Ally gains a shield and loses speed.",60,UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Chef Norris/SecondaryIcon"),
@@ -46,6 +47,8 @@ public class ChefNorris : Champion
                     if (targetEntity.team == this.team) {this.resource += 60; return;}
                     if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 50) {this.resource += 60; return;}
                     Ability.Heal(targetEntity, Ability.HealthType.Shield, 0, 0, 0.1);
+                    targetEntity.speed.PercentageBonusValue -= .1
+                    this.StartCoroutine(RemoveBuff("Steak And Eggs",targetEntity));
                     toBuff = true;
                 }),
             new Ability(15,this,"Double Decker Cheeseburger","Chef Norris feeds a Double Decker Cheeseburger to an ally. Ally gains Adaptive and fervor.",100,UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Chef Norris/TertiaryIcon"),
@@ -108,7 +111,17 @@ public class ChefNorris : Champion
             this.speed.PercentageBonusValue -= .2;
             
         }
-
+        if (decider.Equals("Spicy Chicken Teriyaki"))
+        {
+            yield return new WaitForSeconds(6);
+            target.fervor.PercentageBonusValue -= .2;
+            target.speed.PercentageBonusValue -= .1;
+        }
+        if(decide.Equals("Steak And Eggs"))
+        {
+            yield return new WaitForSeconds(3);
+            target.speed.PercentageBonusValue += .1;
+        }
         if (decider.Equals("DCCD"))
         {
             yield return new WaitForSeconds(5);
