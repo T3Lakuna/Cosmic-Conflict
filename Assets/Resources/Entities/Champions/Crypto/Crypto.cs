@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿public class Crypto : Champion {
+	private AbilityObject tertiaryClone;
+	private Ability tertiaryPartOne;
+	private Ability tertiaryPartTwo;
 
-<<<<<<< HEAD
-public class Crypto : Champion
-{
-	// Start is called before the first frame update
-	private new void Start()
-	{
-=======
-public class Crypto : Champion {
+	private new void Start() {
+		base.Start();
+
+		this.tertiaryPartOne = new Ability(18, this, "Holo-Translocator", "Crypto creates a hologram of his exact likeness. Crypto can then re-cast the ability to swap places with the clone.", 90, null, () => { });
+	}
+
 	/*
 	private new void Start() {
->>>>>>> 3a1b31e8573aee4cf133b0f66241a66d5dccf069
 		base.Start();
 		this.SetupChampion(70, 2.5, 0, 0, 850, 100, 6, .5, 455, 18, 6, .5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, .7, .04, 40, 0,
 			0, 0, 0, 0, 0, 0, 5, 0, 4, this.GetComponent<Animator>(), "Crypto",
@@ -82,7 +81,7 @@ public class Crypto : Champion {
 
 				}),
 			new Ability(18, this, "Holo-Trans-Locator",
-				"Crypto creates a hologram of his exact likeness Crypto can then recast the ability to swap places with the clone",
+				"",
 				90, UnityEngine.Resources.Load<UnityEngine.Sprite>("Same thing i said in his w"),
 				() =>
 				{
@@ -106,24 +105,7 @@ public class Crypto : Champion {
 					Ability.DoInArea(this.transform.position, 100, false, aoeAbiility);
 
 				})
-		);
-	}
-
-	private new void Update()
-	{
-		base.Update();
-	}
-<<<<<<< HEAD
-		private IEnumerator RemoveSlow(Entity targetEntity)
-		{
-			
-			yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(2);
 			targetEntity.speed.PercentageBonusValue = -.25;
-
-
-		}
-	}
-=======
-	*/
+			*/
 }
->>>>>>> 3a1b31e8573aee4cf133b0f66241a66d5dccf069
