@@ -6,7 +6,7 @@ using UnityEngine;
 public class ChefNorris : Champion
 {
     private bool toBuff;
-    void Start()
+    private new void  Start()
     {
         this.toBuff = false;
         foreach (Champion champion in MatchManager.Instance.champions)
