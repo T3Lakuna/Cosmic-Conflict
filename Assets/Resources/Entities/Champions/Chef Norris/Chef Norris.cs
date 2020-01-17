@@ -47,7 +47,7 @@ public class ChefNorris : Champion
                     if (targetEntity.team == this.team) {this.resource += 60; return;}
                     if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 50) {this.resource += 60; return;}
                     Ability.Heal(targetEntity, Ability.HealthType.Shield, 0, 0, 0.1);
-                    targetEntity.speed.PercentageBonusValue -= .1
+                    targetEntity.speed.PercentageBonusValue -= .1;
                     this.StartCoroutine(RemoveBuff("Steak And Eggs",targetEntity));
                     toBuff = true;
                 }),
@@ -117,7 +117,7 @@ public class ChefNorris : Champion
             target.fervor.PercentageBonusValue -= .2;
             target.speed.PercentageBonusValue -= .1;
         }
-        if(decide.Equals("Steak And Eggs"))
+        if (decider.Equals("Steak And Eggs"))
         {
             yield return new WaitForSeconds(3);
             target.speed.PercentageBonusValue += .1;
