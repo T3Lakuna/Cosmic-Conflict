@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using static Ability;
@@ -95,7 +96,8 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		this.basicAttackTarget = null;
 		this.basicAttackCooldown = 0;
 		this.basicAttackAbility = null;
-
+		this.basicAttackActions = new List<Action<Entity>>();
+		
 		this.LevelUp();
 	}
 
@@ -141,15 +143,22 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 		if (this.basicAttackAbility != null) { oldBasicAttackCooldown = this.basicAttackAbility.CurrentCooldown; } else { oldBasicAttackCooldown = 0; }
 
 		if (this.range.CurrentValue > 5) { // Ranged
-			this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => {
-																																	  AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", false, true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
-																																	  abilityObject.collisionAction = () => {
-																																										  Ability.DealDamage(true, this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0);
-																																										  foreach (System.Action<Entity> action in this.basicAttackActions) { action.Invoke(abilityObject.collidedEntity); }
-																																									  };
-																																	  abilityObject.updateAction = () => { abilityObject.movementSpeed += abilityObject.movementSpeed * Time.deltaTime / 2; }; // Accelerate to guarantee connection with target.
-																																  }) {CurrentCooldown = oldBasicAttackCooldown};
-		} else { this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, () => { Ability.DealDamage(true, this, this.basicAttackTarget, DamageType.Physical, this.damage.CurrentValue, 0); }) {CurrentCooldown = oldBasicAttackCooldown}; } // Melee
+			this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null, 
+				() => {
+					AbilityObject abilityObject = Ability.CreateAbilityObject("Prefabs/BasicAttack", false, true, false, true, this, this.transform.position, this.basicAttackTarget.transform.position, this.basicAttackTarget, 50, this.range.CurrentValue, 10);
+					abilityObject.collisionAction = () => {
+						Ability.DealDamage(true, this, abilityObject.collidedEntity, DamageType.Physical, this.damage.CurrentValue, 0);
+						foreach (System.Action<Entity> action in this.basicAttackActions) { action.Invoke(abilityObject.collidedEntity); }
+					};
+					abilityObject.updateAction = () => { abilityObject.movementSpeed += abilityObject.movementSpeed * Time.deltaTime / 2; }; // Accelerate to guarantee connection with target.
+					
+				}) {CurrentCooldown = oldBasicAttackCooldown};
+		} else { this.basicAttackAbility = new Ability(1 / this.fervor.CurrentValue, this, "Basic Attack", "A basic attack.", 0, null,
+			() =>
+			{
+				Ability.DealDamage(true, this, this.basicAttackTarget, DamageType.Physical, this.damage.CurrentValue, 0);
+				foreach (System.Action<Entity> action in this.basicAttackActions) { action.Invoke(this.basicAttackTarget); }
+			}) {CurrentCooldown = oldBasicAttackCooldown}; } // Melee
 	}
 
 	public void Update() {
