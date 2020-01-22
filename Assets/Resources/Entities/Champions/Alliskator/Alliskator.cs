@@ -20,15 +20,55 @@ using UnityEngine;
                 {
                     this.basicAttackActions.Add((hi) =>
                     {
-                        Ability.DealDamage(true, this, hi, Ability.DamageType.Physical, 100, 100);
+                        Ability.DealDamage(true, this, hi, Ability.DamageType.Physical, 100, 50);
+                        this.basicAttackActions.Clear();
+
                     });
+                  
                 }),
             new Ability(10, this, "Smack Smack Attack",
                 "Alliskator whales on an enemy stunning them after the second attack", 40, null, () => { }),
             new Ability(12, this, "Eye on the Prey",
                 "Alliskater looks with such intet he slows an enemy and causing his next auto attack agaist that target to stun them",
                 55, null,
-                () => { }),
+                () =>
+                {
+                    Collider targetCollider = this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
+                    if (!targetCollider)
+                    {
+                        this.resource += 45;
+                        this.primaryAbility.CurrentCooldown -= 8;
+                        return;
+                    } // Return mana cost when not casting! (No target.)
+
+                    Entity targetEntity = targetCollider.GetComponent<Entity>();
+                    if (!targetEntity)
+                    {
+                        this.resource += 45;
+                        this.primaryAbility.CurrentCooldown -= 8;
+                        return;
+                    } // Return mana cost when not casting! (No target entity.)
+
+                    if (targetEntity.team == this.team)
+                    {
+                        this.resource += 45;
+                        this.primaryAbility.CurrentCooldown -= 8;
+                        return;
+                    } // Return mana cost when not casting! (Targeted ally.)
+
+                    if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 20)
+                    {
+                        this.resource += 50;
+                        this.primaryAbility.CurrentCooldown -= 8;
+                        return;
+                    } // Return mana cost when not casting! (Out of range.)
+                    
+                    targetEntity.speed.PercentageBonusValue = -.25;
+                    this.StartCoroutine(this.RemoveSlow());
+                    
+                    
+                    
+                }),
             new Ability(100, this, "BIG BOYS", "OH LAWD HE COMING", 100,
                 UnityEngine.Resources.Load<UnityEngine.Sprite>(null), () =>
                 {
@@ -46,8 +86,15 @@ using UnityEngine;
         this.speed.BonusValue -= 20;
         this.vitality.BonusValue -= 300;
 
-        ;
+        
     }
+
+    private IEnumerator RemoveSlow()
+    {
+        
+    }
+
+    
 
 
 }
