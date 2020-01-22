@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
@@ -41,6 +41,3 @@ public class Ataraxia : Champion
     }
 
 }
-=======
-﻿
->>>>>>> 6959d4fab3d4025048c2dac2e63af364e0cbb58c
