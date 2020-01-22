@@ -10,13 +10,9 @@ public class ChefNorris : Champion
     private new void Start()
     {
         this.toBuff = false;
-
-        foreach (Champion champion in MatchManager.Instance.champions)
-        {
-            //TODO
-        }
-
-        this.SetupChampion(60, 3, 0, 0, 750, 60, 3, .05, 400, 20, 2, .1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, .7, .05, 35, 0, 0, 0, 0, 0, 0, 0, 25, 0, 5, this.GetComponent<Animator>(), "Chef Norris",
+        
+        this.SetupChampion(60, 3, 0, 0, 750, 60, 3, .05, 400, 20, 2, .1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, .7, .05, 35, 0,
+            0, 0, 0, 0, 0, 0, 25, 0, 5, this.GetComponent<Animator>(), "Chef Norris",
             UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Chef Norris/Icon"),
             new Ability(0, this, "Good Eats", "Chef Norris gain speed for 4 seconds when Chef Norris casts an ability",
                 0, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Chef Norris/PassiveIcon"),
@@ -27,15 +23,20 @@ public class ChefNorris : Champion
                         this.speed.PercentageBonusValue += .2;
                         this.StartCoroutine(removePassiveBuff());
                     }
-                    
                 }),
             new Ability(10, this, "Spicy Chicken Teriyaki",
                 "Chef Norris feeds Spicy Chicken Teriyaki to an ally. Ally gains fervor and speed.", 70,
                 UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Chef Norris/PrimaryIcon"),
                 () =>
                 {
-                    Collider targetCollider = this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
-                    if (!targetCollider) { this.resource += 70; return; }
+                    Collider targetCollider =
+                        this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
+                    if (!targetCollider)
+                    {
+                        this.resource += 70;
+                        return;
+                    }
+
                     Entity targetEntity = targetCollider.GetComponent<Entity>();
                     if (!targetEntity)
                     {
@@ -43,14 +44,16 @@ public class ChefNorris : Champion
                         return;
                     }
 
-                    
-
+                    if (targetEntity.team != this.team)
+                    {
+                        this.resource += 70;
+                        return;
+                    }
                     if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 50)
                     {
                         this.resource += 70;
                         return;
                     }
-
                     targetEntity.fervor.PercentageBonusValue += .2;
                     targetEntity.speed.PercentageBonusValue += .1;
                     this.StartCoroutine(RemoveBuff("Spicy Chicken Teriyaki", targetEntity));
@@ -75,9 +78,11 @@ public class ChefNorris : Champion
                         this.resource += 60;
                         return;
                     }
-
-                    
-
+                    if (targetEntity.team != this.team)
+                    {
+                        this.resource += 70;
+                        return;
+                    }
                     if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 50)
                     {
                         this.resource += 60;
@@ -108,9 +113,11 @@ public class ChefNorris : Champion
                         this.resource += 100;
                         return;
                     }
-
-                   
-
+                    if (targetEntity.team != this.team)
+                    {
+                        this.resource += 70;
+                        return;
+                    }
                     if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 50)
                     {
                         this.resource += 100;
@@ -131,28 +138,31 @@ public class ChefNorris : Champion
 
                     targetEntity.fervor.PercentageBonusValue += .1;
                     toBuff = true;
-
-
-
                 }),
             new Ability(100, this, "All You Can Eat Buffet",
                 "Chef Norris ignites with passion and serves a full course meal to an Ally, empowering them with Adaptive, fervor, speed, and regeneration",
                 120, UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Chef Norris/UltimateIcon"),
                 () =>
                 {
-                    Collider targetCollider = this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
+                    Collider targetCollider =
+                        this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
                     if (!targetCollider)
                     {
                         this.resource += 120;
                         return;
                     }
+
                     Entity targetEntity = targetCollider.GetComponent<Entity>();
                     if (!targetEntity)
                     {
                         this.resource += 120;
                         return;
                     }
-                    
+                    if (targetEntity.team != this.team)
+                    {
+                        this.resource += 70;
+                        return;
+                    }
                     if (Vector3.Distance(targetEntity.transform.position, this.transform.position) > 50)
                     {
                         this.resource += 120;
@@ -180,8 +190,6 @@ public class ChefNorris : Champion
 
     private IEnumerator RemoveBuff(String decider, Entity target)
     {
-        
-
         if (decider.Equals("Spicy Chicken Teriyaki"))
         {
             yield return new WaitForSeconds(6);
@@ -225,7 +233,6 @@ public class ChefNorris : Champion
             target.fervor.PercentageBonusValue -= .2;
             target.speed.PercentageBonusValue -= .2;
             target.regeneration.PercentageBonusValue -= 1;
-
         }
     }
 
@@ -236,4 +243,3 @@ public class ChefNorris : Champion
         this.speed.PercentageBonusValue -= .2;
     }
 }
-

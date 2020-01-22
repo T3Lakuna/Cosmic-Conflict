@@ -4739,6 +4739,7 @@ MonoBehaviour:
   playQueueButton: {fileID: 1140355381}
   playPracticeButton: {fileID: 294178191}
   playBackButton: {fileID: 1194152470}
+  queueText: {fileID: 1137004452}
   championSelectChefNorrisSelectButton: {fileID: 935126480}
   championSelectAlliskatorSelectButton: {fileID: 761307150}
   championSelectJaydenSelectButton: {fileID: 1035080467}

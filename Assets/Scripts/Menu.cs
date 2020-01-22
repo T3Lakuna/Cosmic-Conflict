@@ -7,6 +7,7 @@
 	public UnityEngine.GameObject playQueueButton;
 	public UnityEngine.GameObject playPracticeButton;
 	public UnityEngine.GameObject playBackButton;
+	public TMPro.TMP_Text queueText;
 	public UnityEngine.GameObject championSelectChefNorrisSelectButton;
 	public UnityEngine.GameObject championSelectAlliskatorSelectButton;
 	public UnityEngine.GameObject championSelectJaydenSelectButton;
@@ -21,12 +22,16 @@
 	public UnityEngine.GameObject championSelectSlambowskiSelectButton;
 	public UnityEngine.GameObject championSelectJamesSelectButton;
 
+	[UnityEngine.HideInInspector] public Player localPlayer;
 	[UnityEngine.HideInInspector] public string championModelPath;
 	[UnityEngine.HideInInspector] public int joinOrder;
 
-	private Photon.Realtime.RoomOptions RoomOptions = new Photon.Realtime.RoomOptions {IsOpen = true, IsVisible = true, CleanupCacheOnLeave = false, MaxPlayers = 10};
+	private bool starting;
+
+	private Photon.Realtime.RoomOptions RoomOptions = new Photon.Realtime.RoomOptions {IsOpen = true, IsVisible = true, CleanupCacheOnLeave = false, MaxPlayers = 1}; // TODO: Ten players.
 
 	private void Start() {
+		this.starting = false;
 		if (UnityEngine.Application.internetReachability != UnityEngine.NetworkReachability.NotReachable) { Photon.Pun.PhotonNetwork.ConnectUsingSettings(); }
 	}
 
@@ -39,9 +44,7 @@
 
 	public void MainExitButtonAction() { UnityEngine.Application.Quit(); }
 
-	public void PlayQueueButton() {
-		// TODO
-	}
+	public void PlayQueueButton() { Photon.Pun.PhotonNetwork.JoinOrCreateRoom("Default", this.RoomOptions, Photon.Pun.PhotonNetwork.CurrentLobby); }
 
 	public void PlayPracticeButton() {
 		this.playMenu.SetActive(false);
@@ -54,4 +57,30 @@
 	}
 
 	public void ChampionSelectAction(string championInstantiatePath) { this.championModelPath = championInstantiatePath; }
+
+	private void Update() {
+		if (Photon.Pun.PhotonNetwork.InRoom) {
+			if (Photon.Pun.PhotonNetwork.CurrentRoom.PlayerCount == Photon.Pun.PhotonNetwork.CurrentRoom.MaxPlayers && !this.starting) {
+				this.starting = true;
+				this.mainMenu.SetActive(false);
+				this.playMenu.SetActive(false);
+				this.championSelectMenu.SetActive(true);
+				if (Photon.Pun.PhotonNetwork.IsMasterClient) { this.StartCoroutine(this.HostLoadMainScene()); }
+			} else { this.queueText.text = "In Queue: " + Photon.Pun.PhotonNetwork.CurrentRoom.PlayerCount + " / " + Photon.Pun.PhotonNetwork.CurrentRoom.MaxPlayers; }
+		}
+	}
+
+	public System.Collections.IEnumerator HostLoadMainScene() {
+		UnityEngine.Debug.Log("Test 1");
+		yield return new UnityEngine.WaitForSeconds(15);
+		UnityEngine.Debug.Log("Test 2");
+		if (Photon.Pun.PhotonNetwork.InRoom) { Photon.Pun.PhotonNetwork.LoadLevel("Main"); } else { UnityEngine.SceneManagement.SceneManager.LoadScene("Main"); }
+
+		UnityEngine.Debug.Log("Test 3");
+	}
+
+	public override void OnJoinedRoom() {
+		base.OnJoinedRoom();
+		this.localPlayer = Tools.Instantiate("Prefabs/Player", UnityEngine.Vector3.zero).GetComponent<Player>();
+	}
 }
