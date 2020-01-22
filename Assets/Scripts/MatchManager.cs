@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,8 +46,8 @@ public class MatchManager : MonoBehaviour {
 	public Inhibitor redTopInhibitor;
 	public Inhibitor redMiddleInhibitor;
 	public Inhibitor redBottomInhibitor;
-	public AnimatorController idleAnimation;
-	public AnimatorController runAnimation;
+	public RuntimeAnimatorController idleAnimation;
+	public RuntimeAnimatorController runAnimation;
 	public Transform abilityHolder;
 	public Material redMaterial;
 	public Material blueMaterial;
