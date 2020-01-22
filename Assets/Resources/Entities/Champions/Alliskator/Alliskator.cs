@@ -9,7 +9,7 @@ using UnityEngine;
     {
         base.Start();
         this.SetupChampion(89, 3.5, 0, 0, 1100, 105, 6.5, .75, 655, 22, 6, .5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, .8, .04,
-            30, 0, 0, 0, 0, 0, 0, 0, 10, 0, 6, this.GetComponent<Animator>(), "Alliskator",
+            30, 0, 0, 0, 0, 0, 0, 0, 10, 0, 7, this.GetComponent<Animator>(), "Alliskator",
             UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Alliskator/Icon"),
             new Ability(10, this, "IDK slash and mash",
                 "after enough time Alliskator attacks dealing double damage and gaining move speed", 0, null,
@@ -18,10 +18,9 @@ using UnityEngine;
                 UnityEngine.Resources.Load<UnityEngine.Sprite>(null),
                 () =>
                 {
-                    this.basicAttackActions.Add((Slam) =>
+                    this.basicAttackActions.Add((hi) =>
                     {
-                        Ability.DealDamage(true, this, basicAttackTarget.basicAttackTarget,
-                            Ability.DamageType.Physical, 100, 0);
+                        Ability.DealDamage(true, this, hi, Ability.DamageType.Physical, 100, 100);
                     });
                 }),
             new Ability(10, this, "Smack Smack Attack",
@@ -33,7 +32,7 @@ using UnityEngine;
             new Ability(100, this, "BIG BOYS", "OH LAWD HE COMING", 100,
                 UnityEngine.Resources.Load<UnityEngine.Sprite>(null), () =>
                 {
-                    this.speed.BonusValue += 30;
+                    this.speed.BonusValue += 20;
                     this.vitality.BonusValue += 300;
                     this.StartCoroutine(this.removeBigBoi());
                 })
@@ -44,7 +43,7 @@ using UnityEngine;
     private IEnumerator removeBigBoi()
     {
         yield return new WaitForSeconds(8);
-        this.speed.BonusValue -= 30;
+        this.speed.BonusValue -= 20;
         this.vitality.BonusValue -= 300;
 
         ;
