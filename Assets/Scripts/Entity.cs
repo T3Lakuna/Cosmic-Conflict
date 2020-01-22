@@ -16,7 +16,7 @@ public abstract class Entity : MonoBehaviourPun, IPunObservable {
 	[HideInInspector] public Entity basicAttackTarget;
 	[HideInInspector] public double basicAttackCooldown;
 	[HideInInspector] public Ability basicAttackAbility;
-	[HideInInspector] public System.Action<Entity>[] basicAttackActions;
+	[HideInInspector] public List<System.Action<Entity>> basicAttackActions;
 	private EntityDisplay _display;
 
 	[HideInInspector] public int kills;
