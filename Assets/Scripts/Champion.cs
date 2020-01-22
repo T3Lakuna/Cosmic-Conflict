@@ -25,9 +25,9 @@ public abstract class Champion : ComplexEntity {
 	public void Start() { this.StartCoroutine(this.Tick()); }
 
 	public new void Update() {
-		base.Update();
+		if (PhotonNetwork.InRoom && !this.photonView.IsMine) { return; }
 
-		if (!this.player) { return; }
+		base.Update();
 
 		this.CheckPlayerActions();
 		this.passiveAbility.Cast();
