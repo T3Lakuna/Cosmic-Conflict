@@ -2,12 +2,15 @@
 using static Entity;
 
 public class Player : UnityEngine.MonoBehaviour {
-	public Champion champion;
-	public UnityEngine.Camera playerCamera;
-	public Team team;
-	public int uniqueUserId;
+	[HideInInspector] public Champion champion;
+	[HideInInspector] public UnityEngine.Camera playerCamera;
+	[HideInInspector] public Team team;
+	[HideInInspector] public int uniqueUserId;
 
-	private void Start() { this.uniqueUserId = (int) (Tools.Random() * 99999); }
+	private void Start() {
+		this.uniqueUserId = (int) (Tools.Random() * 99999);
+		this.playerCamera = Camera.main;
+	}
 
 	private void Update() {
 		if (!champion) { return; }
