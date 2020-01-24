@@ -1,5 +1,5 @@
 
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -33,11 +33,24 @@ public class Ataraxia : Champion
                 35,UnityEngine.Resources.Load<UnityEngine.Sprite>("Entities/Champions/Ataraxia/PrimaryIcon"),
                 () =>
                 {
-                    AbilityObject abilityObject = Ability.CreateAbilityObject("Entities/Champions/TestChamp/SecondaryModel",true,true,false,false,this,this.transform.position,this.player.RaycastOnLayer())
-                }), 
+                    AbilityObject abilityObject = Ability.CreateAbilityObject(
+                        "Entities/Champions/TestChamp/SecondaryModel", true, true, false, false, this,
+                        this.transform.position,
+                        Tools.PositionOnMapAt(this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).point),
+                        null, 180, 95, 10);
+                    abilityObject.collisionAction = () =>
+                    {
+                        Ability.DealDamage(false, this, abilityObject.collidedEntity, Ability.DamageType.Physical,
+                            80 + (this.damage.CurrentValue * 1.2), 0);
+                        this.primaryAbility.CurrentCooldown -= this.primaryAbility.BaseCooldown * .4;
+                    };
+                    
+                }),
+            new Ability(11,this,"King's Subjugation","Ataraxia fires a chain from his vault in a straight line, dealing damage and"), 
 
 
         );
     }
 
 }
+*/
