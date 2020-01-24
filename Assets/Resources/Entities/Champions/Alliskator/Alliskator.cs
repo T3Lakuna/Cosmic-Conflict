@@ -20,20 +20,35 @@ using UnityEngine;
                 {
                     this.basicAttackActions.Add((hi) =>
                     {
-                        Ability.DealDamage(true, this, hi, Ability.DamageType.Physical, 100, 50);
+                        Ability.DealDamage(true, this, hi, Ability.DamageType.Physical, this.damage.CurrentValue + 100, 50);
                         this.basicAttackActions.Clear();
 
                     });
                   
                 }),
             new Ability(10, this, "Smack Smack Attack",
-                "Alliskator whales on an enemy stunning them after the second attack", 40, null, () => { }),
+                "Alliskator whales on an enemy stunning them after the second attack", 40, null, () =>
+                {
+                    this.basicAttackActions.Add((poop) =>
+                    {
+                        Ability.DealDamage(true,this,poop, Ability.DamageType.Physical, this.damage.CurrentValue + 50, 0);
+                        this.basicAttackActions.Add((fart) =>
+                        {
+                            if (basicAttackTarget == fart )
+                            { 
+                                Ability.DealDamage(true,this,poop, Ability.DamageType.Physical, this.damage.CurrentValue + 50, 0);
+                                basicAttackTarget.currentStatusEffects.Add(new StatusEffect(StatusEffect.StatusEffectType.immobilize,1,1,false,false,basicAttackTarget));
+                            }
+                        });
+                    });
+                }),
             new Ability(12, this, "Eye on the Prey",
                 "Alliskater looks with such intet he slows an enemy and causing his next auto attack agaist that target to stun them",
                 55, null,
                 () =>
                 {
-                    Collider targetCollider = this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
+                    Collider targetCollider =
+                        this.player.RaycastOnLayer(MatchManager.Instance.entityLayerMask).collider;
                     if (!targetCollider)
                     {
                         this.resource += 45;
@@ -62,18 +77,37 @@ using UnityEngine;
                         this.primaryAbility.CurrentCooldown -= 8;
                         return;
                     } // Return mana cost when not casting! (Out of range.)
-                    
+
                     targetEntity.speed.PercentageBonusValue = -.25;
-                    this.StartCoroutine(this.RemoveSlow());
-                    
-                    
-                    
+                    this.StartCoroutine(this.RemoveSlow(targetEntity));
+                    if (basicAttackTarget == targetEntity)
+                    {
+                        this.basicAttackActions.Add((stunn) =>
+                        {
+                            Ability.DealDamage(true,this,stunn,Ability.DamageType.Physical, this.damage.CurrentValue / 3 + 50,0);
+                            targetEntity.currentStatusEffects.Add(new StatusEffect(StatusEffect.StatusEffectType.immobilize,1,1,false,false,targetEntity));
+                            this.basicAttackActions.Clear();
+                        });
+                    }
+                    else
+                    {
+                        this.basicAttackActions.Add((nostunn) =>
+                        {
+                            Ability.DealDamage(true, this, nostunn, Ability.DamageType.Physical, 50, 0);
+                            this.basicAttackActions.Clear();
+                        });
+                    }
+               
+
+
                 }),
             new Ability(100, this, "BIG BOYS", "OH LAWD HE COMING", 100,
                 UnityEngine.Resources.Load<UnityEngine.Sprite>(null), () =>
                 {
+                    this.entityHeight += 3;
                     this.speed.BonusValue += 20;
-                    this.vitality.BonusValue += 300;
+                    this.vitality.BonusValue += this.vitality.CurrentValue/2 + 300;
+                    Ability.Heal(this,Ability.HealthType.Health,1,this.vitality.CurrentValue/2 + 300,0);
                     this.StartCoroutine(this.removeBigBoi());
                 })
         );
@@ -83,15 +117,17 @@ using UnityEngine;
     private IEnumerator removeBigBoi()
     {
         yield return new WaitForSeconds(8);
+        this.entityHeight -= 3;
         this.speed.BonusValue -= 20;
-        this.vitality.BonusValue -= 300;
+        this.vitality.BonusValue -= this.vitality.CurrentValue/2 + 300;
 
         
     }
 
-    private IEnumerator RemoveSlow()
+    private IEnumerator RemoveSlow(Entity targetEntity)
     {
-        
+        yield return new WaitForSeconds(1);
+        targetEntity.speed.PercentageBonusValue = .25;
     }
 
     
@@ -102,4 +138,3 @@ using UnityEngine;
 
 
 
-// Update is called once per frame

@@ -31,8 +31,8 @@
 																																																																																																																																																																																																																																																																										 }));
 	}
 
-	/*
-	private new void Start() {
+	
+	/*private new void Start() {
 		base.Start();
 		this.SetupChampion(70, 2.5, 0, 0, 850, 100, 6, .5, 455, 18, 6, .5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, .7, .04, 40, 0,
 			0, 0, 0, 0, 0, 0, 5, 0, 4, this.GetComponent<Animator>(), "Crypto",
@@ -75,7 +75,7 @@
 						return;
 					} // Return mana cost when not casting! (Out of range.)
 
-					Ability.DealDamage(false, this, targetEntity, Ability.DamageType.Magical, 200, 0);
+					Ability.DealDamage(false, this, targetEntity, Ability.DamageType.Magical, this.magic.CurrentValue/2 + 100, 0);
 					targetEntity.speed.PercentageBonusValue = -.25;
 					this.StartCoroutine(this.RemoveSlow(targetEntity));
 				}),
@@ -88,7 +88,7 @@
 					Ability aoeAbility = new Ability(0, this, "EMP", "Blam", 0, null, () => { });
 					aoeAbility.Action = () =>
 					{
-						Ability.DealDamage(false, this, aoeAbility.target, Ability.DamageType.Magical, 200, 0);
+						Ability.DealDamage(false, this, aoeAbility.target, Ability.DamageType.Magical, this.magic.CurrentValue * .35 +100 , 0);
 					};
 					AbilityObject abilityObject = Ability.CreateAbilityObject(
 						"Entities/Champions/TestChamp/SecondaryModel", true, true, false, false, this,
@@ -121,7 +121,7 @@
 					Ability aoeAbiility = new Ability(0, this, "Black Out", "Lights Out ;)", 0, null, () => { });
 					aoeAbiility.Action = () =>
 					{
-						Ability.DealDamage(false, this, aoeAbiility.target, Ability.DamageType.Magical, 250, 0);
+						Ability.DealDamage(false, this, aoeAbiility.target, Ability.DamageType.Magical, this.magic.CurrentValue* .85 + 250, 0);
 						// Add silence
 					};
 					Ability.DoInArea(this.transform.position, 100, false, aoeAbiility);
