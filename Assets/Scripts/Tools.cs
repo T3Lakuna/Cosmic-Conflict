@@ -9,7 +9,9 @@ public static class Tools {
 	// TODO: When rewriting, make generalized methods for things in an area, and another generalized method which uses that one to get the nearest of a thing in an area. These can replace things like Player.RaycastOnLayer, Player.FuzzyMouseTargetEntity, giving experience/gold on death, area of effect abilities, et cetera.
 	// TODO: When rewriting, make a "targeting" class that can be passed into lots of things (such as the methods mentioned above) so that multiple methods don't have to have the same "can target champions" or "can target allies" (et cetera) parameters.
 	// TODO: When rewriting, make a generalized method to go with the targeting class which returns whether or not a passed in entity should be affected using the specifications, so that it doesn't need to be rewritten at the top of every method which uses the targeting class.
+	// TODO: Folders can be reorganized to have multiple Resources folders in subdirectories, to reduce extraneous code and possibly drastically reduce lag.
 
+	// TODO: When rewriting, replace Tools.Instantiate and Tools.Destroy with specific calls throughout the code using PhotonNetwork.offlineMode for singleplayer.
 	public static GameObject Instantiate(string prefabResourcesPath, Vector3 position) { return Photon.Pun.PhotonNetwork.InRoom ? Photon.Pun.PhotonNetwork.Instantiate(prefabResourcesPath, position, Quaternion.identity) : UnityEngine.Object.Instantiate(UnityEngine.Resources.Load<GameObject>(prefabResourcesPath), position, Quaternion.identity); }
 
 	public static void Destroy(GameObject gameObject) {
