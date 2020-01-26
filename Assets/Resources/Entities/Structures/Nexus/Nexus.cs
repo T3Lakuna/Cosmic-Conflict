@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 public class Nexus : Structure {
 	public Team inspectorTeam;
@@ -8,8 +9,10 @@ public class Nexus : Structure {
 	private void Start() { this.SetupStructure(0, 0, 0, 0, 10000, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, this.inspectorTeam); }
 
 	private new void Update() {
+		if (PhotonNetwork.InRoom && !this.photonView.IsMine) { return; }
+
 		base.Update();
-		if (this.topProtector.isActiveAndEnabled || this.bottomProtector.isActiveAndEnabled) {
+		if (this.topProtector && this.topProtector.isActiveAndEnabled || this.bottomProtector && this.bottomProtector.isActiveAndEnabled) {
 			this.health = this.vitality.CurrentValue;
 			this.gameObject.SetActive(true);
 		}

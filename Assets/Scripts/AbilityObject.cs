@@ -4,16 +4,17 @@ using UnityEngine;
 public class AbilityObject : MonoBehaviour {
 	public Action collisionAction;
 	public Action updateAction;
+	public Action timeoutAction;
 	public bool destroyOnHit;
 	public bool destroyAtMaxRange;
 	public Vector3 target;
 	public Entity targetEntity;
-	public double movementSpeed;
-	public double maximumDistance;
+	public float movementSpeed;
+	public float maximumDistance;
 	public Vector3 originalPosition;
 	public Entity source;
 	public Entity collidedEntity;
-	public double lifespan;
+	public float lifespan;
 	private DateTime _timeCreated;
 	public bool canHitAllies;
 	public bool canOnlyHitTarget;
@@ -26,11 +27,14 @@ public class AbilityObject : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (DateTime.Now - this._timeCreated > TimeSpan.FromSeconds(this.lifespan)) { Tools.Destroy(this.gameObject); }
+		if (DateTime.Now - this._timeCreated > TimeSpan.FromSeconds(this.lifespan)) {
+			this.timeoutAction?.Invoke();
+			Tools.Destroy(this.gameObject);
+		}
 
 		if (this.destroyAtMaxRange && Vector3.Distance(this.originalPosition, this.transform.position) > this.maximumDistance) { Tools.Destroy(this.gameObject); }
 
-		if (this.transform.position == this.target) { Tools.Destroy(this.gameObject); }
+		if (this.destroyAtMaxRange && this.transform.position == this.target) { Tools.Destroy(this.gameObject); }
 
 		this.transform.position = Vector3.MoveTowards(this.transform.position, this.target, (float) this.movementSpeed * Time.deltaTime);
 		if (this.targetEntity) { this.target = this.targetEntity.transform.position; }

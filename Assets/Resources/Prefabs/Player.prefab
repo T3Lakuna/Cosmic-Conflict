@@ -48,6 +48,7 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   team: 0
   uniqueUserId: 0
+  championModelPath: 
 --- !u!114 &6799892204028614974
 MonoBehaviour:
   m_ObjectHideFlags: 0
