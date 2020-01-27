@@ -10,6 +10,8 @@ public static class Tools {
 	// TODO: When rewriting, make a "targeting" class that can be passed into lots of things (such as the methods mentioned above) so that multiple methods don't have to have the same "can target champions" or "can target allies" (et cetera) parameters.
 	// TODO: When rewriting, make a generalized method to go with the targeting class which returns whether or not a passed in entity should be affected using the specifications, so that it doesn't need to be rewritten at the top of every method which uses the targeting class.
 	// TODO: Folders can be reorganized to have multiple Resources folders in subdirectories, to reduce extraneous code and possibly drastically reduce lag.
+	// TODO: Use delegates in lots of methods so that champions can more easily interact with events (i.e. on take damage, on gain gold, on respawn, on die, et cetera).
+	// TODO: Focus on writing a more centralized GameManager to smoothen out weird loading and networking stuff.
 
 	// TODO: When rewriting, replace Tools.Instantiate and Tools.Destroy with specific calls throughout the code using PhotonNetwork.offlineMode for singleplayer.
 	public static GameObject Instantiate(string prefabResourcesPath, Vector3 position) { return Photon.Pun.PhotonNetwork.InRoom ? Photon.Pun.PhotonNetwork.Instantiate(prefabResourcesPath, position, Quaternion.identity) : UnityEngine.Object.Instantiate(UnityEngine.Resources.Load<GameObject>(prefabResourcesPath), position, Quaternion.identity); }
