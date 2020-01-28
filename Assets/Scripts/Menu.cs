@@ -34,7 +34,7 @@ public class Menu : Photon.Pun.MonoBehaviourPunCallbacks {
 	private bool starting;
 	private bool practiceStart;
 
-	private Photon.Realtime.RoomOptions RoomOptions = new Photon.Realtime.RoomOptions { IsOpen = true, IsVisible = true, CleanupCacheOnLeave = false, MaxPlayers = 3 }; // TODO: Ten players.
+	private Photon.Realtime.RoomOptions RoomOptions = new Photon.Realtime.RoomOptions { IsOpen = true, IsVisible = true, CleanupCacheOnLeave = false, MaxPlayers = 10 }; // TODO: Ten players.
 
 	private void Start() {
 		this.championSelectSeconds = 15;

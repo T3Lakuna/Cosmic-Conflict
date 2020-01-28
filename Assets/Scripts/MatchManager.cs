@@ -72,8 +72,8 @@ public class MatchManager : MonoBehaviourPun, IPunObservable {
 		this.champions = new List<Champion>();
 		this.matchStartTime = DateTime.Now;
 		this.minionWavesSpawned = 0;
-
-		if (PhotonNetwork.IsMasterClient) { this.StartCoroutine(this.SpawnMinionTick()); }
+		
+		if (!PhotonNetwork.InRoom || PhotonNetwork.IsMasterClient) { this.StartCoroutine(this.SpawnMinionTick()); }
 	}
 
 	[PunRPC]
