@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MatchManager : MonoBehaviour {
+public class MatchManager : MonoBehaviourPun, IPunObservable {
 	public enum Lane { Top, Middle, Bottom }
 
 	public static MatchManager Instance;
 	[HideInInspector] public List<Champion> champions;
 	[HideInInspector] public DateTime matchStartTime;
-	public Player localPlayer;
 	public GameObject mapObject;
 	public Collider floorCollider;
 	public Collider structureBaseCollider;
@@ -53,6 +53,8 @@ public class MatchManager : MonoBehaviour {
 	public Material blueMaterial;
 	public Transform blueMinionHolder;
 	public Transform redMinionHolder;
+	public Transform blueChampionHolder;
+	public Transform redChampionHolder;
 	public GameObject minionPrefab;
 	public GameObject[] blueTopPath;
 	public GameObject[] blueMiddlePath;
@@ -71,7 +73,12 @@ public class MatchManager : MonoBehaviour {
 		this.matchStartTime = DateTime.Now;
 		this.minionWavesSpawned = 0;
 
-		this.StartCoroutine(this.SpawnMinionTick());
+		if (PhotonNetwork.IsMasterClient) { this.StartCoroutine(this.SpawnMinionTick()); }
+	}
+
+	[PunRPC]
+	public static void DestroyRpc(GameObject gameObject) { // For use in Tools only.
+		UnityEngine.Object.Destroy(gameObject);
 	}
 
 	private System.Collections.IEnumerator SpawnMinionTick() {
@@ -81,12 +88,12 @@ public class MatchManager : MonoBehaviour {
 			int minionLevel = minionWavesSpawned / 3;
 
 			// Super minions
-			if (!this.blueTopInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redTopPath).LevelUp(minionLevel); }
-			if (!this.blueMiddleInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redMiddlePath).LevelUp(minionLevel); }
-			if (!this.blueBottomInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redBottomPath).LevelUp(minionLevel); }
-			if (!this.redTopInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueTopPath).LevelUp(minionLevel); }
-			if (!this.redMiddleInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueMiddlePath).LevelUp(minionLevel); }
-			if (!this.redBottomInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueBottomPath).LevelUp(minionLevel); }
+			if (!this.blueTopInhibitor || !this.blueTopInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redTopPath).LevelUp(minionLevel); }
+			if (!this.blueMiddleInhibitor || !this.blueMiddleInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redMiddlePath).LevelUp(minionLevel); }
+			if (!this.blueBottomInhibitor || !this.blueBottomInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Red, this.redBottomPath).LevelUp(minionLevel); }
+			if (!this.redTopInhibitor || !this.redTopInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueTopPath).LevelUp(minionLevel); }
+			if (!this.redMiddleInhibitor || !this.redMiddleInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueMiddlePath).LevelUp(minionLevel); }
+			if (!this.redBottomInhibitor || !this.redBottomInhibitor.isActiveAndEnabled) { SuperMinion.CreateSuperMinion(Entity.Team.Blue, this.blueBottomPath).LevelUp(minionLevel); }
 			yield return new WaitForSeconds(0.25f);
 
 			// Melee minions
@@ -127,11 +134,11 @@ public class MatchManager : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (!this.localPlayer.champion) { return; }
+		if (!Player.localPlayer.champion || Player.localPlayer.champion.passiveAbility == null) { return; }
 
-		this.championIcon.sprite = this.localPlayer.champion.icon;
+		this.championIcon.sprite = Player.localPlayer.champion.icon;
 
-		this.kdaText.text = this.localPlayer.champion.kills + " / " + this.localPlayer.champion.deaths + " / " + this.localPlayer.champion.deaths;
+		this.kdaText.text = Player.localPlayer.champion.kills + " / " + Player.localPlayer.champion.deaths + " / " + Player.localPlayer.champion.deaths;
 
 		int redTeamKills = 0;
 		int blueTeamKills = 0;
@@ -156,15 +163,15 @@ public class MatchManager : MonoBehaviour {
 
 		TimeSpan matchTime = DateTime.Now - this.matchStartTime;
 		this.matchTimerText.text = (int) matchTime.TotalMinutes + ":" + (int) (matchTime.TotalSeconds % 60);
-		this.passiveIcon.sprite = this.localPlayer.champion.passiveAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.passiveAbility.Icon;
-		this.primaryIcon.sprite = this.localPlayer.champion.primaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.primaryAbility.Icon;
-		this.secondaryIcon.sprite = this.localPlayer.champion.secondaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.secondaryAbility.Icon;
-		this.tertiaryIcon.sprite = this.localPlayer.champion.tertiaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.tertiaryAbility.Icon;
-		this.ultimateIcon.sprite = this.localPlayer.champion.ultimateAbility.CurrentCooldown > 0 ? this.cooldownSprite : this.localPlayer.champion.ultimateAbility.Icon;
-		this.currencyText.text = "" + this.localPlayer.champion.currency;
-		this.trinketIcon.sprite = this.localPlayer.champion.trinket == null ? this.missingSprite : this.localPlayer.champion.trinket.icon;
+		this.passiveIcon.sprite = Player.localPlayer.champion.passiveAbility.CurrentCooldown > 0 ? this.cooldownSprite : Player.localPlayer.champion.passiveAbility.Icon;
+		this.primaryIcon.sprite = Player.localPlayer.champion.primaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : Player.localPlayer.champion.primaryAbility.Icon;
+		this.secondaryIcon.sprite = Player.localPlayer.champion.secondaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : Player.localPlayer.champion.secondaryAbility.Icon;
+		this.tertiaryIcon.sprite = Player.localPlayer.champion.tertiaryAbility.CurrentCooldown > 0 ? this.cooldownSprite : Player.localPlayer.champion.tertiaryAbility.Icon;
+		this.ultimateIcon.sprite = Player.localPlayer.champion.ultimateAbility.CurrentCooldown > 0 ? this.cooldownSprite : Player.localPlayer.champion.ultimateAbility.Icon;
+		this.currencyText.text = "" + Player.localPlayer.champion.currency;
+		this.trinketIcon.sprite = Player.localPlayer.champion.trinket == null ? this.missingSprite : Player.localPlayer.champion.trinket.icon;
 
-		Item[] items = this.localPlayer.champion.items.ToArray();
+		Item[] items = Player.localPlayer.champion.items.ToArray();
 		if (items.Length > 0) { this.firstItemIcon.sprite = items[0].icon; }
 
 		if (items.Length > 1) { this.secondItemIcon.sprite = items[1].icon; }
@@ -177,4 +184,6 @@ public class MatchManager : MonoBehaviour {
 
 		if (items.Length > 5) { this.sixthItemIcon.sprite = items[5].icon; }
 	}
+
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) { }
 }

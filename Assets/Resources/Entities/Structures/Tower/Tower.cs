@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using UnityEngine;
 
 public class Tower : Structure {
@@ -11,6 +12,8 @@ public class Tower : Structure {
 	private void Start() { this.SetupStructure(300, 0, 0, 0, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, 15, this.inspectorTeam); }
 
 	private new void Update() {
+		if (PhotonNetwork.InRoom && !this.photonView.IsMine) { return; }
+
 		base.Update();
 		if (this.protectorTower && this.protectorTower.isActiveAndEnabled || this.protectorInhibitorTop && this.protectorInhibitorTop.isActiveAndEnabled && this.protectorInhibitorMiddle && this.protectorInhibitorMiddle.isActiveAndEnabled && this.protectorInhibitorBottom && this.protectorInhibitorBottom.isActiveAndEnabled) {
 			this.health = this.vitality.CurrentValue;

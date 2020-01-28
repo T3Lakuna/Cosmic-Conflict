@@ -19,14 +19,14 @@
 		Range // Attack range
 	}
 
-	public double CurrentValue;
-	private double _baseValue;
-	private readonly double _scalingValue;
-	public double BonusValue;
-	public double PercentageBonusValue;
+	public float CurrentValue;
+	private float _baseValue;
+	private readonly float _scalingValue;
+	public float BonusValue;
+	public float PercentageBonusValue;
 	public StatId Id;
 
-	public Stat(double baseValue, double scalingValue, StatId id) {
+	public Stat(float baseValue, float scalingValue, StatId id) {
 		this._baseValue = baseValue;
 		this._scalingValue = scalingValue;
 		this.Id = id;
