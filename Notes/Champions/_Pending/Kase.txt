@@ -1,0 +1,18 @@
+Name
+	Kase
+Role
+	Vanguard
+Origin, Theme, Concept, Backstory, and References.
+	Cheese blob. Similar to League of Legends' Zac.
+Passive Ability
+	Kase's attacks and abilities apply stacks to enemies affected. When an enemy has 3 stacks, they are slowed for a timespan and recieve extra damage while slowed.
+Normal Abilities
+	- Skillshot that does damage.
+	- Dashes to target ally or enemy. If an enemy is targeted, they are stunned for a small time.
+	- Creates a zone which slows enemies. Allies can apply Kase's passive stacks to enemies within the zone.
+Ultimate Ability
+	Boost to all stats for a duration. Enemies with 3 passive stacks during the duration are stunned instead of being slowed.
+Strengths
+	High crowd-control and durability.
+Weaknesses, Counters, and Counterplay
+	Low damage output.

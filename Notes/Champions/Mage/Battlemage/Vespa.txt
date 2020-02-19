@@ -1,0 +1,23 @@
+Name
+	Vespa
+Role
+	Battlemage
+Origin, Theme, Concept, Backstory, and References.
+	Colony of wasps that was mutated by toxic waste.
+Passive Ability
+	Vespa's colony will mutate at certain level intervals. During mutation, an ability can be upgraded.
+	Vespa grows in size, gaining health, armor, and magic resistance at the cost of movement speed.
+	Bloated Wasp (Q)- Replaces Vespa's Q with a large wasp that explodes on contact with an enemy and will try to fly to targets after it reaches the end of its range.
+	Full Assault (W)- The wall shot out by Vespa's W will remain at the end of it's range for a while, and can affect multiple enemies/allies. The wasps will also fly to the nearest target if they kill their current one.
+	Hivemind (E)- Instead of becoming a mass of wasps, Vespa becomes a single large wasp. While in this form their abilities are replaced by stinger launch, a skillshot that grants vision on the target and allows Vespa to move faster towards them.
+	Radiative Swarm (R)- The target of Vespa's ultimate deals damage to nearby teammates and after their movement speed decays the target is stunned.
+Normal Abilities
+	- Vespa launches out a fleet at the enemy. The fleet deals damage on impact as well as over time.
+	- Vespa gathers wasps and launches a wall of wasps. On enemy champion hit, the wall will encompass the enemy, dealing damage and reducing resistances. If allies are hit, they gain a shield and movement speed. Ability will pass through allies.
+	- Vespa sheds thier hive to move faster. In this form, Vespa will do damage on-contact, but all abilities will be disabled for the duration.
+Ultimate Ability
+	Vespa empties their hive and targets their colony onto a target champion. The target champion's movement speed slowly decays while taking damage over time. A percentage of the damage dealt is gained as health by Vespa.
+Strengths
+	High damage, significant survivability, good crowd-control, good chaining of abilities, good against marksmen and fighters.
+Weaknesses, Counters, and Counterplay
+	Short range, has abilities that are difficult to land, weak against assassins and tanks, weak against enemies with good sustain, long ability cooldowns.

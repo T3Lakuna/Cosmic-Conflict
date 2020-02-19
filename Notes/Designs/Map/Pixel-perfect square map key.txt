@@ -1,0 +1,9 @@
+Color		Terrain/Structure
+Black		Wall
+White		Tower
+Cyan		Nexus
+Magenta		Inhibitor
+Yellow		Fountain
+Green		Bush
+Blue		River
+Red		Monster/Boss Spawn Area

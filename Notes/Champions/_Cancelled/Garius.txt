@@ -1,0 +1,20 @@
+Name
+	Garius.
+Class/Role
+	Juggernaut
+Origin, Theme, Concept, Backstory, and References.
+	Tribal orc with futuristic technology.
+Passive Ability/Abilities
+	Every once-in-a-while, Garius' next basic attack is empowered, dealing damage based on the target's maximum health.
+Normal Ability/Abilities
+	- Garius gains movement and attack speed for a duration.
+	- Create a zone that slows enemies' movement and attack speed.
+	- Garius gains vamp for a duration.
+Ultimate Ability/Abilities
+	Toggle basic attack range between melee and ranged.
+Strengths
+	Good sustained damage, good durability, good engage, good matchup into assassins and tanks.
+Weaknesses, Counters, and Counterplay
+	Short range, bad disengage, easily kited, no mobility, bad matchup into mages and marksmen.
+
+Denied. Incoherent kit with no well-defined playstyle. Boring.

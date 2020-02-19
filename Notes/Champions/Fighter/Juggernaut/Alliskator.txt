@@ -1,0 +1,18 @@
+Name
+	Alliskator
+Role
+	Juggernaut
+Origin, Theme, Concept, Backstory, and References.
+	Urban world. Similar to League of Legends' Renekton, with a skateboard.
+Passive Ability
+	Every once-in-a-while, Alliskator's next basic attack deals damage twice and gives him a small burst of movement speed.
+Normal Abilities
+	- Empowers Alliskator's next basic attack to deal more damage.
+	- Alliskator marks a target. If he basic attacks that target twice within a timespan, that target gets stunned.
+	- Alliskator slows a target. If he basic attacks that target during the slow, he stuns them.
+Ultimate Ability
+	Alliskator gains movement speed and health for a timespan.
+Strengths
+	Good sustained damage, good durability, good engage, good matchup into assassins and tanks.
+Weaknesses, Counters, and Counterplay
+	Short range, bad disengage, easily kited, no mobility, bad matchup into mages and marksmen.

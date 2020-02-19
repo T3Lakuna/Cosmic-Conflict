@@ -1,0 +1,18 @@
+Name
+	BEAR FACT
+Role
+	Skirmisher
+Origin, Theme, Concept, Backstory, and References.
+	Cody with bear arms. https://cdn.discordapp.com/attachments/472993150294818816/553736634538131456/Snapchat-269899345.jpg
+Passive Ability
+	("Right to bear arms") BEAR FACT's basic attacks do damage in an area around the target.
+Normal Abilities
+	- ("BEAR FACT - There is always a bear.") Summon's a bear minion with part of BEAR FACT's stats.
+	- ("Bear Eats Beets - Bears, beets, Battlestar Galactica.") BEAR FACT eats a beet, healing himself and causing his next basic attack to deal more damage.
+	- ("Groovin' - Whoa what's that bear doin'?") Taunts an enemy.
+Ultimate Ability
+	("Roundhouse - The classic bear fake-out move.") Deals damage and stuns an opponent.
+Strengths
+	High sustained damage, very high mobility, good stealth, good at fighting targets who are alone, great matchup into mages and marksmen, difficult to escape from, high survivability.
+Weaknesses, Counters, and Counterplay
+	Low crowd-control, no disengage, bad matchup into high-durability opponents and enemies with shields, bad matchup into tanks and fighters, falls quickly to high damage, easily kited by ranged enemies and crowd-control, cannot easily single-out high-priority targets.

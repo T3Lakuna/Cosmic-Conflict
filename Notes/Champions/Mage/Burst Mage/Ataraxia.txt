@@ -1,0 +1,20 @@
+Name
+	Ataraxia
+Role
+	Burst Mage
+Origin, Theme, Concept, Backstory, and References.
+	Conqueror of many worlds; considered among the strongest of kings to ever live. Uses a magic arsenal instead of traditional weapons.
+Passive Ability
+	Gains extra gold from all sources, and gets stat bonuses for completing items.
+Normal Abilities
+	- Launches random weapons in a cone, reducing the cooldown if an enemy champion is hit.
+	- Launches chains which stun the enemy hit.
+	- Launches a spear which ignores an amount of enemies' armor and pierces multiple enemies.
+Ultimate Ability
+	Launches an attack which deals more damage based on the target's missing health.
+Strengths
+	Long range, high damage, good crowd-control, good chaining of abilities, good against marksmen and fighters.
+Weaknesses, Counters, and Counterplay
+	Low durability, has abilities that are difficult to land, weak against assassins and tanks, weak against enemies with good sustain or any enemy who can withstand their initial damage.
+
+Note that, although this character is a mage, they will deal primarily physical damage.

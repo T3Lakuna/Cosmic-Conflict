@@ -1,0 +1,410 @@
+Stat Worth
+1 ad = 35 g
+1 ap = 35 g
+1 nul = 25 g
+1 arm = 25 g
+1 eng =  1.5g
+1 hp = 2.5g
+1 reg = 3g
+1% edu = 5g
+10% eff = 800g
+1 speed = 14g
+1 crit = 30g
+1 fev = 25g
+
+
+minion  gold
+
+melee 20 g
+	
+range 15g
+	
+tank 100g
+
+
+	// Starting items//
+
+	Fighter Stating item (450 g) (for jugg & tanker skrimisher)
+	+health
+	+null
+	+armor
+	Passive taking damage grants a stack that reduces all damage 5 (cap 6 time)( 6 secs)
+
+	Energy Stating item (350g) (High energy heros)
+	++ energy
+	++ edu
+	+ health
+
+	Marksman Starting Item (400g)
+	++ad
+	+health
+	+fev
+	passive 5 more damage to minions
+
+	ap starting item ( for mages) (400g)
+	++ ap
+	+ hp
+	++ energy
+
+	Tank Starting item (450g)
+	++ Hp
+	+null
+	+armor
+	Passive gain armor and null will next to enemies
+
+	Sup Item 1 (400g)
+	++ hp
+	+ reg
+	
+	Passive sharing if a minion is killed by an ally near by grants 1 gold
+	Passive killing a minion grant you and one ally the gold and speed boost
+
+	Sup Item 2 (400g)
+	+ ap
+	+ end
+	Passive sharing if a minion is killed by an ally near by grants 1 gold
+	passive hitting an enemy grants gold and end boost
+	
+	Starting Potion (500g)
+	2 active
+	Gives 50 energy instatly and over time grants 125 hp and 100 energy
+	also gives a small speed boost
+	
+	jungle item
+	Ad+
+	hp+
+	50% damage against jungle
+	passive hitting an jungle enemy heals you for 5 health each it
+	disable the other item
+
+	2 jungle item
+	ap+
+	hp+
+	50% damage against jungle
+	passive slow a monster camp speed for a few second (cd 10 sec on indivials monster) (30% slow)
+
+
+	// Tier 1 Items //
+
+	Boots 350g
+	25 speed
+
+	blade 1 500g
+	15 ad
+
+
+	blade 2 1700g
+	50 ad
+
+	book 1 350g
+	10 ap
+	
+	book 2 1700g
+	50 ap 
+
+	Null Armor 450g
+	20 Nul
+
+	Armor 345g
+	15 Armor
+
+	Mixed Armor 500g
+	10 armor
+	10 Nul
+
+	Energy item 450g
+	300 energy 
+	
+	Health Item 400g
+	400 HP
+	
+	Cooldown Item 450g
+	5% Eff
+
+	boots 350g
+	15 speed
+
+	crit item 300g
+	10% crit
+
+	Crit Item 2 600g
+	25% crit
+
+	Fev Item 300g
+	12 fev
+
+	End Item 130g
+	30% End
+
+	reg Item 130g
+	35% reg
+
+	// Tier 2 Items //
+
+	Upgraded Blade (blade 1 + 500 g)
+	25 ad 
+	10 force
+
+	Upgraded Blade 2 (blade 1 + crit Item 1 + 300g)
+	20 ad
+	5 Eff
+	15 crit %
+
+	Upgraded Blade 3 (Blade 1 + Health Item + 200g)
+	20 ad
+	500 health
+	passive : Fighting Mood : hitting an enemy grant user tencity for 6 secs (30 second CD)
+	
+	Upgrade Blade 4 (blade 1 + blade 1 + 150 g)
+	35 ad
+	5 eff
+	Passive : vulnerability : AA Reduce Healing by 33% for 3 secs (AA again resets debuff time)
+	
+	Upgrade blade 5 (Blade 1 + Fev Item + 300g)
+	20 ad
+	18 Fev
+	Passive : Shred : AA deal 20 Magic Damage and heal 10 hp
+	
+	Upgrade blade 6 (Blade 1 + 300g)
+	20 ad
+	5 Vamp
+	
+	Upgrade Blade 7 (Blade 1 + Mixed Armor + 400g)
+	15 ad 
+	10 null
+	10 armor
+	passive : resilience : getting hit by an enemy grants 2 armor and null (Stacks 8 / last 5 secs)
+
+	Upgraded book (book 1 + cooldown item + 400g)
+	15 ap 
+	10 Eff
+
+	Upgrade Book 2 (book 1 + energy Item + 200g)
+	10 Ap
+	400 energy
+	Passive : Energy Vamp : Gain 200 energy on kill or assist
+
+	Upgrade Book 3 (book 1 + Null Item + 400g)
+	20 ap 
+	20 null
+	passive : Absorb null : Killing a minion gain 1 null (Stacks up 25 null)
+
+	Upgrade book 4 (Book 1 + Armor Item + 300g)
+	20 ap
+	20 armor
+	passive : Braced Impact : After Taking Damage gain 10 armor (Last 10 secs / 20 second CD)
+	
+	Upgrade Book 5 (Book 1 + Book 1 + 300g)
+	25 ap
+	10 Pierce
+	Passive : Magic Burn : After hitting an ability burn the enemy for 50 damage over 10 secs (30 cd)
+	
+	Upgrade Book 6 (Book 1 + HP Item + 200g)
+	20 ap
+	300 HP
+	10 pierce
+
+	Upgrade Book 7 (Book 1 + Fev Item + 200g)
+	20 ap
+	20 fev
+	passive : Magic Touch : AA deal 30 magic damage
+
+	Upagrade Null Item (Null Item + Null Item + 150g)
+	45 null 
+	Passive : Absorb : Getting hit by a ability grant 30 hp over 10 secs (5 sec CD)
+	
+	Upgrade Null item 2 (Null Item + HP Item + 150g)
+	25 null
+	HP 450
+	Passive : OverGrowth : getting a kill or assist Increase max health by 25 (6 Stack cap)
+
+	Upgrade Null Item 3 (Null Item + Energy item + 200g)
+	35 null
+	300 energy item
+	Passive : Energy Charger : Regain 5 energy a second.
+
+	Upgrade Null item 4 (Null item + Eff Item + 200g)
+	25 Null
+	10 Eff
+	
+	Upgrade Null item 5 (Null item + Fev Item + 200g)
+	25 Null
+	12 fev
+	10 Eff
+
+	Upgrade Armor Item (Armor Item + 300g)
+	30 armor
+
+	Upgrade Armor Item 2 (Armor Item + Armor Item + 150g)
+	45 armor
+	Passive : Imimating : Aura enemies gain -20% Feveor 
+	
+	Upgrade Armor Item 3 (Armor Item + HP Item + 400g)
+	20 Armor
+	450 Hp
+	Eff 10
+	
+	Upgraded Armor Item 4 (Armor Item + Energy Item + 150g)
+	35 armor
+	500 energy
+	Passive : Energy Mastery : Spell give a stack of energy granting 25 energy (CD between stacks 15 / 10 Stacks cap)
+
+	Upgraded Armor Item (Armor Item
+	
+	Upgrade Energy Item (Energy Item + Energy Item + 150g)
+	800 energy
+	Passive : Energy Mastery : Spell give a stack of energy granting 25 energy (CD between stacks 15 / 10 Stacks cap)
+
+	Upgrade Energy Item 2 (Energy Item + End Item + 150g)
+	500 Energy
+	50% End
+	Passive : Energy Aura : Aura that gives allies 25% End
+
+	Upgrade Energy Item 3 (Energy Item + Eff Item + 300g)
+	600 energy
+	10 eff
+
+	Upgrade Energy Item 4 (Energy Item + Hp Item + 200g)
+	500 Energy
+	400 HP
+	Passive : Gaints energy : Next ability doesn't cost mana
+
+	Upgraded hp Item (HP Item + HP Item + 150g)
+	800 HP
+	10 Eff
+	
+	Upgrade hp Item 2 (HP Item + 500g)
+	550 Hp
+	Active : Gaint's Field : Create an Aura that slows enemies by 15% (60 cd / Last 10 secs)
+
+	Upgraded Hp item 3 (Hp Item + Reg Item + 250g)
+	500 Hp
+	40 reg
+	Passive : Durable : Being out of combat give a bonus 25 reg
+	
+	Upgrade Reg Item (Reg item + Reg Item + 150g)
+	50 reg
+	Passive : Survivalist : When Below 50% health Gain 50 reg
+	
+	Upgrade Reg Item 2 (Reg item + End item + 200g)
+	35 reg
+	35 end
+	passive : Convgence : Turn reg in to end (2 reg = 1 end)
+
+	Upgraded Fev Item (fev Item + fev Item + 50G)
+	25 fev
+	Passive : Blood Rush : grants a small speed boost (30 cd / 15 speed)
+	
+	Upgrade Fev Item 2 (Fev item + 400g)
+	15 fev
+	10 lifesteal
+
+	Upgrade Fev item 3 (Fev item + Crit Item 1 + 150g)
+	20% Crit
+	15 fev
+
+				// tier 3 Item//
+
+	assassin Item (Up blade 1 + Up blade 4 + 600g)
+	65 ad
+	10 eff
+	14 force
+	Passive :  true vulnerability : dealing damage deduce Healing by 45% for 3 secs (AA again resets debuff time)
+
+	assassin  Item 2 (Up Blade 1 + Up blade 1 + 500g)
+	40 ad 
+	20 force
+	10 eff
+	Passive : Stalker : next attack aganist an enemy slows them for 50% for 1 sec (30 cd)
+
+	juggernaut Item 1 (basic Blade 2 + UP HP item 3  + 550g)
+	600hp
+	60 ad
+	Active : tyrant's Field : Create an Aura that slows enemies by 25% (60 cd / Last 10 secs)
+
+	Juggernaut Item 2 (Up Blade 4 +  Up Hp Item + 450g)
+	40 ad 
+	10 eff
+	Passive : Run Down : hitting an emeny give you a speed boost (25 speed)
+
+	Juggernaut Item 3 ( Up Armor Item 2 + Basic Blade 2 + 500g)
+	50 ad
+	45 armor
+	Passive : Imiating : (aura) Reduce Enemy fev by 30%
+
+	AD Tank Item 1 (UP HP item 3   + Up armor item + 500g)
+	500 Hp
+	50 reg
+	45 armor
+	Passive : Spiney : AA the user places a debuff on the champion reducing their healing by 33%
+	Passive : Durable : Being out of combat give a bonus 25 reg
+	
+	AD tank Item 2 ( UP Armor Item 3 + UP armor item 2 + 500g)
+	70 armor
+	10 eff
+	450 hp 
+	Passive : Imimating : Aura enemies gain -25% Feveor 
+
+	AD tank Item 3 (Upgraded Armor Item 4 + Upgrade HP item 1 + 300g)
+	800 hp 
+	10 eff
+	35 armor
+	500 energy
+	Passive : Energy Mastery : Spell give a stack of energy granting 25 energy (CD between stacks 15 / 10 Stacks cap)
+	
+
+	
+
+	
+	
+	
+		
+
+	
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////// OH GOD OH LORD ////////
+	OH GOD OH HELP (blade 1 +blade 2 + book 1 + book 2 + Null Armor + Armor + Mixed Armor + Energy item + Health Item + Cooldown Item + Crit item + Crit Item 2 + Fev Item + 1000g)
+	100 ad
+	100 ap
+	40 null
+	40 armor
+	400 energy
+	500 hp
+	10 eff
+	25 crit
+	25 fev
+	20 force
+	20 pierce
+
+	Active : True Power : become god (Doesn't do anything) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

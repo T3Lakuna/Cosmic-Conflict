@@ -1,0 +1,18 @@
+Name
+	Crypto, the Rogue Hacker
+Class/Role
+	Assassin
+Origin, Theme, Concept, Backstory, and References.
+	Dystopian cyberpunk prodigy. League of Legends PROJECT skin line.
+Passive Ability/Abilities
+	Attacks deal extra damage to targets based on their missing health.
+Normal Ability/Abilities
+	- Crypto's next basic attack slows the target and reduces their resistances.
+	- Area-of-effect attack which slows enemies and silences enemies near the center.
+	- Crypto becomes invisible, summoning a copy of herself which walks towards the cursor. Can be cast again to swap places with the clone.
+Ultimate Ability/Abilities
+	Area-of-effect attack based on Crypto's location which deals a large amount of damage and silences enemies.
+Strengths
+	High burst damage, very high mobility, good stealth, defensive tricks, good at fighting targets who are alone, great matchup into mages and marksmen.
+Weaknesses, Counters, and Counterplay
+	Low crowd-control, no disengage, low durability, bad matchup into high-durability opponents and enemies with shields, bad matchup into tanks and fighters.

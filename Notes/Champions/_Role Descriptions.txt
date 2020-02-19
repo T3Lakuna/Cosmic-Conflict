@@ -1,0 +1,100 @@
+Controller
+Assists allies with good utility and keeps enemies at bay with crowd control.
+Strong: Ranged crowd-control, good disengage, good lockdown, good utility, great in teamfights.
+Weak: Low damage, low durability, low mobility, weak when alone.
+
+	Catcher
+	Subclass of controller.
+	Specialize in locking down opponents.
+	Strong: Ranged crowd-control, good disengage, good lockdown, good utility, great in teamfights.
+	Weak: Low damage, low durability, low mobility, weak when alone.
+
+	Enchanter
+	Subclass of controller.
+	Amplifies allies' effectiveness by directly augmenting and protecting them.
+	Strong: Great utility, great in teamfights.
+	Weak: Low damage, low durability, low mobility, weak when alone.
+
+Fighter ("Bruiser")
+Good at dealing and taking damage.
+Strong: Good sustained damage, good durability, good engage, good matchup into assassins and tanks.
+Weak: Short range, bad disengage, easily kited, bad matchup into mages and marksmen.
+
+	Diver
+	Subclass of fighter.
+	More mobile, less tanky fighters that excel at singling out high-priority targets.
+	Strong: Good sustained damage, alright durability, good engage, good target selection.
+	Weak: Short range, bad disengage.
+
+	Juggernaut
+	Subclass of fighter.
+	Excels at both dealing and taking significant amounts of damage.
+	Strong: Good sustained damage, good durability, good engage, good matchup into assassins and tanks.
+	Weak: Short range, bad disengage, easily kited, no mobility, bad matchup into mages and marksmen.
+
+Mage
+Uses great reach and ability-based area-of-effect damage and crowd-control to trap and destroy opponents from a distance.
+Strong: Long range, high damage, good crowd-control, good chaining of abilities, good against marksmen and fighters.
+Weak: Low durability, has abilities that are difficult to land, weak against assassins and tanks, weak against enemies with good sustain.
+
+	Artillery Mage
+	Subclass of mage.
+	Whittle down opponents over time over great distances.
+	Strong: Long range, high damage, good crowd-control, good chaining of abilities, good against marksmen and fighters.
+	Weak: Low durability, has abilities that are difficult to land, weak against assassins and tanks, weak against enemies with good sustain, terrible in close-range combat, no mobility.
+
+	Battlemage ("Warlock")
+	Subclass of mage.
+	Get into the middle of fights to attack the entire enemy team with incredible sustained area damage.
+	Strong: High damage, significant survivability, good crowd-control, good chaining of abilities, good against marksmen and fighters.
+	Weak: Short range, has abilities that are difficult to land, weak against assassins and tanks, weak against enemies with good sustain, long ability cooldowns.
+
+	Burst Mage
+	Subclass of mages.
+	Single out vulnerable enemies, lock them down, and destroy them.
+	Strong: Long range, high damage, good crowd-control, good chaining of abilities, good against marksmen and fighters.
+	Weak: Low durability, has abilities that are difficult to land, weak against assassins and tanks, weak against enemies with good sustain or any enemy who can withstand their initial damage.
+
+Marksman
+Ranged champions whose power revolves around basic attacks.
+Strong: Long range, high sustained damage, high objective control, excellent scaling, strong matchup into fighters and tanks.
+Weak: No crowd-control, no burst damage, low mobility, extremely vulnerable to burst damage, weak early, bad matchup into assassins and mages.
+
+Slayer
+Highly mobile champions who specialize in single-target burst damage. Epitome of high-risk, high-reward.
+Strong: Good damage, very high mobility, good stealth, good at fighting targets who are alone, great matchup into mages and marksmen.
+Weak: Low crowd-control, no disengage, low durability, bad matchup into high-durability opponents and enemies with shields, bad matchup into tanks and fighters.
+
+	Assassin
+	Subclass of slayer.
+	Quickly kill high-priority targets, but must put themselves into danger in order to do so.
+	Strong: High burst damage, very high mobility, good stealth, defensive tricks, good at fighting targets who are alone, great matchup into mages and marksmen.
+	Weak: Low crowd-control, no disengage, low durability, bad matchup into high-durability opponents and enemies with shields, bad matchup into tanks and fighters.
+
+	Skirmisher ("Duelist")
+	Subclass of slayer.
+	Uses situationally powerful defensive tools to survive fights and deal large sustained damage.
+	Strong: High sustained damage, very high mobility, good stealth, good at fighting targets who are alone, great matchup into mages and marksmen, difficult to escape from, high survivability.
+	Weak: Low crowd-control, no disengage, bad matchup into high-durability opponents and enemies with shields, bad matchup into tanks and fighters, falls quickly to high damage, easily kited by ranged enemies and crowd-control, cannot easily single-out high-priority targets.
+
+Tank
+Tough melee champions with very low damage but very high crowd-control. Purpose in fights is to disrupt the enemy team and divert their focus.
+Strong: Very high durability, very high crowd-control, good engage, good disruption/diversion, good lockdown, good tools to increase defenses, great matchup into assassins and mages.
+Weak: Melee, very low damage, low mobility, terrible in single combat, weak matchup into sustained damage from fighters and marksmen.
+
+	Vanguard
+	Subclass of tank.
+	Offensive tanks that specialize at initiating fights.
+	Strong: Very high durability, very high crowd-control, great engage, good disruption/diversion, good lockdown, good tools to increase defenses, great matchup into assassins and mages.
+	Weak: Melee, very low damage, low mobility, terrible in single combat, weak matchup into sustained damage from fighters and marksmen, no disengage.
+
+	Warden
+	Subclass of tank.
+	Defensive tanks that persistently lock down any enemies who try to pass them.
+	Strong: Very high durability, very high crowd-control, great disengage, good disruption/diversion, good lockdown, good tools to increase defenses, great matchup into assassins and mages.
+	Weak: Melee, very low damage, low mobility, terrible in single combat, weak matchup into sustained damage from fighters and marksmen, no engage.
+
+Specialist
+Any champion who does not fit into another category.
+Strong: Champion specific.
+Weak: Champion specific.

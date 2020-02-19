@@ -1,0 +1,18 @@
+Name
+	Penumbra, the Manifestation of Shadows
+Role
+	Skirmisher
+Origin, Theme, Concept, Backstory, and References.
+	http://pm1.narvii.com/6862/ec9e70ac95abaef35cbc3711da3198bc051bcf5fr1-992-1424v2_uhq.jpg
+Passive Ability
+	All of Penumbra's damage is dealt over time.
+Normal Abilities
+	- Penumbra bites the target, dealing damage and giving penumbra health regeneration for a short while.
+	- Penumbra deals damage around itself, then gains movement speed for a short while.
+	- Penumbra extends a claw that latches onto a target, empowering current bleed damage on the target and granting true vision. Penumbra can reactivate this ability to dash to the target and deal additional damage to it.
+Ultimate Ability
+	Penumbra performs a large swipe that deals all bleed damage instantly without expending the damage that will be dealt.
+Strengths
+	High sustained damage, very high mobility, good stealth, good at fighting targets who are alone, great matchup into mages and marksmen, difficult to escape from, high survivability.
+Weaknesses, Counters, and Counterplay
+	Low crowd-control, no disengage, bad matchup into high-durability opponents and enemies with shields, bad matchup into tanks and fighters, falls quickly to high damage, easily kited by ranged enemies and crowd-control, cannot easily single-out high-priority targets.

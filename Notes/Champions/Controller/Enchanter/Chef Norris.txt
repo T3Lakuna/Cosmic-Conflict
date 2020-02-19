@@ -1,0 +1,18 @@
+Name
+	Chef Norris, Chef de Cuisine
+Role
+	Enchanter
+Origin, Theme, Concept, Backstory, and References.
+	One of the most famous chefs in space that has perfected his craft well enough to empower his customers.
+Passive Ability
+	Good Eats - Using an ability gives Chef Norris and the ally casted upon movement speed
+Normal Abilities
+	- Spicy Chicken Teriyaki: Target ally gains AS and MS
+	- Steak and Eggs: Target gains shield and loses MS
+	- Double Decker Cheeseburger: Gains adaptive DMG and AS.
+Ultimate Ability
+	All You Can Eat Buffet - Target Ally gains increased DMG, AS, MS, and HP regen.
+Strengths
+	Great utility, great in teamfights.
+Weaknesses, Counters, and Counterplay
+	Low damage, low durability, low mobility, weak when alone.

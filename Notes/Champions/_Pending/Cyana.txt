@@ -1,0 +1,24 @@
+Cyana
+Warlock
+She’s an AI. Cortana but physical
+
+Glitch (passive): Cyana’s abilities apply glitch stacks, causing subsequent abilities deal more damage and apply different effects. If a champion accrues 3 glitch stacks, Cyana’s abilities gain a third effect until hit with a fourth ability OR five seconds passes. Whichever comes first.
+
+Cyber tendril(Q): Cyana throws a wire out to an enemy champion, dealing relatively low damage over 1 second. Cyana remains connected to the enemy champion. Glitch effect 1: Cyber tendril roots the enemy for x seconds (scales from ~1-~2 seconds based on ability level). Glitch effect 2: Cyber tendril stuns it’s target for the same time it would root.
+
+(W): Cyana creates a circle on the ground (cyber pop Zoe sleepy trouble bubble in look and size) that can hit multiple enemies. Glitch effect 1: ignores thirty percent of magic resist. Glitch effect 2: ignores seventy percent magic resist
+
+(E): Point click damage. It’s not even big, it’s just a definite glitch stack. Glitch effect 1: moves to one other enemy in a small radius, re dealing the damage and applying a stack. Glitch effect 2: the circle is bigger, about the size of a lane and into the side bushes for those pesky junglers. (Probably make it smaller tho)
+
+Rampancy(ult): Cyana turns crimson (as opposed to blue) and gains an aura around her that deals constant damage (swain ult with no healing). Each hit applies glitch stacks to enemies and decreases the cool down on champions who have recently been affected by glitch. Cyana’s movement speed and health regen are increased.
+Pros: really good late game. Good damage. Chains abilities really well. Survivable for a mage. Sticks to enemies.
+
+Cons: Needs to chain abilities to do anything at all, low max mana, low mana regen without ult. Kinda bursty
+
+Counters: better sustain early. Assassins. Tanks for the most part.
+
+Counter-play: outlive her, if she runs out of mana or uses her abilities and you aren’t dead she probably will be, especially early. Play safe.
+
+
+
+Note: This submission is by Dave, so...
